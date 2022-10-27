@@ -1,0 +1,9 @@
+export const LOGIN_ERROR = "LOGIN_ERROR";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const SIGNUP_ERROR = "SIGNUP_ERROR";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const IS_LOADING = "IS_LOADING;";
+export const TYPE_ERROR = "TYPE_ERROR";
+export const TYPE_SUCCESS = "TYPE_SUCCESS";
+export const SEARCH_ERROR = "SEARCH_ERROR";
+export const SEARCH_SUCCESS = "SEARCH_SUCCESS";

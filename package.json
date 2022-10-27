@@ -1,0 +1,41 @@
+{
+  "name": "Miventures",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "link": "^1.5.1",
+    "react": "17.0.2",
+    "react-native": "^0.68.2",
+    "react-native-linear-gradient": "^2.6.2",
+    "react-native-reanimated": "^2.11.0",
+    "react-native-safe-area-context": "^4.4.1",
+    "react-native-vector-icons": "^9.2.0",
+    "react-redux": "^8.0.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.6",
+    "@babel/runtime": "^7.19.4",
+    "@react-native-community/eslint-config": "^3.1.0",
+    "@types/jest": "^29.2.0",
+    "@types/react": "^18.0.23",
+    "@types/react-native": "^0.70.6",
+    "@types/react-native-vector-icons": "^6.4.12",
+    "@types/react-test-renderer": "^18.0.0",
+    "babel-jest": "^29.2.2",
+    "eslint": "^8.26.0",
+    "jest": "^29.2.2",
+    "metro-react-native-babel-preset": "^0.73.2",
+    "react-test-renderer": "17.0.2",
+    "typescript": "^4.8.4"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
