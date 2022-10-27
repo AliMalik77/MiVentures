@@ -8,9 +8,25 @@ import {
   Button,
   Pressable,
   ImageBackground,
+  Alert,
 } from 'react-native';
 
-const SignLog = () => {
+type SignLogScreenProps = {
+  navigation: any;
+};
+
+const SignLog = ({navigation}: SignLogScreenProps) => {
+  const handleClick = (data: any) => {
+    if (data === 'login') {
+      navigation.navigate('LoginType');
+      // Alert.alert(data);
+    }
+    if (data === 'signup') {
+      navigation.navigate('SignupType');
+      // Alert.alert(data);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -44,10 +60,14 @@ const SignLog = () => {
         </View>
 
         <View style={styles.footer}>
-          <Pressable style={styles.button}>
+          <Pressable
+            style={styles.button}
+            onPress={() => handleClick('signup')}>
             <Text style={styles.text}>Sign Up</Text>
           </Pressable>
-          <Pressable style={styles.button2}>
+          <Pressable
+            style={styles.button2}
+            onPress={() => handleClick('login')}>
             <Text style={styles.text2}>Log in</Text>
           </Pressable>
           <View>
