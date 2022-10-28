@@ -12,11 +12,11 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-type LoginTypeScreenProps = {
+type SignupTypeScreenProps = {
   navigation: any;
 };
 
-const LoginType = ({navigation}: LoginTypeScreenProps) => {
+const SignupType = ({navigation}: SignupTypeScreenProps) => {
   const handleClick = () => {
     navigation.navigate('Login');
   };
@@ -37,7 +37,9 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
           </TouchableOpacity>
         </View>
         <View style={styles.descHeader}>
-          <Text style={styles.description}>How do you want to log in?</Text>
+          <Text style={styles.description}>
+            Sign up with Google or Email to invest.
+          </Text>
         </View>
       </View>
       <View style={styles.center}>
@@ -47,35 +49,34 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
           resizeMode="contain"></Image>
       </View>
       <View style={styles.footer}>
-        <Pressable style={styles.button}>
-          <MaterialCommunityIcons name="apple" size={25} color="white" />
-          <Text style={styles.text}>Log in with Apple</Text>
-        </Pressable>
         <Pressable
           style={styles.button2}
           onPress={() => {
             handleClick();
           }}>
           <MaterialCommunityIcons name="google" size={25} color="white" />
-          <Text style={styles.text}>Log in with Google</Text>
+          <Text style={styles.text}>Sign up with Google</Text>
         </Pressable>
         <Pressable style={styles.button3}>
-          <MaterialCommunityIcons name="email" size={25} color="black" />
-          <Text style={styles.text}>Log in with Email</Text>
+          <Text style={styles.textLogin}>Log in </Text>
         </Pressable>
       </View>
     </View>
   );
 };
 
-export default LoginType;
+export default SignupType;
 
 const styles = StyleSheet.create({
+  textLogin: {
+    fontSize: 20,
+    color: '#377BF5',
+  },
   descHeader: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: '25%',
-    width: '50%',
+    marginLeft: '20%',
+    width: '60%',
   },
   description: {
     color: 'black',
@@ -123,9 +124,11 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 32,
     borderRadius: 30,
-    backgroundColor: '#377BF5',
+    // backgroundColor: '#fff',
     width: '90%',
     marginBottom: 10,
+    borderWidth: 2,
+    borderColor: '#377BF5',
   },
   text: {
     fontSize: 20,
@@ -149,6 +152,7 @@ const styles = StyleSheet.create({
   footer: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   //   logo: {
   //     width: 40,

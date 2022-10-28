@@ -1,7 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 
-const Splash = () => {
+type SplashScreenProps = {
+  navigation: any;
+};
+
+const Splash = ({navigation}: SplashScreenProps) => {
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate('Auth');
+    }, 3000);
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -12,10 +22,10 @@ const Splash = () => {
         <Text style={styles.name}>miventure</Text>
         <Text style={styles.description}>Easily invest in startups</Text>
       </View>
-      <View style={styles.footer}>
+      {/* <View style={styles.footer}>
         <Text style={styles.description}>by</Text>
         <Text style={styles.footerDesc}>TWO12</Text>
-      </View>
+      </View> */}
     </View>
   );
 };
