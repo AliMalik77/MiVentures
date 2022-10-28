@@ -6,7 +6,6 @@ import Splash from '../screens/Splash';
 import LoginType from '../screens/LoginType';
 import Login from '../screens/Login';
 import PasswordReset from '../screens/PasswordReset';
-import Signup from '../screens/SignupType';
 import SignupType from '../screens/SignupType';
 
 const Stack = createStackNavigator();
