@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -7,16 +7,87 @@ import {
   Pressable,
   ImageBackground,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
-
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+// import auth from '@react-native-firebase/auth';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 type LoginTypeScreenProps = {
   navigation: any;
 };
 
 const LoginType = ({navigation}: LoginTypeScreenProps) => {
+  // const [confirm, setConfirm] = useState<any | null>(null);
+  // const [phoneNumber, setPhoneNumber] = useState('');
+
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      // scopes: ['email'],
+      webClientId:
+        '180123884938-0iv7p5s8me7e1l6gthmmosd40m4i8o2a.apps.googleusercontent.com',
+      // offlineAccess: true,
+    });
+
+    auth().onAuthStateChanged(user => {
+      if (user) {
+        setAuthenticated(true);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    if (authenticated === true) {
+      console.log('true');
+    }
+    console.log('');
+  }, [authenticated]);
+
+  const signin = (email: string, password: string) => {
+    try {
+      auth().signInWithEmailAndPassword(email, password);
+    } catch (error: any) {
+      Alert.alert(error);
+    }
+  };
+  // const signInWithPhoneNumber = async (phoneNumber: string) => {
+  //   const ConfirmationResult: any = await auth().signInWithPhoneNumber(
+  //     phoneNumber,
+  //   );
+  //   console.log('confirmation result', ConfirmationResult);
+  //   setConfirm(ConfirmationResult);
+  // };
+
+  // const confirmCode = async () => {
+  //   try {
+  //     console.log('verification is ', confirm);
+  //     // await confirm.confirm(code);
+  //     // setSignedIn('true');
+  //   } catch (error) {
+  //     console.log('Invalid code.');
+  //   }
+  // };
+  const googleSignin = async () => {
+    console.log('callinf google signin');
+
+    const {idToken} = await GoogleSignin.signIn();
+
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+    return auth().signInWithCredential(googleCredential);
+  };
+
+  const createUser = (email: string, password: string) => {
+    try {
+      auth().createUserWithEmailAndPassword(email, password);
+    } catch (error: any) {
+      Alert.alert(error);
+    }
+  };
+
   const handleClick = () => {
     navigation.navigate('Login');
   };
@@ -25,6 +96,9 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
     navigation.navigate('Auth');
   };
 
+  const handleEmailLogin = () => {
+    navigation.navigate('Login');
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -54,12 +128,19 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
         <Pressable
           style={styles.button2}
           onPress={() => {
-            handleClick();
+            // createUser('ali.haider@carbonteq.com', '123456');
+            // signInWithPhoneNumber('+923054042027');
+            // handleClick();
+            googleSignin()
+              .then(res => {
+                console.log('google response is successful', res);
+              })
+              .catch(err => console.log(err));
           }}>
           <MaterialCommunityIcons name="google" size={25} color="white" />
           <Text style={styles.text}>Log in with Google</Text>
         </Pressable>
-        <Pressable style={styles.button3}>
+        <Pressable style={styles.button3} onPress={() => handleEmailLogin()}>
           <MaterialCommunityIcons name="email" size={25} color="black" />
           <Text style={styles.text}>Log in with Email</Text>
         </Pressable>

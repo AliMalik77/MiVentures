@@ -7,9 +7,9 @@ type SplashScreenProps = {
 
 const Splash = ({navigation}: SplashScreenProps) => {
   useEffect(() => {
-    setTimeout(() => {
-      navigation.navigate('Auth');
-    }, 3000);
+    // setTimeout(() => {
+    navigation.navigate('Auth');
+    // }, 3000);
   }, []);
 
   return (

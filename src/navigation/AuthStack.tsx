@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import SignInScreen from '../screens/SignIn';
 import SignLog from '../screens/SignLog';
@@ -7,15 +7,32 @@ import LoginType from '../screens/LoginType';
 import Login from '../screens/Login';
 import PasswordReset from '../screens/PasswordReset';
 import SignupType from '../screens/SignupType';
+import EmailAddress from '../screens/EmailAddress';
+import SignupPassword from '../screens/SignupPassword';
+// import auth from '@react-native-firebase/auth';
 
 const Stack = createStackNavigator();
 
 type AuthProps = {
-  isSignedIn: string;
-  setSignedIn: (val: string) => void;
+  userData: any;
+  setUserData: (val: any) => void;
 };
 
-const AuthStack = () => {
+const AuthStack = ({userData, setUserData}: AuthProps) => {
+  const [authenticated, setAuthenticated] = useState(false);
+
+  // useEffect(() => {
+  //   auth().onAuthStateChanged((user: any) => {
+  //     if (user) {
+  //       setAuthenticated(true);
+  //     }
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   console.log('authenticated', authenticated);
+  // }, [authenticated]);
+
   return (
     <Stack.Navigator
       initialRouteName="Splash"
@@ -25,11 +42,38 @@ const AuthStack = () => {
       <Stack.Screen name="Auth" component={SignLog}></Stack.Screen>
       <Stack.Screen name="Splash" component={Splash}></Stack.Screen>
       <Stack.Screen name="LoginType" component={LoginType}></Stack.Screen>
-      <Stack.Screen name="Login" component={Login}></Stack.Screen>
+      <Stack.Screen name="Login">
+        {props => (
+          <Login
+            {...props}
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
+        )}
+      </Stack.Screen>
       <Stack.Screen name="SignupType" component={SignupType}></Stack.Screen>
+      <Stack.Screen name="Email">
+        {props => (
+          <EmailAddress
+            {...props}
+            userData={userData}
+            setUserData={setUserData}
+          />
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="SignupPassword">
+        {props => (
+          <SignupPassword
+            {...props}
+            userData={userData}
+            setUserData={setUserData}
+          />
+        )}
+      </Stack.Screen>
       <Stack.Screen
         name="ForgotPassword"
         component={PasswordReset}></Stack.Screen>
+      {/*SignupPassword  */}
     </Stack.Navigator>
   );
 };

@@ -25,6 +25,14 @@ const SignupType = ({navigation}: SignupTypeScreenProps) => {
     navigation.navigate('Auth');
   };
 
+  // const handleSignup = () => {
+  //   navigation.navigate('Email');
+  // };
+
+  const handleEmailSignup = () => {
+    navigation.navigate('Email');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -51,13 +59,25 @@ const SignupType = ({navigation}: SignupTypeScreenProps) => {
       <View style={styles.footer}>
         <Pressable
           style={styles.button2}
-          onPress={() => {
-            handleClick();
-          }}>
+          onPress={
+            () => {}
+            //  handleSignup()
+          }>
           <MaterialCommunityIcons name="google" size={25} color="white" />
           <Text style={styles.text}>Sign up with Google</Text>
         </Pressable>
-        <Pressable style={styles.button3}>
+        <Pressable
+          style={styles.signupEmailbutton}
+          onPress={() => {
+            handleEmailSignup();
+          }}>
+          <Text style={styles.signupButtontext}>Sign up with Email</Text>
+        </Pressable>
+        <Pressable
+          style={styles.button3}
+          onPress={() => {
+            handleClick();
+          }}>
           <Text style={styles.textLogin}>Log in </Text>
         </Pressable>
       </View>
@@ -72,6 +92,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#377BF5',
   },
+  signupButtontext: {fontSize: 20, color: '#fff'},
   descHeader: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -129,6 +150,21 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderWidth: 2,
     borderColor: '#377BF5',
+  },
+  signupEmailbutton: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 6,
+    paddingHorizontal: 32,
+    borderRadius: 30,
+    backgroundColor: '#377BF5',
+
+    width: '90%',
+    marginBottom: 10,
+    // borderWidth: 2,
+    // borderColor: '#377BF5',
   },
   text: {
     fontSize: 20,
