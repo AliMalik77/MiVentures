@@ -5,75 +5,57 @@ import {
   StyleSheet,
   Image,
   Pressable,
-  TextInput,
+  ImageBackground,
   TouchableOpacity,
+  TextInput,
   Alert,
 } from 'react-native';
-// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 
-type LoginScreenProps = {
+type PasswordScreenProps = {
   navigation: any;
-  authenticated: any;
-  setAuthenticated: any;
+  userData: any;
+  setUserData: (val: any) => void;
 };
 
-const Login = ({
+const SignupPassword = ({
   navigation,
-  authenticated,
-  setAuthenticated,
-}: LoginScreenProps) => {
-  const [email, setEmail] = useState<any | null>(null);
-  const [password, setPassword] = useState<any | null>(null);
-  // const [authenticated, setAuthenticated] = useState(false);
+  userData,
+  setUserData,
+}: PasswordScreenProps) => {
+  const [error, setError] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
+
+  const handleBack = () => {
+    navigation.navigate('Email');
+  };
 
   useEffect(() => {
     auth().onAuthStateChanged(user => {
       if (user) {
-        console.log('user authe', user);
-        // Alert.alert('user signed in already');
-        auth().signOut();
-
         setAuthenticated(true);
       }
     });
   }, []);
 
   useEffect(() => {
-    if (authenticated === true) {
-      Alert.alert('user signed in already');
-    }
-  }, []);
-
-  const handleBack = () => {
-    navigation.navigate('LoginType');
-  };
-
-  const signin = (email: string, password: string) => {
+    console.log('userData', userData);
+  }, [userData]);
+  const createUser = () => {
     try {
-      const data = auth().signInWithEmailAndPassword(email, password);
-      console.log('data after signing');
+      auth()
+        .createUserWithEmailAndPassword(userData.email, userData.password)
+        .then(res => {
+          Alert.alert('Signup Successfully');
+        })
+        .catch(err => {
+          Alert.alert('Something went wrong. Please try again');
+        });
     } catch (error: any) {
       Alert.alert(error);
     }
-  };
-  const handleLogin = () => {
-    try {
-      if (email && password) {
-        auth()
-          .signInWithEmailAndPassword(email, password)
-          .then(res => {
-            Alert.alert('user logged in successfully');
-          });
-        //  navigation.navigate()
-      }
-    } catch (error: any) {
-      Alert.alert(error);
-    }
-  };
-  const handleForgot = () => {
-    navigation.navigate('ForgotPassword');
   };
   return (
     <View style={styles.container}>
@@ -84,27 +66,36 @@ const Login = ({
           </TouchableOpacity>
         </View>
         <View style={styles.descHeader}>
-          <Text style={styles.description}>Hey there! Welcome back.</Text>
+          <Text style={styles.description}>Create your password</Text>
         </View>
 
         <View style={{width: '100%', alignItems: 'center'}}>
           <TextInput
-            placeholder="Email"
-            style={styles.fieldContainer}
-            onChangeText={e => setEmail(e)}></TextInput>
-          <TextInput
+            secureTextEntry={true}
             placeholder="Password"
             style={styles.fieldContainer}
-            onChangeText={password => setPassword(password)}></TextInput>
-          <TouchableOpacity onPress={() => handleForgot()}>
-            <Text style={styles.forgotPassword}>Forgot your password?</Text>
-          </TouchableOpacity>
+            onChangeText={password =>
+              setUserData({...userData, password: password})
+            }
+            //   onChangeText={phoneNumber => setPhoneNumber(phoneNumber)}
+          ></TextInput>
+
+          {error ? (
+            <View style={styles.errorContainer}>
+              <Text style={styles.errorText}>
+                Must have at least 8-characters, an uppercase letter, a number
+                and a special character.
+              </Text>
+            </View>
+          ) : (
+            <View style={styles.errorContainer}></View>
+          )}
           <Pressable
             style={styles.button3}
             onPress={() => {
-              handleLogin();
+              createUser();
             }}>
-            <Text style={styles.text}>Log in </Text>
+            <Text style={styles.text}>Next</Text>
           </Pressable>
         </View>
       </View>
@@ -112,9 +103,15 @@ const Login = ({
   );
 };
 
-export default Login;
+export default SignupPassword;
 
 const styles = StyleSheet.create({
+  errorContainer: {width: '90%', marginTop: 50, marginBottom: 10},
+  errorText: {
+    color: '#EA4335',
+    fontSize: 14,
+    fontWeight: '400',
+  },
   forgotPassword: {
     color: '#377BF5',
     marginTop: 24,
@@ -140,7 +137,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: '#377BF5',
     width: '90%',
-    marginTop: 24,
+    // marginTop: 60,
   },
   text: {
     fontSize: 20,
@@ -157,6 +154,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: '25%',
     width: '50%',
+    marginBottom: 30,
   },
   image: {
     width: 125,
@@ -185,7 +183,7 @@ const styles = StyleSheet.create({
   },
   description: {
     color: '#000000',
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: '800',
     textAlign: 'center',
   },
