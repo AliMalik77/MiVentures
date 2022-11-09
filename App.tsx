@@ -3,6 +3,9 @@ import {NavigationContainer} from '@react-navigation/native';
 // import AppStack from './src/navigation/AppStack';
 import AuthStack from './src/navigation/AuthStack';
 import Signup from './src/screens/SignupType';
+import EmailAddress from './src/screens/EmailAddress';
+import Tutorial1 from './src/screens/Tutorial1';
+import Modal1 from './src/screens/Modal1';
 // import auth from '@react-native-firebase/auth';
 // import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
@@ -27,7 +30,8 @@ const App = () => {
   return (
     <>
       <NavigationContainer>
-        <AuthStack userData={userData} setUserData={setUserData} />
+        {/* <AuthStack userData={userData} setUserData={setUserData} /> */}
+        <Tutorial1 />
         {/* <Signup /> */}
 
         {/* {isSignedIn ? <AuthStack /> : <LoginType />} */}
