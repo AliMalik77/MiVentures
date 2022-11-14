@@ -5,23 +5,15 @@ import {
   StyleSheet,
   Pressable,
   TouchableOpacity,
-  TextInput,
-  Animated,
   Image,
 } from 'react-native';
-import {LiquidLike} from 'react-native-animated-pagination-dots';
-// import Carousel, {Pagination} from 'react-native-snap-carousel';
-// import PaginationDot from 'react-native-animated-pagination-dot';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
+const Rocket = require('../../assets/Rocket.png');
+const Clock = require('../../assets/Clock.png');
+const Cat = require('../../assets/Cat.png');
+// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import PaginationDot from 'react-native-animated-pagination-dot';
-
-// import Dots from 'react-native-dots-pagination';
-
-// type Tutorial1ScreenProps = {
-//   navigation: any;
-//   userData: any;
-//   setUserData: (val: any) => void;
-// };
+import Tutorial from '../components/Tutorial';
 
 const Tutorial1 = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -29,16 +21,11 @@ const Tutorial1 = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.icon}>
-          <TouchableOpacity
-          //   onPress={() => handleBack()}
-          >
-            {/* <MaterialIcons name="arrow-back-ios" size={25} color="black" /> */}
-          </TouchableOpacity>
+          <TouchableOpacity></TouchableOpacity>
         </View>
         <View style={styles.descHeader}>
           <Text style={styles.description}>How it works</Text>
         </View>
-        {/* <View></View> */}
 
         <View style={{alignItems: 'center'}}>
           <PaginationDot
@@ -50,6 +37,35 @@ const Tutorial1 = () => {
       </View>
 
       {currentPage === 0 ? (
+        <Tutorial
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          imageUri={require('../../assets/Rocket.png')}
+          title={' Find a startup and invest $25 or more'}
+          description={` You are investing in a startup in exchange for future equity, betterknown as a `}
+          btntxt={'Next'}
+        />
+      ) : currentPage === 1 ? (
+        <Tutorial
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          imageUri={require('../../assets/Clock.png')}
+          title={'Invest in a business before time runs out'}
+          description={`Each business has 120 days to raise their funding goal or each investor gets a full refund.`}
+          btntxt={'Next'}
+        />
+      ) : (
+        <Tutorial
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          imageUri={require('../../assets/Cat.png')}
+          title={'Becoming a startup investor'}
+          description={`  You must be at least 18 years old and have a U.S. tax ID. Be aware that investing has risks so only invest an amount you can afford to lose.`}
+          btntxt={'You Made it!'}
+        />
+      )}
+
+      {/* {currentPage === 0 ? (
         <View style={styles.middle}>
           <View>
             <Image
@@ -163,14 +179,9 @@ const Tutorial1 = () => {
             <Text style={styles.text2}>Next</Text>
           </Pressable>
         </View>
-      )}
-
-      {/* screen2 */}
-
-      {/* screen3 */}
+      )} */}
 
       <View style={styles.footer}>
-        {/* <View> */}
         <Text
           style={{
             color: '#909090',
@@ -183,7 +194,6 @@ const Tutorial1 = () => {
           through Miventure Inc., a Funding Portal registered with the SEC and a
           member of FINRA.
         </Text>
-        {/* </View> */}
       </View>
     </View>
   );
@@ -227,15 +237,10 @@ const styles = StyleSheet.create({
     width: '50%',
     marginBottom: 30,
   },
-  //   image: {
-  //     width: 125,
-  //     height: 125,
-  //   },
   container: {
     flex: 1,
     backgroundColor: 'white',
   },
-
   header: {
     flex: 1,
     margin: 10,

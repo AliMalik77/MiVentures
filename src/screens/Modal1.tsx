@@ -12,8 +12,8 @@ import {
   Alert,
   Button,
 } from 'react-native';
-// import Modal from 'react-native-modal';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import ModalComponent from '../components/Modal';
 
 const Modal1 = () => {
   //   const [modalVisible, setModalVisible] = useState(false);
@@ -25,67 +25,24 @@ const Modal1 = () => {
 
   return (
     <View style={!isModalVisible ? styles.container : styles.container2}>
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Modal
-          animationType={'fade'}
-          transparent={true}
-          visible={isModalVisible}
-          // onRequestClose={() => {
-          //   console.log('Modal has been closed.');
-          // }}
-        >
-          <View style={styles.modal}>
-            <View style={styles.icon}>
-              <TouchableOpacity
-                onPress={() => {
-                  setModalVisible(false);
-                }}>
-                <MaterialIcons name="close" size={25} color="black" />
-              </TouchableOpacity>
-            </View>
+      {/* <View style={{justifyContent: 'flex-end'}}> */}
+      <ModalComponent
+        isModalVisible={isModalVisible}
+        setModalVisible={setModalVisible}
+        toggleModal={toggleModal}
+        icon={'close'}
+        title={'Regulation Crowdfunding'}
+        headerPara={`Regulation Crowdfunding (“Reg CF”) is a law that lets anyone that is 18 years old or older invest in a business with certain limitations such as how much they can invest in any 12-month period based on their yearly income, net worth, and previous Reg CF investments.`}
+        middlePara={` You can track how much you invest and your investment limits all on the Miventure App.`}
+        footerPara={' Learn more in our Educational Materials .'}
+      />
 
-            <View style={{alignItems: 'center'}}>
-              <View style={{width: '80%', alignItems: 'center'}}>
-                <Text style={styles.text}>Regulation Crowdfunding</Text>
-              </View>
-              <View style={{width: '90%', alignItems: 'center'}}>
-                <View style={{marginTop: 20}}>
-                  <Text style={styles.textDescription}>
-                    Regulation Crowdfunding (“Reg CF”) is a law that lets anyone
-                    that is 18 years old or older invest in a business with
-                    certain limitations such as how much they can invest in any
-                    12-month period based on their yearly income, net worth, and
-                    previous Reg CF investments.
-                  </Text>
-                </View>
-                <View style={{marginTop: 20}}>
-                  <Text style={styles.textDescription}>
-                    You can track how much you invest and your investment limits
-                    all on the Miventure App.
-                  </Text>
-                </View>
-
-                <View style={{marginTop: 20}}>
-                  <Text style={styles.textDescription}>
-                    Learn more in our{' '}
-                    <Text style={styles.textHighlights}>
-                      Educational Materials .
-                    </Text>
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </Modal>
-      </View>
-      {/*Button will change state to true and view will re-render*/}
       <Button
         title="Click To Open Modal"
         onPress={() => {
           setModalVisible(true);
         }}
       />
-      {/* </View> */}
     </View>
   );
 };

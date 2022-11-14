@@ -6,6 +6,12 @@ import Signup from './src/screens/SignupType';
 import EmailAddress from './src/screens/EmailAddress';
 import Tutorial1 from './src/screens/Tutorial1';
 import Modal1 from './src/screens/Modal1';
+import HomeScreen from './src/screens/Home';
+import {ScrollView, View} from 'react-native';
+import TabNavigation from './src/navigation/TabNavigation';
+import {BottomNavigation} from 'react-native-paper';
+import BottomNavigator from './src/navigation/BottomNavigator';
+import InvestorInfo from './src/screens/InvestorInfo';
 // import auth from '@react-native-firebase/auth';
 // import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
@@ -30,10 +36,15 @@ const App = () => {
   return (
     <>
       <NavigationContainer>
+        {/* <ScrollView> */}
+        <InvestorInfo />
+        {/* <BottomNavigator /> */}
+        {/* <BottomNavigator /> */}
+        {/* </ScrollView> */}
         {/* <AuthStack userData={userData} setUserData={setUserData} /> */}
-        <Tutorial1 />
+        {/* <Tutorial1 /> */}
+        {/* <Modal1 /> */}
         {/* <Signup /> */}
-
         {/* {isSignedIn ? <AuthStack /> : <LoginType />} */}
       </NavigationContainer>
     </>
