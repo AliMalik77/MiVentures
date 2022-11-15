@@ -8,7 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Back from '../../assets/svgs/Backicon.svg';
 
 type PasswordResetScreenProps = {
   navigation: any;
@@ -26,7 +26,7 @@ const PasswordReset = ({navigation}: PasswordResetScreenProps) => {
       <View style={styles.header}>
         <View style={styles.icon}>
           <TouchableOpacity onPress={() => handleBack()}>
-            <MaterialIcons name="arrow-back-ios" size={25} color="black" />
+            <Back height={25} width={25} />
           </TouchableOpacity>
         </View>
         <View style={styles.descHeader}>

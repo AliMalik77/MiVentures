@@ -2,8 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import Title from '../components/common/Title';
 import Search from '../components/Search';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Carousel from 'react-native-snap-carousel';
 import CarouselCardItem, {
   ITEM_WIDTH,
@@ -12,6 +10,9 @@ import CarouselCardItem, {
 const Entreprenuer = require('../../assets/Enterprenuer.png');
 const CoffeeBar = require('../../assets/CoffeeBar.png');
 import Card from '../components/Card';
+import Gift from '../../assets/svgs/Gift.svg';
+import Arrowright from '../../assets/svgs/Arrowright.svg';
+import Dropdown from '../../assets/svgs/Dropdown.svg';
 
 const data = [
   {
@@ -108,11 +109,7 @@ const HomeScreen = () => {
                       borderWidth: 2,
                       padding: 7,
                     }}>
-                    <MaterialCommunityIcons
-                      name="gift-outline"
-                      size={25}
-                      color="#377BF5"
-                    />
+                    <Gift height={25} width={25} color={'#377BF5'} />
                   </View>
                 </View>
               </View>
@@ -129,19 +126,16 @@ const HomeScreen = () => {
                   display: 'flex',
                   flexDirection: 'row',
                   marginTop: 10,
+                  alignItems: 'center',
                 }}>
                 <Text style={{fontSize: 17, fontWeight: '700'}}>
                   Founder Stories
                 </Text>
                 <View>
-                  <MaterialIcons
-                    name="arrow-right-alt"
-                    size={25}
-                    color="#454545"
-                  />
+                  <Arrowright width={25} />
                 </View>
               </View>
-              <View style={{}}>
+              <View>
                 <Carousel
                   layout="default"
                   slideStyle={{borderRadius: 20, overflow: 'hidden'}}
@@ -162,16 +156,13 @@ const HomeScreen = () => {
                   display: 'flex',
                   flexDirection: 'row',
                   marginBottom: 10,
+                  alignItems: 'center',
                 }}>
                 <Text style={{fontSize: 17, fontWeight: '700'}}>
                   All Startups
                 </Text>
 
-                <MaterialIcons
-                  name="keyboard-arrow-down"
-                  size={25}
-                  color="#454545"
-                />
+                <Dropdown width={25} />
               </View>
             </>
           );

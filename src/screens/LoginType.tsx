@@ -9,7 +9,10 @@ import {
   Alert,
 } from 'react-native';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Close from '../../assets/svgs/Exiticon.svg';
+import Apple from '../../assets/svgs/Apple.svg';
+import Mailbox from '../../assets/svgs/Mailbox.svg';
+import Google from '../../assets/svgs/Google.svg';
 import auth from '@react-native-firebase/auth';
 type LoginTypeScreenProps = {
   navigation: any;
@@ -47,10 +50,6 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
     }
   };
 
-  const handleClick = () => {
-    navigation.navigate('Login');
-  };
-
   const handleBack = () => {
     navigation.navigate('Auth');
   };
@@ -58,6 +57,7 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
   const handleEmailLogin = () => {
     navigation.navigate('Login');
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -66,7 +66,7 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
             onPress={() => {
               handleBack();
             }}>
-            <MaterialCommunityIcons name="close" size={30} color="black" />
+            <Close height={25} width={25} />
           </TouchableOpacity>
         </View>
         <View style={styles.descHeader}>
@@ -81,7 +81,7 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
       </View>
       <View style={styles.footer}>
         <Pressable style={styles.button}>
-          <MaterialCommunityIcons name="apple" size={25} color="white" />
+          <Apple height={25} width={25} />
           <Text style={styles.text}>Log in with Apple</Text>
         </Pressable>
         <Pressable
@@ -93,11 +93,11 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
               })
               .catch(err => console.log(err));
           }}>
-          <MaterialCommunityIcons name="google" size={25} color="white" />
+          <Google height={25} width={25} />
           <Text style={styles.text}>Log in with Google</Text>
         </Pressable>
         <Pressable style={styles.button3} onPress={() => handleEmailLogin()}>
-          <MaterialCommunityIcons name="email" size={25} color="black" />
+          <Mailbox height={25} width={25} />
           <Text style={styles.text}>Log in with Email</Text>
         </Pressable>
       </View>

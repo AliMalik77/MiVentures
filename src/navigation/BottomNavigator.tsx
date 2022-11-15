@@ -1,9 +1,9 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
 import HomeScreen from '../screens/Home';
-
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Menu from '../../assets/svgs/Menu.svg';
+import Portfolio from '../../assets/svgs/Portfolio.svg';
+import Vector from '../../assets/svgs/Vector.svg';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,13 +16,7 @@ const BottomNavigator = () => {
         options={{
           tabBarLabel: 'Invest',
           tabBarIcon: () => {
-            return (
-              <MaterialCommunityIcons
-                name="chart-line-variant"
-                size={30}
-                color="#909090"
-              />
-            );
+            return <Vector height={25} width={25} />;
           },
         }}
       />
@@ -32,13 +26,7 @@ const BottomNavigator = () => {
         options={{
           tabBarLabel: 'postal',
           tabBarIcon: () => {
-            return (
-              <MaterialCommunityIcons
-                name="credit-card-outline"
-                size={30}
-                color="#909090"
-              />
-            );
+            return <Portfolio height={25} width={25} />;
           },
         }}
       />
@@ -48,9 +36,7 @@ const BottomNavigator = () => {
         options={{
           tabBarLabel: 'Menu',
           tabBarIcon: () => {
-            return (
-              <MaterialCommunityIcons name="menu" size={30} color="#909090" />
-            );
+            return <Menu height={25} width={25} color={'red'} />;
           },
         }}
       />

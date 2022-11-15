@@ -1,19 +1,19 @@
 import React from 'react';
 import {
   Dimensions,
+  Image,
   Modal,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 type ModalProps = {
   isModalVisible: any;
   setModalVisible: (val: any) => void;
   toggleModal: (val: any) => void;
-  icon: string;
+  Iconn: any;
   title: string;
   headerPara: string;
   middlePara: string;
@@ -24,7 +24,7 @@ const ModalComponent = ({
   isModalVisible,
   setModalVisible,
   toggleModal,
-  icon,
+  Iconn,
   title,
   headerPara,
   middlePara,
@@ -47,7 +47,7 @@ const ModalComponent = ({
                 onPress={() => {
                   setModalVisible(false);
                 }}>
-                <MaterialIcons name={icon} size={25} color="black" />
+                {Iconn}
               </TouchableOpacity>
             </View>
 

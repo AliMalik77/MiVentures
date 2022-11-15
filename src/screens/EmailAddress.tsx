@@ -3,14 +3,12 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   Pressable,
   TouchableOpacity,
   TextInput,
 } from 'react-native';
 
-// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-// import Back from '../../assets/svgs/Backicon.svg';
+import Back from '../../assets/svgs/Backicon.svg';
 
 type EmailScreenProps = {
   navigation: any;
@@ -36,8 +34,7 @@ const EmailAddress = ({
       <View style={styles.header}>
         <View style={styles.icon}>
           <TouchableOpacity onPress={() => handleBack()}>
-            {/* <Image source={Back}></Image> */}
-            {/* <MaterialIcons name="Back" size={25} color="black" /> */}
+            <Back height={25} width={25} />
           </TouchableOpacity>
         </View>
         <View style={styles.descHeader}>

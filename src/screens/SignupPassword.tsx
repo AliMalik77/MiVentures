@@ -3,16 +3,14 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   Pressable,
-  ImageBackground,
   TouchableOpacity,
   TextInput,
   Alert,
 } from 'react-native';
 
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import Back from '../../assets/svgs/Backicon.svg';
 
 type PasswordScreenProps = {
   navigation: any;
@@ -59,7 +57,7 @@ const SignupPassword = ({
       <View style={styles.header}>
         <View style={styles.icon}>
           <TouchableOpacity onPress={() => handleBack()}>
-            <MaterialIcons name="arrow-back-ios" size={25} color="black" />
+            <Back height={25} width={25} />
           </TouchableOpacity>
         </View>
         <View style={styles.descHeader}>

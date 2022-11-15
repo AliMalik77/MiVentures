@@ -9,11 +9,11 @@ import {
   View,
 } from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-
+import Back from '../../assets/svgs/Backicon.svg';
 const schema = yup
   .object({
     firstName: yup.string().required(),
@@ -58,7 +58,7 @@ const InvestorInfo = ({navigation}: InvestorScreenProps) => {
               onPress={() => {
                 handleBack();
               }}>
-              <MaterialIcons name="arrow-back-ios" size={25} color="black" />
+              <Back height={25} width={25} />
             </TouchableOpacity>
 
             <Text

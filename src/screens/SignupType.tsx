@@ -8,8 +8,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import Close from '../../assets/svgs/Exiticon.svg';
+import Google from '../../assets/svgs/Google.svg';
 type SignupTypeScreenProps = {
   navigation: any;
 };
@@ -35,7 +35,7 @@ const SignupType = ({navigation}: SignupTypeScreenProps) => {
             onPress={() => {
               handleBack();
             }}>
-            <MaterialCommunityIcons name="close" size={30} color="black" />
+            <Close height={25} width={25} />
           </TouchableOpacity>
         </View>
         <View style={styles.descHeader}>
@@ -52,7 +52,7 @@ const SignupType = ({navigation}: SignupTypeScreenProps) => {
       </View>
       <View style={styles.footer}>
         <Pressable style={styles.button2}>
-          <MaterialCommunityIcons name="google" size={25} color="white" />
+          <Google height={25} width={25} />
           <Text style={styles.text}>Sign up with Google</Text>
         </Pressable>
         <Pressable
