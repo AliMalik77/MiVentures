@@ -2,9 +2,6 @@ import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
 import AuthStack from './src/navigation/AuthStack';
-import HomeScreen from './src/screens/Home';
-import BottomNavigator from './src/navigation/BottomNavigator';
-import Modal1 from './src/screens/Modal1';
 
 const App = () => {
   const [userData, setUserData] = useState({
