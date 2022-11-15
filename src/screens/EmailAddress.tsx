@@ -1,17 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  Image,
   Pressable,
-  ImageBackground,
   TouchableOpacity,
   TextInput,
 } from 'react-native';
 
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-// import Ionicons from 'react-native-vector-icons/Ionicons';
+import Back from '../../assets/svgs/Backicon.svg';
 
 type EmailScreenProps = {
   navigation: any;
@@ -32,16 +29,12 @@ const EmailAddress = ({
     navigation.navigate('SignupPassword');
   };
 
-  useEffect(() => {
-    console.log('userData', userData);
-  }, [userData]);
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.icon}>
           <TouchableOpacity onPress={() => handleBack()}>
-            <MaterialIcons name="arrow-back-ios" size={25} color="black" />
+            <Back height={25} width={25} />
           </TouchableOpacity>
         </View>
         <View style={styles.descHeader}>

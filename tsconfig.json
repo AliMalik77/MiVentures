@@ -12,6 +12,7 @@
     "strict": true,
     "target": "esnext"
   },
+  "include": ["./frontend/src/*"],
   "exclude": [
     "node_modules",
     "babel.config.js",

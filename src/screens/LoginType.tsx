@@ -5,31 +5,26 @@ import {
   StyleSheet,
   Image,
   Pressable,
-  ImageBackground,
   TouchableOpacity,
   Alert,
 } from 'react-native';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-// import auth from '@react-native-firebase/auth';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import Close from '../../assets/svgs/Exiticon.svg';
+import Apple from '../../assets/svgs/Apple.svg';
+import Mailbox from '../../assets/svgs/Mailbox.svg';
+import Google from '../../assets/svgs/Google.svg';
+import auth from '@react-native-firebase/auth';
 type LoginTypeScreenProps = {
   navigation: any;
 };
 
 const LoginType = ({navigation}: LoginTypeScreenProps) => {
-  // const [confirm, setConfirm] = useState<any | null>(null);
-  // const [phoneNumber, setPhoneNumber] = useState('');
-
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     GoogleSignin.configure({
-      // scopes: ['email'],
       webClientId:
         '180123884938-0iv7p5s8me7e1l6gthmmosd40m4i8o2a.apps.googleusercontent.com',
-      // offlineAccess: true,
     });
 
     auth().onAuthStateChanged(user => {
@@ -39,40 +34,7 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
     });
   }, []);
 
-  useEffect(() => {
-    if (authenticated === true) {
-      console.log('true');
-    }
-    console.log('');
-  }, [authenticated]);
-
-  const signin = (email: string, password: string) => {
-    try {
-      auth().signInWithEmailAndPassword(email, password);
-    } catch (error: any) {
-      Alert.alert(error);
-    }
-  };
-  // const signInWithPhoneNumber = async (phoneNumber: string) => {
-  //   const ConfirmationResult: any = await auth().signInWithPhoneNumber(
-  //     phoneNumber,
-  //   );
-  //   console.log('confirmation result', ConfirmationResult);
-  //   setConfirm(ConfirmationResult);
-  // };
-
-  // const confirmCode = async () => {
-  //   try {
-  //     console.log('verification is ', confirm);
-  //     // await confirm.confirm(code);
-  //     // setSignedIn('true');
-  //   } catch (error) {
-  //     console.log('Invalid code.');
-  //   }
-  // };
   const googleSignin = async () => {
-    console.log('callinf google signin');
-
     const {idToken} = await GoogleSignin.signIn();
 
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
@@ -88,10 +50,6 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
     }
   };
 
-  const handleClick = () => {
-    navigation.navigate('Login');
-  };
-
   const handleBack = () => {
     navigation.navigate('Auth');
   };
@@ -99,6 +57,7 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
   const handleEmailLogin = () => {
     navigation.navigate('Login');
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -107,7 +66,7 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
             onPress={() => {
               handleBack();
             }}>
-            <MaterialCommunityIcons name="close" size={30} color="black" />
+            <Close height={25} width={25} />
           </TouchableOpacity>
         </View>
         <View style={styles.descHeader}>
@@ -122,26 +81,23 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
       </View>
       <View style={styles.footer}>
         <Pressable style={styles.button}>
-          <MaterialCommunityIcons name="apple" size={25} color="white" />
+          <Apple height={25} width={25} />
           <Text style={styles.text}>Log in with Apple</Text>
         </Pressable>
         <Pressable
           style={styles.button2}
           onPress={() => {
-            // createUser('ali.haider@carbonteq.com', '123456');
-            // signInWithPhoneNumber('+923054042027');
-            // handleClick();
             googleSignin()
               .then(res => {
                 console.log('google response is successful', res);
               })
               .catch(err => console.log(err));
           }}>
-          <MaterialCommunityIcons name="google" size={25} color="white" />
+          <Google height={25} width={25} />
           <Text style={styles.text}>Log in with Google</Text>
         </Pressable>
         <Pressable style={styles.button3} onPress={() => handleEmailLogin()}>
-          <MaterialCommunityIcons name="email" size={25} color="black" />
+          <Mailbox height={25} width={25} />
           <Text style={styles.text}>Log in with Email</Text>
         </Pressable>
       </View>
@@ -164,10 +120,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     textAlign: 'center',
   },
-  //   image: {
-  //     width: 125,
-  //     height: 125,
-  //   },
+
   icon: {
     padding: 30,
     marginTop: 30,
@@ -210,14 +163,10 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    // lineHeight: 21,
-    // fontWeight: '500',
-    // letterSpacing: 0.25,
     color: 'white',
   },
   container: {
     flex: 1,
-    // alignItems: 'center',
   },
   header: {
     flex: 1,
@@ -231,27 +180,4 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  //   logo: {
-  //     width: 40,
-  //   },
-  //   header: {
-  //     flex: 3,
-  //     alignItems: 'center',
-  //     justifyContent: 'center',
-  //   },
-  //   footer: {
-  //     flex: 1,
-  //     alignItems: 'center',
-  //     justifyContent: 'center',
-  //   },
-  //   name: {
-  //     fontWeight: '800',
-  //     color: 'white',
-  //     fontSize: 60,
-  //   },
-  //   description: {
-  //     color: 'white',
-  //     fontSize: 25,
-  //   },
-  //   footerDesc: {color: 'white', fontSize: 30, fontWeight: '700'},
 });

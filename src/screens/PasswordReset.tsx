@@ -8,9 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import TabNavigation from '../navigation/TabNavigation';
+import Back from '../../assets/svgs/Backicon.svg';
 
 type PasswordResetScreenProps = {
   navigation: any;
@@ -28,7 +26,7 @@ const PasswordReset = ({navigation}: PasswordResetScreenProps) => {
       <View style={styles.header}>
         <View style={styles.icon}>
           <TouchableOpacity onPress={() => handleBack()}>
-            <MaterialIcons name="arrow-back-ios" size={25} color="black" />
+            <Back height={25} width={25} />
           </TouchableOpacity>
         </View>
         <View style={styles.descHeader}>
@@ -44,9 +42,7 @@ const PasswordReset = ({navigation}: PasswordResetScreenProps) => {
           </View>
           <TextInput
             placeholder="Email"
-            style={styles.fieldContainer}
-            //   onChangeText={phoneNumber => setPhoneNumber(phoneNumber)}
-          ></TextInput>
+            style={styles.fieldContainer}></TextInput>
           {!error ? (
             <View style={styles.success}>
               <Text style={styles.successText}>
@@ -61,7 +57,6 @@ const PasswordReset = ({navigation}: PasswordResetScreenProps) => {
               </Text>
             </View>
           )}
-          {/* <Text style={styles.forgotPassword}>Forgot your password?</Text> */}
           <Pressable style={styles.button3}>
             <Text style={styles.text}>Submit </Text>
           </Pressable>
@@ -141,7 +136,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    // backgroundColor: '#377BF5',
   },
   logo: {
     width: 40,

@@ -3,16 +3,14 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   Pressable,
-  ImageBackground,
   TouchableOpacity,
   TextInput,
   Alert,
 } from 'react-native';
 
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import Back from '../../assets/svgs/Backicon.svg';
 
 type PasswordScreenProps = {
   navigation: any;
@@ -40,9 +38,6 @@ const SignupPassword = ({
     });
   }, []);
 
-  useEffect(() => {
-    console.log('userData', userData);
-  }, [userData]);
   const createUser = () => {
     try {
       auth()
@@ -62,7 +57,7 @@ const SignupPassword = ({
       <View style={styles.header}>
         <View style={styles.icon}>
           <TouchableOpacity onPress={() => handleBack()}>
-            <MaterialIcons name="arrow-back-ios" size={25} color="black" />
+            <Back height={25} width={25} />
           </TouchableOpacity>
         </View>
         <View style={styles.descHeader}>
@@ -76,9 +71,7 @@ const SignupPassword = ({
             style={styles.fieldContainer}
             onChangeText={password =>
               setUserData({...userData, password: password})
-            }
-            //   onChangeText={phoneNumber => setPhoneNumber(phoneNumber)}
-          ></TextInput>
+            }></TextInput>
 
           {error ? (
             <View style={styles.errorContainer}>
@@ -137,7 +130,6 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: '#377BF5',
     width: '90%',
-    // marginTop: 60,
   },
   text: {
     fontSize: 20,

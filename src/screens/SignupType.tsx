@@ -5,13 +5,11 @@ import {
   StyleSheet,
   Image,
   Pressable,
-  ImageBackground,
   TouchableOpacity,
 } from 'react-native';
 
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import Close from '../../assets/svgs/Exiticon.svg';
+import Google from '../../assets/svgs/Google.svg';
 type SignupTypeScreenProps = {
   navigation: any;
 };
@@ -25,10 +23,6 @@ const SignupType = ({navigation}: SignupTypeScreenProps) => {
     navigation.navigate('Auth');
   };
 
-  // const handleSignup = () => {
-  //   navigation.navigate('Email');
-  // };
-
   const handleEmailSignup = () => {
     navigation.navigate('Email');
   };
@@ -41,7 +35,7 @@ const SignupType = ({navigation}: SignupTypeScreenProps) => {
             onPress={() => {
               handleBack();
             }}>
-            <MaterialCommunityIcons name="close" size={30} color="black" />
+            <Close height={25} width={25} />
           </TouchableOpacity>
         </View>
         <View style={styles.descHeader}>
@@ -57,13 +51,8 @@ const SignupType = ({navigation}: SignupTypeScreenProps) => {
           resizeMode="contain"></Image>
       </View>
       <View style={styles.footer}>
-        <Pressable
-          style={styles.button2}
-          onPress={
-            () => {}
-            //  handleSignup()
-          }>
-          <MaterialCommunityIcons name="google" size={25} color="white" />
+        <Pressable style={styles.button2}>
+          <Google height={25} width={25} />
           <Text style={styles.text}>Sign up with Google</Text>
         </Pressable>
         <Pressable
@@ -105,10 +94,6 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     textAlign: 'center',
   },
-  //   image: {
-  //     width: 125,
-  //     height: 125,
-  //   },
   icon: {
     padding: 30,
     marginTop: 30,
@@ -145,7 +130,6 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 32,
     borderRadius: 30,
-    // backgroundColor: '#fff',
     width: '90%',
     marginBottom: 10,
     borderWidth: 2,
@@ -160,22 +144,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 30,
     backgroundColor: '#377BF5',
-
     width: '90%',
     marginBottom: 10,
-    // borderWidth: 2,
-    // borderColor: '#377BF5',
   },
   text: {
     fontSize: 20,
-    // lineHeight: 21,
-    // fontWeight: '500',
-    // letterSpacing: 0.25,
     color: 'white',
   },
   container: {
     flex: 1,
-    // alignItems: 'center',
   },
   header: {
     flex: 1,
@@ -190,27 +167,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  //   logo: {
-  //     width: 40,
-  //   },
-  //   header: {
-  //     flex: 3,
-  //     alignItems: 'center',
-  //     justifyContent: 'center',
-  //   },
-  //   footer: {
-  //     flex: 1,
-  //     alignItems: 'center',
-  //     justifyContent: 'center',
-  //   },
-  //   name: {
-  //     fontWeight: '800',
-  //     color: 'white',
-  //     fontSize: 60,
-  //   },
-  //   description: {
-  //     color: 'white',
-  //     fontSize: 25,
-  //   },
-  //   footerDesc: {color: 'white', fontSize: 30, fontWeight: '700'},
 });
