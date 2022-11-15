@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import SignInScreen from '../screens/SignIn';
 import SignLog from '../screens/SignLog';
 import Splash from '../screens/Splash';
 import LoginType from '../screens/LoginType';
@@ -9,7 +8,7 @@ import PasswordReset from '../screens/PasswordReset';
 import SignupType from '../screens/SignupType';
 import EmailAddress from '../screens/EmailAddress';
 import SignupPassword from '../screens/SignupPassword';
-// import auth from '@react-native-firebase/auth';
+import InvestorInfo from '../screens/InvestorInfo';
 
 const Stack = createStackNavigator();
 
@@ -20,18 +19,6 @@ type AuthProps = {
 
 const AuthStack = ({userData, setUserData}: AuthProps) => {
   const [authenticated, setAuthenticated] = useState(false);
-
-  // useEffect(() => {
-  //   auth().onAuthStateChanged((user: any) => {
-  //     if (user) {
-  //       setAuthenticated(true);
-  //     }
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log('authenticated', authenticated);
-  // }, [authenticated]);
 
   return (
     <Stack.Navigator
@@ -73,7 +60,7 @@ const AuthStack = ({userData, setUserData}: AuthProps) => {
       <Stack.Screen
         name="ForgotPassword"
         component={PasswordReset}></Stack.Screen>
-      {/*SignupPassword  */}
+      <Stack.Screen name="InvestorInfo" component={InvestorInfo}></Stack.Screen>
     </Stack.Navigator>
   );
 };

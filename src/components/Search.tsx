@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import {StyleSheet} from 'react-native';
+import React from 'react';
 import {Searchbar} from 'react-native-paper';
 
 type SearchProps = {
@@ -8,12 +7,7 @@ type SearchProps = {
 };
 
 const Search = ({searchQuery, setSearchQuery}: SearchProps) => {
-  // const [searchQuery, setSearchQuery] = React.useState('');
-  //   const onChangeSearch = query => setSearchQuery(query);
-  const [search, setSearch] = useState(null);
   const handleChange = (data: any) => {
-    console.log('data in search', search);
-
     setSearchQuery(data);
   };
 
@@ -29,5 +23,3 @@ const Search = ({searchQuery, setSearchQuery}: SearchProps) => {
 };
 
 export default Search;
-
-const styles = StyleSheet.create({});

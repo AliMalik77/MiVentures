@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   Dimensions,
   Modal,
@@ -39,12 +39,7 @@ const ModalComponent = ({
         style={{
           width: Dimensions.get('window').width * 0.5,
           height: Dimensions.get('window').height * 0.5,
-        }}
-        // onRequestClose={() => {
-        //   console.log('Modal has been closed.');
-        // }}
-        // style={{alignItems: 'center'}}
-      >
+        }}>
         <View style={{flex: 1, justifyContent: 'center'}}>
           <View style={styles.modal}>
             <View style={styles.icon}>
@@ -74,8 +69,6 @@ const ModalComponent = ({
                 <View style={{marginTop: 20, marginBottom: 50}}>
                   <Text style={styles.textDescription}>
                     Learn more in our Educational Materials .
-                    {/* <Text style={styles.textHighlights}> */}
-                    {/* </Text> */}
                   </Text>
                 </View>
               </View>
@@ -91,9 +84,6 @@ export default ModalComponent;
 
 const styles = StyleSheet.create({
   modal: {
-    // height: '80%',
-    // justifyContent: 'center',
-    // alignSelf: 'baseline',
     backgroundColor: '#fff',
     width: '80%',
     borderRadius: 10,
@@ -105,11 +95,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '800',
     color: '#000000',
-    // marginTop: 10,
     textAlign: 'center',
   },
   textDescription: {
-    // fontWeight: '500',
     textAlign: 'center',
     fontSize: 17,
     color: 'black',
@@ -120,6 +108,5 @@ const styles = StyleSheet.create({
   icon: {
     padding: 20,
     marginTop: 10,
-    // marginBottom: 30,
   },
 });

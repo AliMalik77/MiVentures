@@ -19,11 +19,9 @@ const SignLog = ({navigation}: SignLogScreenProps) => {
   const handleClick = (data: any) => {
     if (data === 'login') {
       navigation.navigate('LoginType');
-      // Alert.alert(data);
     }
     if (data === 'signup') {
       navigation.navigate('SignupType');
-      // Alert.alert(data);
     }
   };
 
@@ -82,7 +80,6 @@ const SignLog = ({navigation}: SignLogScreenProps) => {
           <View style={styles.ball}>
             <Image
               source={require('../../assets/Circle.png')}
-              // style={styles.ballImage}
               resizeMode="contain"></Image>
           </View>
         </View>
@@ -108,8 +105,6 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     marginLeft: 50,
-    // left: 200,
-    // bottom: 20,
   },
   center: {
     flex: 1,
@@ -167,14 +162,12 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    // position: 'absolute',
     alignItems: 'center',
   },
   headerText: {
     color: '#377BF5',
     fontSize: 20,
     textAlign: 'center',
-    // justifyContent: 'center',
   },
   headerTextCont: {
     width: '65%',
@@ -186,19 +179,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  //   button: {
-  //     justifyContent: 'center',
-  //     alignItems: 'center',
-  //   },
-  //   name: {
-  //     fontWeight: '800',
-  //     color: 'white',
-  //     fontSize: 60,
-  //   },
-  //   description: {
-  //     color: 'white',
-  //     fontSize: 25,
-  //   },
-  //   footerDesc: {color: 'white', fontSize: 30, fontWeight: '700'},
 });

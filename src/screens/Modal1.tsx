@@ -1,22 +1,9 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Pressable,
-  TouchableOpacity,
-  TextInput,
-  Animated,
-  Image,
-  Modal,
-  Alert,
-  Button,
-} from 'react-native';
-// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import React, {useState} from 'react';
+import {View, StyleSheet, Button} from 'react-native';
+
 import ModalComponent from '../components/Modal';
 
 const Modal1 = () => {
-  //   const [modalVisible, setModalVisible] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -25,7 +12,6 @@ const Modal1 = () => {
 
   return (
     <View style={!isModalVisible ? styles.container : styles.container2}>
-      {/* <View style={{justifyContent: 'flex-end'}}> */}
       <ModalComponent
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}
@@ -56,11 +42,8 @@ const styles = StyleSheet.create({
   icon: {
     padding: 20,
     marginTop: 10,
-    // marginBottom: 30,
   },
   modal: {
-    // justifyContent: 'center',
-    // alignSelf: 'baseline',
     backgroundColor: '#fff',
     width: '80%',
     borderRadius: 10,
@@ -72,19 +55,14 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '800',
     color: '#000000',
-    // marginTop: 10,
     textAlign: 'center',
   },
   textDescription: {
-    // fontWeight: '500',
     textAlign: 'center',
     fontSize: 17,
     color: 'black',
   },
-  modalContainer: {
-    // flex: 1,
-    // backgroundColor: 'red',
-  },
+
   text2: {
     fontSize: 20,
     lineHeight: 21,
@@ -120,6 +98,5 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'flex-end',
     marginBottom: 20,
-    // backgroundColor: 'red',
   },
 });

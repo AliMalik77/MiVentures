@@ -1,6 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Login from '../screens/Login';
+
 import HomeScreen from '../screens/Home';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -9,7 +9,6 @@ const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
   return (
-    //
     <Tab.Navigator screenOptions={{headerShown: false}}>
       <Tab.Screen
         name="invest"
@@ -25,7 +24,6 @@ const BottomNavigator = () => {
               />
             );
           },
-          // tabBarBadge: 3,
         }}
       />
       <Tab.Screen
@@ -42,7 +40,6 @@ const BottomNavigator = () => {
               />
             );
           },
-          // tabBarBadge: 3,
         }}
       />
       <Tab.Screen
@@ -55,7 +52,6 @@ const BottomNavigator = () => {
               <MaterialCommunityIcons name="menu" size={30} color="#909090" />
             );
           },
-          // tabBarBadge: 3,
         }}
       />
     </Tab.Navigator>

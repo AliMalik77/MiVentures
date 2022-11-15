@@ -40,9 +40,6 @@ const SignupPassword = ({
     });
   }, []);
 
-  useEffect(() => {
-    console.log('userData', userData);
-  }, [userData]);
   const createUser = () => {
     try {
       auth()
@@ -76,9 +73,7 @@ const SignupPassword = ({
             style={styles.fieldContainer}
             onChangeText={password =>
               setUserData({...userData, password: password})
-            }
-            //   onChangeText={phoneNumber => setPhoneNumber(phoneNumber)}
-          ></TextInput>
+            }></TextInput>
 
           {error ? (
             <View style={styles.errorContainer}>
@@ -137,7 +132,6 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: '#377BF5',
     width: '90%',
-    // marginTop: 60,
   },
   text: {
     fontSize: 20,

@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   Dimensions,
-  Image,
   ImageBackground,
 } from 'react-native';
 
@@ -36,7 +35,6 @@ const CarouselCardItem = ({item, index}: CarouselCardItemProps) => {
           }}>
           Homeskool{' '}
         </Text>
-        {/* <Text style={styles.body}>{item.body}</Text> */}
       </View>
     </ImageBackground>
   );
@@ -44,29 +42,14 @@ const CarouselCardItem = ({item, index}: CarouselCardItemProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: 'white',
     borderRadius: 8,
     marginLeft: 20,
-    // alignItems: 'center',
     justifyContent: 'flex-end',
     width: '80%',
-    // width: ITEM_WIDTH,
-    // paddingBottom: 40,
-    // shadowColor: '#000',
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 3,
-    // },
-    // shadowOpacity: 0.29,
-    // shadowRadius: 4.65,
-    // marginRight: 30,
-    // alignItems: 'flex-end',
-    // justifyContent: 'flex-end',
     height: 200,
   },
   image: {
     width: ITEM_WIDTH,
-    // height: 300,
   },
   header: {
     color: '#222',

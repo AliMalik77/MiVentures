@@ -1,17 +1,6 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Pressable,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-const Rocket = require('../../assets/Rocket.png');
-const Clock = require('../../assets/Clock.png');
-const Cat = require('../../assets/Cat.png');
-// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import PaginationDot from 'react-native-animated-pagination-dot';
 import Tutorial from '../components/Tutorial';
 
@@ -64,122 +53,6 @@ const Tutorial1 = () => {
           btntxt={'You Made it!'}
         />
       )}
-
-      {/* {currentPage === 0 ? (
-        <View style={styles.middle}>
-          <View>
-            <Image
-              source={require('../../assets/Rocket.png')}
-              style={{alignItems: 'center', width: 200, height: 200}}
-              resizeMode="contain"></Image>
-          </View>
-          <View style={{marginTop: 30, width: '50%'}}>
-            <Text
-              style={{
-                fontWeight: '700',
-                fontSize: 20,
-                textAlign: 'center',
-                color: 'black',
-              }}>
-              Find a startup and invest $25 or more
-            </Text>
-          </View>
-          <View style={{width: '80%', marginTop: 20}}>
-            <Text
-              style={{
-                textAlign: 'center',
-                fontWeight: '400',
-                color: 'black',
-                lineHeight: 20,
-              }}>
-              You are investing in a startup in exchange for future equity,
-              better known as a{' '}
-              <Text style={styles.highlights}>Crowd SAFE</Text>.
-            </Text>
-          </View>
-          <Pressable
-            style={styles.button3}
-            onPress={() => {
-              setCurrentPage(1);
-            }}>
-            <Text style={styles.text2}>Next</Text>
-          </Pressable>
-        </View>
-      ) : currentPage === 1 ? (
-        <View style={styles.middle}>
-          <View>
-            <Image
-              source={require('../../assets/Clock.png')}
-              style={{alignItems: 'center', width: 200, height: 200}}
-              resizeMode="contain"></Image>
-          </View>
-          <View style={{marginTop: 30, width: '60%'}}>
-            <Text
-              style={{
-                fontWeight: '700',
-                fontSize: 20,
-                textAlign: 'center',
-                color: 'black',
-              }}>
-              Invest in a business before time runs out
-            </Text>
-          </View>
-          <View style={{width: '80%', marginTop: 20}}>
-            <Text
-              style={{
-                textAlign: 'center',
-                fontWeight: '400',
-                color: 'black',
-                lineHeight: 20,
-              }}>
-              Each business has 120 days to raise their funding goal or each
-              investor gets a full refund.
-            </Text>
-          </View>
-          <Pressable
-            style={styles.button3}
-            onPress={() => {
-              setCurrentPage(2);
-            }}>
-            <Text style={styles.text2}>Next</Text>
-          </Pressable>
-        </View>
-      ) : (
-        <View style={styles.middle}>
-          <View>
-            <Image
-              source={require('../../assets/Cat.png')}
-              style={{alignItems: 'center', width: 200, height: 200}}
-              resizeMode="contain"></Image>
-          </View>
-          <View style={{marginTop: 30, width: '40%'}}>
-            <Text
-              style={{
-                fontWeight: '700',
-                fontSize: 20,
-                textAlign: 'center',
-                color: 'black',
-              }}>
-              Becoming a startup investor
-            </Text>
-          </View>
-          <View style={{width: '80%', marginTop: 20}}>
-            <Text
-              style={{
-                textAlign: 'center',
-                fontWeight: '400',
-                color: 'black',
-              }}>
-              You must be at least 18 years old and have a U.S. tax ID. Be aware
-              that investing has risks so only invest an amount you can afford
-              to lose.
-            </Text>
-          </View>
-          <Pressable style={styles.button3}>
-            <Text style={styles.text2}>Next</Text>
-          </Pressable>
-        </View>
-      )} */}
 
       <View style={styles.footer}>
         <Text
@@ -256,9 +129,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'flex-end',
     marginBottom: 20,
-    // backgroundColor: 'red',
   },
-
   description: {
     color: '#000000',
     fontSize: 26,

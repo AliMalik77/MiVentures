@@ -26,8 +26,6 @@ const Tutorial = ({
   description,
   btntxt,
 }: TutorialProps) => {
-  //   console.log('image is ', imageUri);
-
   return (
     <View style={styles.middle}>
       <View>
@@ -56,8 +54,6 @@ const Tutorial = ({
             lineHeight: 20,
           }}>
           {description}
-          {/* You are investing in a startup in exchange for future equity, better
-          known as a <Text style={styles.highlights}>Crowd SAFE</Text>. */}
         </Text>
       </View>
       <TouchableOpacity

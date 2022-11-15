@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import Title from '../components/common/Title';
 import Search from '../components/Search';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -11,9 +11,7 @@ import CarouselCardItem, {
 } from '../components/CarousalCard';
 const Entreprenuer = require('../../assets/Enterprenuer.png');
 const CoffeeBar = require('../../assets/CoffeeBar.png');
-import {ProgressBar} from 'react-native-paper';
 import Card from '../components/Card';
-import {ScrollView} from 'react-native-gesture-handler';
 
 const data = [
   {
@@ -72,14 +70,9 @@ const HomeScreen = () => {
     const filtered = startups.filter(startup => {
       return startup.title === searchQuery;
     });
-    // setSearch();
-    console.log('filtered data', filtered);
-    if (filtered[0]) {
-      // setSearch(filtered);
-    }
+    // if (filtered[0]) {
+    // }
   }, [searchQuery]);
-
-  useEffect(() => {}, []);
 
   return (
     <View
@@ -151,21 +144,16 @@ const HomeScreen = () => {
               <View style={{}}>
                 <Carousel
                   layout="default"
-                  //   layoutCardOffset={9}
                   slideStyle={{borderRadius: 20, overflow: 'hidden'}}
                   ref={isCarousel}
                   data={data}
                   renderItem={CarouselCardItem}
                   sliderWidth={SLIDER_WIDTH}
                   itemWidth={ITEM_WIDTH}
-                  //   inactiveSlideShift={0}
                   useScrollView={true}
                   activeSlideAlignment="start"
                   contentContainerCustomStyle={{marginRight: 20}}
-                  //   inactiveSlideScale={0}
                   inactiveSlideOpacity={1}
-                  // vertical={true}
-                  //   style={{marginRight: 300}}
                 />
               </View>
               <View
@@ -191,9 +179,6 @@ const HomeScreen = () => {
         renderItem={({item}) => {
           return <Card data={item} />;
         }}
-        // ListFooterComponent={() => {
-        //   return
-        // }}
       />
     </View>
   );

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   Alert,
   Pressable,
@@ -28,10 +28,13 @@ const schema = yup
   })
   .required();
 
-const InvestorInfo = () => {
+type InvestorScreenProps = {
+  navigation: any;
+};
+
+const InvestorInfo = ({navigation}: InvestorScreenProps) => {
   const {
     control,
-    watch,
     handleSubmit,
     formState: {errors},
   } = useForm({
@@ -41,12 +44,20 @@ const InvestorInfo = () => {
     Alert.alert('data submitted Successfully');
   };
 
+  const handleBack = () => {
+    navigation.navigate('Login');
+  };
+
   return (
     <>
       <KeyboardAwareScrollView>
         <View style={{flex: 1, width: '90%', alignSelf: 'center'}}>
           <View>
-            <TouchableOpacity style={{marginTop: 50}}>
+            <TouchableOpacity
+              style={{marginTop: 50}}
+              onPress={() => {
+                handleBack();
+              }}>
               <MaterialIcons name="arrow-back-ios" size={25} color="black" />
             </TouchableOpacity>
 
@@ -254,7 +265,6 @@ const InvestorInfo = () => {
                     borderWidth: 1,
                     borderColor: '#EAEAEA',
                     width: '90%',
-                    //   marginTop: 20,
                   }}
                 />
                 {errors.state && (
@@ -286,7 +296,6 @@ const InvestorInfo = () => {
                     borderWidth: 1,
                     borderColor: '#EAEAEA',
                     width: '90%',
-                    //   marginTop: 20,
                   }}
                 />
                 {errors.zipCode && (
@@ -321,7 +330,6 @@ const InvestorInfo = () => {
                     borderWidth: 1,
                     borderColor: '#EAEAEA',
                     width: '90%',
-                    //   marginTop: 20,
                   }}
                 />
                 {errors.dob && (
@@ -355,7 +363,6 @@ const InvestorInfo = () => {
                     borderWidth: 1,
                     borderColor: '#EAEAEA',
                     width: '90%',
-                    //   marginTop: 20,
                   }}
                 />
               </View>

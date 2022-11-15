@@ -8,9 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import TabNavigation from '../navigation/TabNavigation';
 
 type PasswordResetScreenProps = {
   navigation: any;
@@ -44,9 +42,7 @@ const PasswordReset = ({navigation}: PasswordResetScreenProps) => {
           </View>
           <TextInput
             placeholder="Email"
-            style={styles.fieldContainer}
-            //   onChangeText={phoneNumber => setPhoneNumber(phoneNumber)}
-          ></TextInput>
+            style={styles.fieldContainer}></TextInput>
           {!error ? (
             <View style={styles.success}>
               <Text style={styles.successText}>
@@ -61,7 +57,6 @@ const PasswordReset = ({navigation}: PasswordResetScreenProps) => {
               </Text>
             </View>
           )}
-          {/* <Text style={styles.forgotPassword}>Forgot your password?</Text> */}
           <Pressable style={styles.button3}>
             <Text style={styles.text}>Submit </Text>
           </Pressable>
@@ -141,7 +136,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    // backgroundColor: '#377BF5',
   },
   logo: {
     width: 40,

@@ -3,15 +3,13 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   Pressable,
   TextInput,
   TouchableOpacity,
   Alert,
 } from 'react-native';
-// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 
 type LoginScreenProps = {
   navigation: any;
@@ -26,15 +24,11 @@ const Login = ({
 }: LoginScreenProps) => {
   const [email, setEmail] = useState<any | null>(null);
   const [password, setPassword] = useState<any | null>(null);
-  // const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     auth().onAuthStateChanged(user => {
       if (user) {
-        console.log('user authe', user);
-        // Alert.alert('user signed in already');
         auth().signOut();
-
         setAuthenticated(true);
       }
     });
@@ -50,23 +44,14 @@ const Login = ({
     navigation.navigate('LoginType');
   };
 
-  const signin = (email: string, password: string) => {
-    try {
-      const data = auth().signInWithEmailAndPassword(email, password);
-      console.log('data after signing');
-    } catch (error: any) {
-      Alert.alert(error);
-    }
-  };
   const handleLogin = () => {
     try {
       if (email && password) {
         auth()
           .signInWithEmailAndPassword(email, password)
           .then(res => {
-            Alert.alert('user logged in successfully');
+            navigation.navigate('InvestorInfo');
           });
-        //  navigation.navigate()
       }
     } catch (error: any) {
       Alert.alert(error);
@@ -94,6 +79,7 @@ const Login = ({
             onChangeText={e => setEmail(e)}></TextInput>
           <TextInput
             placeholder="Password"
+            secureTextEntry={true}
             style={styles.fieldContainer}
             onChangeText={password => setPassword(password)}></TextInput>
           <TouchableOpacity onPress={() => handleForgot()}>

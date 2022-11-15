@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, Text, View} from 'react-native';
 import {ProgressBar} from 'react-native-paper';
 
 type CardProps = {
@@ -7,8 +7,6 @@ type CardProps = {
 };
 
 const Card = ({data}: CardProps) => {
-  console.log('data in props is', data);
-
   return (
     <>
       <View
@@ -59,11 +57,3 @@ const Card = ({data}: CardProps) => {
 };
 
 export default Card;
-
-const styles = StyleSheet.create({
-  //   text: {
-  //     fontSize: 28,
-  //     color: 'black',
-  //     fontWeight: '800',
-  //   },
-});
