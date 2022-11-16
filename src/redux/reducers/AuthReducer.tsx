@@ -1,14 +1,12 @@
 import {
   LOGIN_ERROR,
   LOGIN_SUCCESS,
-  SIGNUP_ERROR,
-  SIGNUP_SUCCESS,
   IS_LOADING,
   TYPE_ERROR,
   TYPE_SUCCESS,
   SEARCH_ERROR,
   SEARCH_SUCCESS,
-} from "../types/AuthType";
+} from '../types/AuthType';
 
 const initialState = {
   signedIn: false,

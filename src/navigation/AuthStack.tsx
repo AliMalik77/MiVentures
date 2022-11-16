@@ -1,25 +1,30 @@
 import React, {useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import SignLog from '../screens/SignLog';
-import Splash from '../screens/Splash';
-import LoginType from '../screens/LoginType';
-import Login from '../screens/Login';
-import PasswordReset from '../screens/PasswordReset';
-import SignupType from '../screens/SignupType';
-import EmailAddress from '../screens/EmailAddress';
-import SignupPassword from '../screens/SignupPassword';
-import InvestorInfo from '../screens/InvestorInfo';
+import SignLog from '../screens/auth/SignLog';
+import Splash from '../screens/splash/Splash';
+import LoginType from '../screens/auth/login/LoginType';
+import Login from '../screens/auth/login/Login';
+import PasswordReset from '../screens/auth/login/PasswordReset';
+import SignupType from '../screens/auth/signup/SignupType';
+import EmailAddress from '../screens/auth/signup/EmailAddress';
+import SignupPassword from '../screens/auth/signup/SignupPassword';
+import InvestorInfo from '../screens/investorInfo/InvestorInfo';
 
 const Stack = createStackNavigator();
 
 type AuthProps = {
   userData: any;
   setUserData: (val: any) => void;
+  authenticated: any;
+  setAuthenticated: (val: any) => void;
 };
 
-const AuthStack = ({userData, setUserData}: AuthProps) => {
-  const [authenticated, setAuthenticated] = useState(false);
-
+const AuthStack = ({
+  userData,
+  setUserData,
+  authenticated,
+  setAuthenticated,
+}: AuthProps) => {
   return (
     <Stack.Navigator
       initialRouteName="Splash"

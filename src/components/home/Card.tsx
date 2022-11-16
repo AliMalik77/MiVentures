@@ -7,6 +7,8 @@ type CardProps = {
 };
 
 const Card = ({data}: CardProps) => {
+  console.log('data is ', data);
+
   return (
     <>
       <View
@@ -21,7 +23,7 @@ const Card = ({data}: CardProps) => {
         }}>
         <View>
           <Image
-            source={require('../../assets/Shoes.png')}
+            source={require('../../../assets/Shoes.png')}
             style={{width: '100%', borderRadius: 12}}
             resizeMode="cover"></Image>
         </View>

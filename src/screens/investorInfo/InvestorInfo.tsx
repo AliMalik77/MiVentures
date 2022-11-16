@@ -13,7 +13,7 @@ import {useForm, Controller} from 'react-hook-form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import Back from '../../assets/svgs/Backicon.svg';
+import Back from '../../../assets/svgs/Backicon.svg';
 const schema = yup
   .object({
     firstName: yup.string().required(),
@@ -49,7 +49,7 @@ const InvestorInfo = ({navigation}: InvestorScreenProps) => {
   };
 
   return (
-    <>
+    <View style={{backgroundColor: '#fff'}}>
       <KeyboardAwareScrollView>
         <View style={{flex: 1, width: '90%', alignSelf: 'center'}}>
           <View>
@@ -387,7 +387,7 @@ const InvestorInfo = ({navigation}: InvestorScreenProps) => {
           <Text style={styles.text}>Confirm Investor Info</Text>
         </Pressable>
       </View>
-    </>
+    </View>
   );
 };
 export default InvestorInfo;

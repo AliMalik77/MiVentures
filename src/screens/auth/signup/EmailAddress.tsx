@@ -1,65 +1,34 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Pressable,
-  TextInput,
   TouchableOpacity,
-  Alert,
+  TextInput,
 } from 'react-native';
-import auth from '@react-native-firebase/auth';
-import Back from '../../assets/svgs/Backicon.svg';
 
-type LoginScreenProps = {
+import Back from '../../../../assets/svgs/Backicon.svg';
+
+type EmailScreenProps = {
   navigation: any;
-  authenticated: any;
-  setAuthenticated: any;
+  userData: any;
+  setUserData: (val: any) => void;
 };
 
-const Login = ({
+const EmailAddress = ({
   navigation,
-  authenticated,
-  setAuthenticated,
-}: LoginScreenProps) => {
-  const [email, setEmail] = useState<any | null>(null);
-  const [password, setPassword] = useState<any | null>(null);
-
-  useEffect(() => {
-    auth().onAuthStateChanged(user => {
-      if (user) {
-        auth().signOut();
-        setAuthenticated(true);
-      }
-    });
-  }, []);
-
-  useEffect(() => {
-    if (authenticated === true) {
-      Alert.alert('user signed in already');
-    }
-  }, []);
-
+  userData,
+  setUserData,
+}: EmailScreenProps) => {
   const handleBack = () => {
-    navigation.navigate('LoginType');
+    navigation.navigate('SignupType');
   };
 
-  const handleLogin = () => {
-    try {
-      if (email && password) {
-        auth()
-          .signInWithEmailAndPassword(email, password)
-          .then(res => {
-            navigation.navigate('InvestorInfo');
-          });
-      }
-    } catch (error: any) {
-      Alert.alert(error);
-    }
+  const handleNext = () => {
+    navigation.navigate('SignupPassword');
   };
-  const handleForgot = () => {
-    navigation.navigate('ForgotPassword');
-  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -69,28 +38,23 @@ const Login = ({
           </TouchableOpacity>
         </View>
         <View style={styles.descHeader}>
-          <Text style={styles.description}>Hey there! Welcome back.</Text>
+          <Text style={styles.description}>What’s your email address?</Text>
         </View>
 
         <View style={{width: '100%', alignItems: 'center'}}>
           <TextInput
-            placeholder="Email"
+            placeholder="Email Address"
             style={styles.fieldContainer}
-            onChangeText={e => setEmail(e)}></TextInput>
-          <TextInput
-            placeholder="Password"
-            secureTextEntry={true}
-            style={styles.fieldContainer}
-            onChangeText={password => setPassword(password)}></TextInput>
-          <TouchableOpacity onPress={() => handleForgot()}>
-            <Text style={styles.forgotPassword}>Forgot your password?</Text>
-          </TouchableOpacity>
+            onChangeText={email =>
+              setUserData({...userData, email: email})
+            }></TextInput>
+
           <Pressable
             style={styles.button3}
             onPress={() => {
-              handleLogin();
+              handleNext();
             }}>
-            <Text style={styles.text}>Log in </Text>
+            <Text style={styles.text}>Next</Text>
           </Pressable>
         </View>
       </View>
@@ -98,7 +62,7 @@ const Login = ({
   );
 };
 
-export default Login;
+export default EmailAddress;
 
 const styles = StyleSheet.create({
   forgotPassword: {
@@ -126,7 +90,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: '#377BF5',
     width: '90%',
-    marginTop: 24,
+    marginTop: 60,
   },
   text: {
     fontSize: 20,
@@ -143,6 +107,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: '25%',
     width: '50%',
+    marginBottom: 30,
   },
   image: {
     width: 125,
@@ -171,7 +136,7 @@ const styles = StyleSheet.create({
   },
   description: {
     color: '#000000',
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: '800',
     textAlign: 'center',
   },

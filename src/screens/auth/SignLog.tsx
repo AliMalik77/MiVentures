@@ -4,11 +4,8 @@ import {
   Text,
   Image,
   StyleSheet,
-  TouchableOpacity,
-  Button,
   Pressable,
   ImageBackground,
-  Alert,
 } from 'react-native';
 
 type SignLogScreenProps = {
@@ -29,17 +26,17 @@ const SignLog = ({navigation}: SignLogScreenProps) => {
     <View style={styles.container}>
       <ImageBackground
         style={{flex: 1}}
-        source={require('../../assets/background.png')}
+        source={require('../../../assets/background.png')}
         resizeMode="contain">
         <View style={styles.header}>
           <Image
-            source={require('../../assets/Headphone.png')}
+            source={require('../../../assets/Headphone.png')}
             style={styles.headphone}
             resizeMode="contain"></Image>
 
           <View>
             <Image
-              source={require('../../assets/LogoBlue.png')}
+              source={require('../../../assets/LogoBlue.png')}
               style={styles.image}
               resizeMode="contain"></Image>
           </View>
@@ -52,7 +49,7 @@ const SignLog = ({navigation}: SignLogScreenProps) => {
         </View>
         <View style={styles.center}>
           <Image
-            source={require('../../assets/cycle.png')}
+            source={require('../../../assets/cycle.png')}
             style={styles.cycle}
             resizeMode="contain"></Image>
         </View>
@@ -79,7 +76,7 @@ const SignLog = ({navigation}: SignLogScreenProps) => {
           </View>
           <View style={styles.ball}>
             <Image
-              source={require('../../assets/Circle.png')}
+              source={require('../../../assets/Circle.png')}
               resizeMode="contain"></Image>
           </View>
         </View>

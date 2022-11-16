@@ -1,26 +1,57 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  Image,
   Pressable,
-  TextInput,
   TouchableOpacity,
+  TextInput,
+  Alert,
 } from 'react-native';
-import Back from '../../assets/svgs/Backicon.svg';
 
-type PasswordResetScreenProps = {
+import auth from '@react-native-firebase/auth';
+import Back from '../../../../assets/svgs/Backicon.svg';
+
+type PasswordScreenProps = {
   navigation: any;
+  userData: any;
+  setUserData: (val: any) => void;
 };
 
-const PasswordReset = ({navigation}: PasswordResetScreenProps) => {
-  const [error, setError] = useState();
+const SignupPassword = ({
+  navigation,
+  userData,
+  setUserData,
+}: PasswordScreenProps) => {
+  const [error, setError] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
 
   const handleBack = () => {
-    navigation.navigate('Login');
+    navigation.navigate('Email');
   };
 
+  useEffect(() => {
+    auth().onAuthStateChanged(user => {
+      if (user) {
+        setAuthenticated(true);
+      }
+    });
+  }, []);
+
+  const createUser = () => {
+    try {
+      auth()
+        .createUserWithEmailAndPassword(userData.email, userData.password)
+        .then(res => {
+          Alert.alert('Signup Successfully');
+        })
+        .catch(err => {
+          Alert.alert('Something went wrong. Please try again');
+        });
+    } catch (error: any) {
+      Alert.alert(error);
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -30,35 +61,34 @@ const PasswordReset = ({navigation}: PasswordResetScreenProps) => {
           </TouchableOpacity>
         </View>
         <View style={styles.descHeader}>
-          <Text style={styles.description}>Password Reset</Text>
+          <Text style={styles.description}>Create your password</Text>
         </View>
 
         <View style={{width: '100%', alignItems: 'center'}}>
-          <View style={styles.submitDescription}>
-            <Text style={styles.submitText}>
-              Submit your user email and we’ll send you password reset
-              instructions.
-            </Text>
-          </View>
           <TextInput
-            placeholder="Email"
-            style={styles.fieldContainer}></TextInput>
-          {!error ? (
-            <View style={styles.success}>
-              <Text style={styles.successText}>
-                Password reset submitted! Check your email.
+            secureTextEntry={true}
+            placeholder="Password"
+            style={styles.fieldContainer}
+            onChangeText={password =>
+              setUserData({...userData, password: password})
+            }></TextInput>
+
+          {error ? (
+            <View style={styles.errorContainer}>
+              <Text style={styles.errorText}>
+                Must have at least 8-characters, an uppercase letter, a number
+                and a special character.
               </Text>
             </View>
           ) : (
-            <View style={styles.mt24}>
-              <Text style={styles.error}>
-                This account was recently deleted. Login with your previous user
-                email to reactivate.
-              </Text>
-            </View>
+            <View style={styles.errorContainer}></View>
           )}
-          <Pressable style={styles.button3}>
-            <Text style={styles.text}>Submit </Text>
+          <Pressable
+            style={styles.button3}
+            onPress={() => {
+              createUser();
+            }}>
+            <Text style={styles.text}>Next</Text>
           </Pressable>
         </View>
       </View>
@@ -66,26 +96,14 @@ const PasswordReset = ({navigation}: PasswordResetScreenProps) => {
   );
 };
 
-export default PasswordReset;
+export default SignupPassword;
 
 const styles = StyleSheet.create({
-  error: {textAlign: 'center', color: '#EA4335'},
-  successText: {textAlign: 'center', color: '#57A773'},
-  success: {
-    marginTop: 24,
-    width: '50%',
-  },
-  mt24: {
-    marginTop: 24,
-    width: '80%',
-  },
-  submitDescription: {
-    width: '80%',
-  },
-  submitText: {
-    fontSize: 18,
-    fontWeight: '500',
-    textAlign: 'center',
+  errorContainer: {width: '90%', marginTop: 50, marginBottom: 10},
+  errorText: {
+    color: '#EA4335',
+    fontSize: 14,
+    fontWeight: '400',
   },
   forgotPassword: {
     color: '#377BF5',
@@ -112,7 +130,6 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: '#377BF5',
     width: '90%',
-    marginTop: 24,
   },
   text: {
     fontSize: 20,
@@ -129,6 +146,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: '25%',
     width: '50%',
+    marginBottom: 30,
   },
   image: {
     width: 125,
@@ -136,6 +154,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
   logo: {
     width: 40,
@@ -156,7 +175,7 @@ const styles = StyleSheet.create({
   },
   description: {
     color: '#000000',
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: '800',
     textAlign: 'center',
   },
