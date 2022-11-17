@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, Button} from 'react-native';
 
-import ModalComponent from '../components/Modal';
+import ModalComponent from '../../components/common/Modal';
 import Close from '../../assets/svgs/Exiticon.svg';
 const Modal1 = () => {
   const [isModalVisible, setModalVisible] = useState(false);

@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import PaginationDot from 'react-native-animated-pagination-dot';
-import Tutorial from '../components/Tutorial';
+import Pagination from '../../components/intro/Pagination';
 
-const Tutorial1 = () => {
+const Intro = () => {
   const [currentPage, setCurrentPage] = useState(0);
   return (
     <View style={styles.container}>
@@ -26,7 +26,7 @@ const Tutorial1 = () => {
       </View>
 
       {currentPage === 0 ? (
-        <Tutorial
+        <Pagination
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           imageUri={require('../../assets/Rocket.png')}
@@ -35,7 +35,7 @@ const Tutorial1 = () => {
           btntxt={'Next'}
         />
       ) : currentPage === 1 ? (
-        <Tutorial
+        <Pagination
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           imageUri={require('../../assets/Clock.png')}
@@ -44,7 +44,7 @@ const Tutorial1 = () => {
           btntxt={'Next'}
         />
       ) : (
-        <Tutorial
+        <Pagination
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           imageUri={require('../../assets/Cat.png')}
@@ -72,7 +72,7 @@ const Tutorial1 = () => {
   );
 };
 
-export default Tutorial1;
+export default Intro;
 
 const styles = StyleSheet.create({
   text2: {

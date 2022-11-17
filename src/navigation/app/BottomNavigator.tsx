@@ -1,9 +1,10 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/Home';
-import Menu from '../../assets/svgs/Menu.svg';
-import Portfolio from '../../assets/svgs/Portfolio.svg';
-import Vector from '../../assets/svgs/Vector.svg';
+import HomeScreen from '../../screens/home/Home';
+import Menu from '../../../assets/svgs/Menu.svg';
+import Portfolio from '../../../assets/svgs/Portfolio.svg';
+import Vector from '../../../assets/svgs/Vector.svg';
+import PortfolioScreen from '../../screens/portfolio/Portfolio';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +23,7 @@ const BottomNavigator = () => {
       />
       <Tab.Screen
         name="postal"
-        component={HomeScreen}
+        component={PortfolioScreen}
         options={{
           tabBarLabel: 'postal',
           tabBarIcon: () => {
@@ -36,7 +37,7 @@ const BottomNavigator = () => {
         options={{
           tabBarLabel: 'Menu',
           tabBarIcon: () => {
-            return <Menu height={25} width={25} color={'red'} />;
+            return <Menu height={25} width={25} />;
           },
         }}
       />

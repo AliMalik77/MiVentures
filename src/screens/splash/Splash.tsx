@@ -14,7 +14,7 @@ const Splash = ({navigation}: SplashScreenProps) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={require('../../assets/SplashLogo.png')}
+          source={require('../../../assets/SplashLogo.png')}
           style={styles.image}
           resizeMode="contain"></Image>
         <Text style={styles.name}>miventure</Text>
