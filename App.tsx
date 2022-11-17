@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import AuthStack from './src/navigation/AuthStack';
-import BottomNavigator from './src/navigation/BottomNavigator';
+import AuthStack from './src/navigation/auth/AuthStack';
+import BottomNavigator from './src/navigation/app/BottomNavigator';
 import RootNavigation from './src/navigation/RootNavigation';
 
 const App = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
-import AuthStack from './AuthStack';
-import BottomNavigator from './BottomNavigator';
+import AuthStack from './auth/AuthStack';
+import BottomNavigator from './app/BottomNavigator';
 
 type RootNavigationProps = {
   userData: any;
