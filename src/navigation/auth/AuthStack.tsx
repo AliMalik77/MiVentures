@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import SignLog from '../../screens/auth/SignLog';
+import Auth from '../../screens/auth/Auth';
 import Splash from '../../screens/splash/Splash';
 import LoginType from '../../screens/auth/login/LoginType';
 import Login from '../../screens/auth/login/Login';
@@ -13,10 +13,13 @@ import InvestorInfo from '../../screens/investorInfo/InvestorInfo';
 const Stack = createStackNavigator();
 
 type AuthProps = {
-  userData: any;
-  setUserData: (val: any) => void;
-  authenticated: any;
-  setAuthenticated: (val: any) => void;
+  userData: {
+    email: string;
+    password: string;
+  };
+  setUserData: (val: {email: string; password: string}) => void;
+  authenticated: Boolean;
+  setAuthenticated: (val: Boolean) => void;
 };
 
 const AuthStack = ({
@@ -31,7 +34,7 @@ const AuthStack = ({
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="Auth" component={SignLog}></Stack.Screen>
+      <Stack.Screen name="Auth" component={Auth}></Stack.Screen>
       <Stack.Screen name="Splash" component={Splash}></Stack.Screen>
       <Stack.Screen name="LoginType" component={LoginType}></Stack.Screen>
       <Stack.Screen name="Login">

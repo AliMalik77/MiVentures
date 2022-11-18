@@ -3,9 +3,12 @@ import AuthStack from './auth/AuthStack';
 import BottomNavigator from './app/BottomNavigator';
 
 type RootNavigationProps = {
-  userData: any;
-  setUserData: (val: any) => void;
-  authenticated: any;
+  userData: {
+    email: string;
+    password: string;
+  };
+  setUserData: (val: {email: string; password: string}) => void;
+  authenticated: Boolean;
   setAuthenticated: (val: any) => void;
 };
 

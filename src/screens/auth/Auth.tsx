@@ -7,12 +7,10 @@ import {
   Pressable,
   ImageBackground,
 } from 'react-native';
+import Button from '../../components/common/Button';
+import {NavigationProps} from '../../types/navigation';
 
-type SignLogScreenProps = {
-  navigation: any;
-};
-
-const SignLog = ({navigation}: SignLogScreenProps) => {
+const Auth = ({navigation}: NavigationProps) => {
   const handleClick = (data: any) => {
     if (data === 'login') {
       navigation.navigate('LoginType');
@@ -28,7 +26,7 @@ const SignLog = ({navigation}: SignLogScreenProps) => {
         style={{flex: 1}}
         source={require('../../../assets/background.png')}
         resizeMode="contain">
-        <View style={styles.header}>
+        <View style={styles.mainContent}>
           <Image
             source={require('../../../assets/Headphone.png')}
             style={styles.headphone}
@@ -55,16 +53,25 @@ const SignLog = ({navigation}: SignLogScreenProps) => {
         </View>
 
         <View style={styles.footer}>
-          <Pressable
-            style={styles.button}
-            onPress={() => handleClick('signup')}>
-            <Text style={styles.text}>Sign Up</Text>
-          </Pressable>
-          <Pressable
-            style={styles.button2}
-            onPress={() => handleClick('login')}>
-            <Text style={styles.text2}>Log in</Text>
-          </Pressable>
+          <Button
+            text="Signup"
+            btnWidth="95%"
+            color="#377BF5"
+            textColor="white"
+            bordercolor="#377BF5"
+            border={0}
+            handler={() => handleClick('signup')}
+          />
+          <Button
+            text="Login"
+            btnWidth="95%"
+            color="#fff"
+            textColor="#377BF5"
+            bordercolor="#377BF5"
+            border={2}
+            handler={() => handleClick('login')}
+          />
+
           <View>
             <Text>
               By viewing the{' '}
@@ -85,14 +92,13 @@ const SignLog = ({navigation}: SignLogScreenProps) => {
   );
 };
 
-export default SignLog;
+export default Auth;
 
 const styles = StyleSheet.create({
   ball: {
     position: 'absolute',
     right: 0,
   },
-  ballImage: {left: 250, bottom: 200, top: 500},
   footer: {
     flex: 1,
     alignItems: 'center',
@@ -117,6 +123,7 @@ const styles = StyleSheet.create({
   highlights: {
     color: '#377BF5',
   },
+
   button: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -171,7 +178,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  header: {
+  mainContent: {
     flex: 2,
     alignItems: 'center',
     justifyContent: 'center',

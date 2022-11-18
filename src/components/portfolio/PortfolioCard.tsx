@@ -4,12 +4,18 @@ import Option from '../../../assets/svgs/Option.svg';
 import Infoicon from '../../../assets/svgs/Infoicon.svg';
 
 type ProtfolioCardProps = {
-  data: any;
+  data: {
+    desc: string;
+    discount: string;
+    id: string;
+    invested: string;
+    remainingTime: string;
+    topic: string;
+    valuationCap: string;
+  };
 };
 
 const PortfolioCard = ({data}: ProtfolioCardProps) => {
-  console.log('data in portfolio cards are available', data);
-
   return (
     <View
       style={{

@@ -29,7 +29,7 @@ const Intro = () => {
         <Pagination
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          imageUri={require('../../assets/Rocket.png')}
+          imageUri={require('../../../assets/Rocket.png')}
           title={' Find a startup and invest $25 or more'}
           description={` You are investing in a startup in exchange for future equity, betterknown as a `}
           btntxt={'Next'}
@@ -38,7 +38,7 @@ const Intro = () => {
         <Pagination
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          imageUri={require('../../assets/Clock.png')}
+          imageUri={require('../../../assets/Clock.png')}
           title={'Invest in a business before time runs out'}
           description={`Each business has 120 days to raise their funding goal or each investor gets a full refund.`}
           btntxt={'Next'}
@@ -47,7 +47,7 @@ const Intro = () => {
         <Pagination
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          imageUri={require('../../assets/Cat.png')}
+          imageUri={require('../../../assets/Cat.png')}
           title={'Becoming a startup investor'}
           description={`  You must be at least 18 years old and have a U.S. tax ID. Be aware that investing has risks so only invest an amount you can afford to lose.`}
           btntxt={'You Made it!'}

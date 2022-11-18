@@ -10,66 +10,21 @@ import {
 import Verify from '../../../assets/svgs/Verify.svg';
 
 import PortfolioCard from '../../components/portfolio/PortfolioCard';
-
-const data = [
-  {
-    id: '1',
-    topic: 'Homeskool',
-    desc: 'Ed Tech',
-    remainingTime: '99',
-    invested: '50',
-    valuationCap: '800000',
-    discount: '50',
-  },
-  {
-    id: '2',
-    topic: 'Subliminal',
-    desc: 'AR & VR',
-    remainingTime: '15',
-    invested: '220',
-    valuationCap: '33000',
-    discount: '80',
-  },
-  {
-    id: '3',
-    topic: 'Homeskool',
-    desc: 'Ed Tech',
-    remainingTime: '112',
-    invested: '50',
-    valuationCap: '7500',
-    discount: '750',
-  },
-  {
-    id: '4',
-    topic: 'Subliminal',
-    desc: 'AR & VR',
-    remainingTime: '15',
-    invested: '220',
-    valuationCap: '33000',
-    discount: '80',
-  },
-  {
-    id: '5',
-    topic: 'Homeskool',
-    desc: 'Ed Tech',
-    remainingTime: '112',
-    invested: '50',
-    valuationCap: '7500',
-    discount: '750',
-  },
-];
+import {portfolioData} from '../../utils/portfolio/Portfolio';
 
 type PortfolioScreenProps = {
-  route: any;
+  route: {
+    key: string;
+    name: string;
+  };
 };
 
 const PortfolioScreen = ({route}: PortfolioScreenProps) => {
-  console.log('navigation data received is ', route.params);
-
   return (
     <View style={{flex: 1, backgroundColor: '#fff'}}>
       <FlatList
-        data={data}
+        data={portfolioData}
+        showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id}
         ListHeaderComponent={() => {
           return (

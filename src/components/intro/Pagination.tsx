@@ -3,7 +3,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 type TutorialProps = {
   currentPage: number;
-  setCurrentPage: (val: any) => void;
+  setCurrentPage: (val: number) => void;
   imageUri: any;
   title: string;
   description: string;
@@ -18,6 +18,7 @@ const Tutorial = ({
   description,
   btntxt,
 }: TutorialProps) => {
+  // const image = require(`../../../assets/svgs/${imageUri}`);
   return (
     <View style={styles.middle}>
       <View>

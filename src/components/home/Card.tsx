@@ -3,12 +3,15 @@ import {Image, Text, View} from 'react-native';
 import {ProgressBar} from 'react-native-paper';
 
 type CardProps = {
-  data: any;
+  data: {
+    fundingGoal: string;
+    id: string;
+    title: string;
+    topic: string;
+  };
 };
 
 const Card = ({data}: CardProps) => {
-  console.log('data is ', data);
-
   return (
     <>
       <View
@@ -51,7 +54,7 @@ const Card = ({data}: CardProps) => {
         <ProgressBar
           progress={0.5}
           color={'#377BF5'}
-          style={{width: '80%', alignSelf: 'center'}}
+          style={{width: '80%', alignSelf: 'center', marginBottom: 20}}
         />
       </View>
     </>

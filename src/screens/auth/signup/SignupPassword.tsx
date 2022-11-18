@@ -11,11 +11,33 @@ import {
 
 import auth from '@react-native-firebase/auth';
 import Back from '../../../../assets/svgs/Backicon.svg';
+import Button from '../../../components/common/Button';
 
 type PasswordScreenProps = {
-  navigation: any;
-  userData: any;
-  setUserData: (val: any) => void;
+  navigation: {
+    addListener: Function;
+    canGoBack: Function;
+    dispatch: Function;
+    getId: Function;
+    getParent: Function;
+    getState: Function;
+    goBack: Function;
+    isFocused: Function;
+    navigate: Function;
+    pop: Function;
+    popToTop: Function;
+    push: Function;
+    removeListener: Function;
+    replace: Function;
+    reset: Function;
+    setOptions: Function;
+    setParams: Function;
+  };
+  userData: {
+    email: string;
+    password: string;
+  };
+  setUserData: (val: {email: string; password: string}) => void;
 };
 
 const SignupPassword = ({
@@ -56,7 +78,7 @@ const SignupPassword = ({
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.icon}>
-          <TouchableOpacity onPress={() => handleBack()}>
+          <TouchableOpacity onPress={handleBack}>
             <Back height={25} width={25} />
           </TouchableOpacity>
         </View>
@@ -66,6 +88,7 @@ const SignupPassword = ({
 
         <View style={{width: '100%', alignItems: 'center'}}>
           <TextInput
+            textContentType="password"
             secureTextEntry={true}
             placeholder="Password"
             style={styles.fieldContainer}
@@ -83,13 +106,15 @@ const SignupPassword = ({
           ) : (
             <View style={styles.errorContainer}></View>
           )}
-          <Pressable
-            style={styles.button3}
-            onPress={() => {
-              createUser();
-            }}>
-            <Text style={styles.text}>Next</Text>
-          </Pressable>
+          <Button
+            text="Next"
+            btnWidth="90%"
+            color="#377BF5"
+            textColor="white"
+            bordercolor="#377BF5"
+            border={0}
+            handler={() => createUser()}
+          />
         </View>
       </View>
     </View>

@@ -11,11 +11,17 @@ export const SLIDER_WIDTH = Dimensions.get('window').width + 80;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.5);
 
 type CarouselCardItemProps = {
-  item: any;
-  index: any;
+  item: {
+    body: string;
+    imgUrl: number;
+    title: string;
+  };
+  index: number;
 };
 
 const CarouselCardItem = ({item, index}: CarouselCardItemProps) => {
+  console.log('item and index', item, index);
+
   return (
     <ImageBackground
       resizeMode="cover"

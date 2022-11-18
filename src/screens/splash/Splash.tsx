@@ -1,11 +1,8 @@
 import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
+import {NavigationProps} from '../../types/navigation';
 
-type SplashScreenProps = {
-  navigation: any;
-};
-
-const Splash = ({navigation}: SplashScreenProps) => {
+const Splash = ({navigation}: NavigationProps) => {
   useEffect(() => {
     navigation.navigate('Auth');
   }, []);
