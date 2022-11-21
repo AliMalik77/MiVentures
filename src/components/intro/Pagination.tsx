@@ -1,10 +1,10 @@
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 type TutorialProps = {
   currentPage: number;
   setCurrentPage: (val: number) => void;
-  imageUri: any;
+  ImageUri: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   title: string;
   description: string;
   btntxt: string;
@@ -13,19 +13,15 @@ type TutorialProps = {
 const Tutorial = ({
   currentPage,
   setCurrentPage,
-  imageUri,
+  ImageUri,
   title,
   description,
   btntxt,
 }: TutorialProps) => {
-  // const image = require(`../../../assets/svgs/${imageUri}`);
   return (
     <View style={styles.middle}>
       <View>
-        <Image
-          source={imageUri}
-          style={{alignItems: 'center', width: 200, height: 200}}
-          resizeMode="contain"></Image>
+        <ImageUri />
       </View>
       <View style={{marginTop: 30, width: '50%'}}>
         <Text

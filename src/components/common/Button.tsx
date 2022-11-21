@@ -20,8 +20,6 @@ const Button = ({
   border,
   handler = () => {},
 }: ButtonProps) => {
-  console.log('button props are ', text, handler);
-
   return (
     <>
       <Pressable

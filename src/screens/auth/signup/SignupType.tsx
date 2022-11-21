@@ -1,18 +1,9 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  Pressable,
-  TouchableOpacity,
-} from 'react-native';
-
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Close from '../../../../assets/svgs/Exiticon.svg';
-import Google from '../../../../assets/svgs/Google.svg';
 import Button from '../../../components/common/Button';
 import {NavigationProps} from '../../../types/navigation';
-
+import Background2 from '../../../../assets/svgs/Background2.svg';
 const SignupType = ({navigation}: NavigationProps) => {
   const handleClick = () => {
     navigation.navigate('Login');
@@ -41,10 +32,9 @@ const SignupType = ({navigation}: NavigationProps) => {
         </View>
       </View>
       <View style={styles.center}>
-        <Image
-          source={require('../../../../assets/background2.png')}
+        <Background2
           style={{alignItems: 'center', width: '100%', height: '100%'}}
-          resizeMode="contain"></Image>
+        />
       </View>
       <View style={styles.footer}>
         <Button

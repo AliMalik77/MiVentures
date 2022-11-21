@@ -3,7 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   Pressable,
   TouchableOpacity,
   Alert,
@@ -11,6 +10,7 @@ import {
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import Close from '../../../../assets/svgs/Exiticon.svg';
 import Apple from '../../../../assets/svgs/Apple.svg';
+import Background2 from '../../../../assets/svgs/Background2.svg';
 import Mailbox from '../../../../assets/svgs/Mailbox.svg';
 import Google from '../../../../assets/svgs/Google.svg';
 import auth from '@react-native-firebase/auth';
@@ -69,10 +69,9 @@ const LoginType = ({navigation}: NavigationProps) => {
         </View>
       </View>
       <View style={styles.center}>
-        <Image
-          source={require('../../../../assets/background2.png')}
+        <Background2
           style={{alignItems: 'center', width: '100%', height: '100%'}}
-          resizeMode="contain"></Image>
+        />
       </View>
       <View style={styles.footer}>
         <Pressable style={styles.button}>

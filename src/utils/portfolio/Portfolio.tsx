@@ -1,4 +1,4 @@
-export const data = [
+export const portfolioData = [
   {
     id: '1',
     topic: 'Homeskool',

@@ -1,7 +1,8 @@
 import React from 'react';
-import {Image, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {ProgressBar} from 'react-native-paper';
-
+import Shoes from '../../../assets/svgs/Shoes.svg';
+import Svg from 'react-native-svg';
 type CardProps = {
   data: {
     fundingGoal: string;
@@ -24,11 +25,10 @@ const Card = ({data}: CardProps) => {
           width: '100%',
           marginBottom: 20,
         }}>
-        <View>
-          <Image
-            source={require('../../../assets/Shoes.png')}
-            style={{width: '100%', borderRadius: 12}}
-            resizeMode="cover"></Image>
+        <View style={{}}>
+          <Svg width="100%">
+            <Shoes style={{borderRadius: 12}} fill="none" />
+          </Svg>
         </View>
 
         <View

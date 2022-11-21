@@ -1,14 +1,12 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  Pressable,
-  ImageBackground,
-} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import Button from '../../components/common/Button';
 import {NavigationProps} from '../../types/navigation';
+import Circle from '../../../assets/svgs/Circle.svg';
+import Headphone from '../../../assets/svgs/Headphone.svg';
+import Logo from '../../../assets/svgs/Logo.svg';
+import Background from '../../../assets/svgs/Background.svg';
+import Cycle from '../../../assets/svgs/Cycle.svg';
 
 const Auth = ({navigation}: NavigationProps) => {
   const handleClick = (data: any) => {
@@ -22,72 +20,60 @@ const Auth = ({navigation}: NavigationProps) => {
 
   return (
     <View style={styles.container}>
-      <ImageBackground
-        style={{flex: 1}}
-        source={require('../../../assets/background.png')}
-        resizeMode="contain">
-        <View style={styles.mainContent}>
-          <Image
-            source={require('../../../assets/Headphone.png')}
-            style={styles.headphone}
-            resizeMode="contain"></Image>
+      <View
+        style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0}}>
+        <Background />
+      </View>
 
-          <View>
-            <Image
-              source={require('../../../assets/LogoBlue.png')}
-              style={styles.image}
-              resizeMode="contain"></Image>
-          </View>
-
-          <View style={styles.headerTextCont}>
-            <Text style={styles.headerText}>
-              Easily invest in your favourite startups
-            </Text>
-          </View>
-        </View>
-        <View style={styles.center}>
-          <Image
-            source={require('../../../assets/cycle.png')}
-            style={styles.cycle}
-            resizeMode="contain"></Image>
+      <View style={styles.mainContent}>
+        <Headphone style={styles.headphone} />
+        <View style={{marginBottom: 20, marginTop: 20}}>
+          <Logo style={styles.image} />
         </View>
 
-        <View style={styles.footer}>
-          <Button
-            text="Signup"
-            btnWidth="95%"
-            color="#377BF5"
-            textColor="white"
-            bordercolor="#377BF5"
-            border={0}
-            handler={() => handleClick('signup')}
-          />
-          <Button
-            text="Login"
-            btnWidth="95%"
-            color="#fff"
-            textColor="#377BF5"
-            bordercolor="#377BF5"
-            border={2}
-            handler={() => handleClick('login')}
-          />
-
-          <View>
-            <Text>
-              By viewing the{' '}
-              <Text style={styles.highlights}>Offerings here</Text> , I accept
-              Miventure’s{' '}
-              <Text style={styles.highlights}>Terms of Service</Text> and
-              <Text style={styles.highlights}>Privacy Policy.</Text>
-            </Text>
-          </View>
-          <View style={styles.ball}>
-            <Image
-              source={require('../../../assets/Circle.png')}
-              resizeMode="contain"></Image>
-          </View>
+        <View style={styles.headerTextCont}>
+          <Text style={styles.headerText}>
+            Easily invest in your favourite startups
+          </Text>
         </View>
-      </ImageBackground>
+      </View>
+      <View style={(styles.center, {width: '100%'})}>
+        <Cycle style={styles.cycle} />
+      </View>
+
+      <View style={(styles.footer, {width: '100%', alignItems: 'center'})}>
+        <Button
+          text="Signup"
+          btnWidth="95%"
+          color="#377BF5"
+          textColor="white"
+          bordercolor="#377BF5"
+          border={0}
+          handler={() => handleClick('signup')}
+        />
+        <Button
+          text="Login"
+          btnWidth="95%"
+          color="#fff"
+          textColor="#377BF5"
+          bordercolor="#377BF5"
+          border={2}
+          handler={() => handleClick('login')}
+        />
+
+        <View>
+          <Text>
+            By viewing the <Text style={styles.highlights}>Offerings here</Text>{' '}
+            , I accept Miventure’s{' '}
+            <Text style={styles.highlights}>Terms of Service</Text> and
+            <Text style={styles.highlights}>Privacy Policy.</Text>
+          </Text>
+        </View>
+        <View style={styles.ball}>
+          <Circle style={{zIndex: -1}} />
+        </View>
+      </View>
+      {/* </ImageBackground> */}
     </View>
   );
 };
@@ -167,6 +153,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    width: '100%',
   },
   headerText: {
     color: '#377BF5',
