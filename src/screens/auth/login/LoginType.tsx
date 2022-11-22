@@ -3,28 +3,26 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   Pressable,
   TouchableOpacity,
   Alert,
 } from 'react-native';
+
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import Close from '../../../../assets/svgs/Exiticon.svg';
 import Apple from '../../../../assets/svgs/Apple.svg';
+import Background2 from '../../../../assets/svgs/Background2.svg';
 import Mailbox from '../../../../assets/svgs/Mailbox.svg';
 import Google from '../../../../assets/svgs/Google.svg';
 import auth from '@react-native-firebase/auth';
-type LoginTypeScreenProps = {
-  navigation: any;
-};
+import {NavigationProps} from '../../../types/navigation';
 
-const LoginType = ({navigation}: LoginTypeScreenProps) => {
+const LoginType = ({navigation}: NavigationProps) => {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     GoogleSignin.configure({
-      webClientId:
-        '180123884938-0iv7p5s8me7e1l6gthmmosd40m4i8o2a.apps.googleusercontent.com',
+      webClientId: process.env.CLIENTID,
     });
 
     auth().onAuthStateChanged(user => {
@@ -62,10 +60,7 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.icon}>
-          <TouchableOpacity
-            onPress={() => {
-              handleBack();
-            }}>
+          <TouchableOpacity onPress={handleBack}>
             <Close height={25} width={25} />
           </TouchableOpacity>
         </View>
@@ -74,10 +69,9 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
         </View>
       </View>
       <View style={styles.center}>
-        <Image
-          source={require('../../../../assets/background2.png')}
+        <Background2
           style={{alignItems: 'center', width: '100%', height: '100%'}}
-          resizeMode="contain"></Image>
+        />
       </View>
       <View style={styles.footer}>
         <Pressable style={styles.button}>
@@ -96,7 +90,7 @@ const LoginType = ({navigation}: LoginTypeScreenProps) => {
           <Google height={25} width={25} />
           <Text style={styles.text}>Log in with Google</Text>
         </Pressable>
-        <Pressable style={styles.button3} onPress={() => handleEmailLogin()}>
+        <Pressable style={styles.button3} onPress={handleEmailLogin}>
           <Mailbox height={25} width={25} />
           <Text style={styles.text}>Log in with Email</Text>
         </Pressable>

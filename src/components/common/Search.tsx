@@ -2,8 +2,8 @@ import React from 'react';
 import {Searchbar} from 'react-native-paper';
 
 type SearchProps = {
-  searchQuery: any;
-  setSearchQuery: (val: any) => void;
+  searchQuery: string;
+  setSearchQuery: (val: string) => void;
 };
 
 const Search = ({searchQuery, setSearchQuery}: SearchProps) => {

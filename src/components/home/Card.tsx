@@ -1,14 +1,18 @@
 import React from 'react';
-import {Image, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {ProgressBar} from 'react-native-paper';
+import Shoes from '../../../assets/svgs/Shoes.svg';
 
 type CardProps = {
-  data: any;
+  data: {
+    fundingGoal: string;
+    id: string;
+    title: string;
+    topic: string;
+  };
 };
 
 const Card = ({data}: CardProps) => {
-  console.log('data is ', data);
-
   return (
     <>
       <View
@@ -22,10 +26,10 @@ const Card = ({data}: CardProps) => {
           marginBottom: 20,
         }}>
         <View>
-          <Image
-            source={require('../../../assets/Shoes.png')}
-            style={{width: '100%', borderRadius: 12}}
-            resizeMode="cover"></Image>
+          <Shoes
+            style={{borderRadius: 12, borderTopRightRadius: 12}}
+            preserveAspectRatio="none"
+          />
         </View>
 
         <View
@@ -51,7 +55,7 @@ const Card = ({data}: CardProps) => {
         <ProgressBar
           progress={0.5}
           color={'#377BF5'}
-          style={{width: '80%', alignSelf: 'center'}}
+          style={{width: '80%', alignSelf: 'center', marginBottom: 20}}
         />
       </View>
     </>

@@ -1,22 +1,19 @@
 import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
+import {NavigationProps} from '../../types/navigation';
+import SplashLogo from '../../../assets/svgs/Splash.svg';
 
-type SplashScreenProps = {
-  navigation: any;
-};
-
-const Splash = ({navigation}: SplashScreenProps) => {
+const Splash = ({navigation}: NavigationProps) => {
   useEffect(() => {
-    navigation.navigate('Auth');
+    setTimeout(() => {
+      navigation.navigate('Auth');
+    }, 3000);
   }, []);
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image
-          source={require('../../../assets/SplashLogo.png')}
-          style={styles.image}
-          resizeMode="contain"></Image>
+        <SplashLogo style={styles.image} />
         <Text style={styles.name}>miventure</Text>
         <Text style={styles.description}>Easily invest in startups</Text>
       </View>

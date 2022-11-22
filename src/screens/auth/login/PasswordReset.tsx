@@ -8,12 +8,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Back from '../../../../assets/svgs/Backicon.svg';
+import {NavigationProps} from '../../../types/navigation';
 
-type PasswordResetScreenProps = {
-  navigation: any;
-};
-
-const PasswordReset = ({navigation}: PasswordResetScreenProps) => {
+const PasswordReset = ({navigation}: NavigationProps) => {
   const [error, setError] = useState();
 
   const handleBack = () => {
@@ -24,7 +21,7 @@ const PasswordReset = ({navigation}: PasswordResetScreenProps) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.icon}>
-          <TouchableOpacity onPress={() => handleBack()}>
+          <TouchableOpacity onPress={handleBack}>
             <Back height={25} width={25} />
           </TouchableOpacity>
         </View>
@@ -40,6 +37,7 @@ const PasswordReset = ({navigation}: PasswordResetScreenProps) => {
             </Text>
           </View>
           <TextInput
+            textContentType="emailAddress"
             placeholder="Email"
             style={styles.fieldContainer}></TextInput>
           {!error ? (

@@ -1,7 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import AuthStack from './src/navigation/auth/AuthStack';
-import BottomNavigator from './src/navigation/app/BottomNavigator';
 import RootNavigation from './src/navigation/RootNavigation';
 
 const App = () => {
@@ -9,7 +7,7 @@ const App = () => {
     email: '',
     password: '',
   });
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState<boolean>(false);
   // if (authData.uid) {
   // let signout = auth().signOut();
   // let authData = auth().currentUser;

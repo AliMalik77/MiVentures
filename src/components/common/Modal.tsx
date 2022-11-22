@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 
 type ModalProps = {
-  isModalVisible: any;
-  setModalVisible: (val: any) => void;
+  isModalVisible: boolean;
+  setModalVisible: (val: boolean) => void;
   toggleModal: (val: any) => void;
   Iconn: any;
   title: string;

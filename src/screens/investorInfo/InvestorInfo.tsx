@@ -14,6 +14,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Back from '../../../assets/svgs/Backicon.svg';
+import {NavigationProps} from '../../types/navigation';
 const schema = yup
   .object({
     firstName: yup.string().required(),
@@ -28,11 +29,7 @@ const schema = yup
   })
   .required();
 
-type InvestorScreenProps = {
-  navigation: any;
-};
-
-const InvestorInfo = ({navigation}: InvestorScreenProps) => {
+const InvestorInfo = ({navigation}: NavigationProps) => {
   const {
     control,
     handleSubmit,
@@ -53,11 +50,7 @@ const InvestorInfo = ({navigation}: InvestorScreenProps) => {
       <KeyboardAwareScrollView>
         <View style={{flex: 1, width: '90%', alignSelf: 'center'}}>
           <View>
-            <TouchableOpacity
-              style={{marginTop: 50}}
-              onPress={() => {
-                handleBack();
-              }}>
+            <TouchableOpacity style={{marginTop: 50}} onPress={handleBack}>
               <Back height={25} width={25} />
             </TouchableOpacity>
 
@@ -91,6 +84,7 @@ const InvestorInfo = ({navigation}: InvestorScreenProps) => {
                     <>
                       <Text>First Name (Legal)</Text>
                       <TextInput
+                        textContentType="name"
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}
@@ -122,6 +116,7 @@ const InvestorInfo = ({navigation}: InvestorScreenProps) => {
                     <>
                       <Text>Last Name (Legal)</Text>
                       <TextInput
+                        textContentType="name"
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}
@@ -154,6 +149,7 @@ const InvestorInfo = ({navigation}: InvestorScreenProps) => {
                   <>
                     <Text>Street Address </Text>
                     <TextInput
+                      textContentType="streetAddressLine1"
                       onBlur={onBlur}
                       onChangeText={onChange}
                       value={value}
@@ -186,6 +182,7 @@ const InvestorInfo = ({navigation}: InvestorScreenProps) => {
                     <>
                       <Text>Apt, Suite, Etc. </Text>
                       <TextInput
+                        textContentType="sublocality"
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}
@@ -217,6 +214,7 @@ const InvestorInfo = ({navigation}: InvestorScreenProps) => {
                     <>
                       <Text>City</Text>
                       <TextInput
+                        textContentType="addressCity"
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}
@@ -251,6 +249,7 @@ const InvestorInfo = ({navigation}: InvestorScreenProps) => {
                     <>
                       <Text>State </Text>
                       <TextInput
+                        textContentType="addressState"
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}
@@ -282,6 +281,7 @@ const InvestorInfo = ({navigation}: InvestorScreenProps) => {
                     <>
                       <Text>Zip Code</Text>
                       <TextInput
+                        textContentType="postalCode"
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}

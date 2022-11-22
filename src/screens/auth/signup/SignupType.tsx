@@ -1,20 +1,10 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  Pressable,
-  TouchableOpacity,
-} from 'react-native';
-
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Close from '../../../../assets/svgs/Exiticon.svg';
-import Google from '../../../../assets/svgs/Google.svg';
-type SignupTypeScreenProps = {
-  navigation: any;
-};
-
-const SignupType = ({navigation}: SignupTypeScreenProps) => {
+import Button from '../../../components/common/Button';
+import {NavigationProps} from '../../../types/navigation';
+import Background2 from '../../../../assets/svgs/Background2.svg';
+const SignupType = ({navigation}: NavigationProps) => {
   const handleClick = () => {
     navigation.navigate('Login');
   };
@@ -31,10 +21,7 @@ const SignupType = ({navigation}: SignupTypeScreenProps) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.icon}>
-          <TouchableOpacity
-            onPress={() => {
-              handleBack();
-            }}>
+          <TouchableOpacity onPress={handleBack}>
             <Close height={25} width={25} />
           </TouchableOpacity>
         </View>
@@ -45,30 +32,38 @@ const SignupType = ({navigation}: SignupTypeScreenProps) => {
         </View>
       </View>
       <View style={styles.center}>
-        <Image
-          source={require('../../../../assets/background2.png')}
+        <Background2
           style={{alignItems: 'center', width: '100%', height: '100%'}}
-          resizeMode="contain"></Image>
+        />
       </View>
       <View style={styles.footer}>
-        <Pressable style={styles.button2}>
-          <Google height={25} width={25} />
-          <Text style={styles.text}>Sign up with Google</Text>
-        </Pressable>
-        <Pressable
-          style={styles.signupEmailbutton}
-          onPress={() => {
-            handleEmailSignup();
-          }}>
-          <Text style={styles.signupButtontext}>Sign up with Email</Text>
-        </Pressable>
-        <Pressable
-          style={styles.button3}
-          onPress={() => {
-            handleClick();
-          }}>
-          <Text style={styles.textLogin}>Log in </Text>
-        </Pressable>
+        <Button
+          text="Sign up with Google"
+          btnWidth="90%"
+          color="#EA4335"
+          textColor="white"
+          bordercolor="#377BF5"
+          border={0}
+        />
+
+        <Button
+          text="Signup with email"
+          btnWidth="90%"
+          color="#377BF5"
+          textColor="white"
+          bordercolor="#377BF5"
+          border={0}
+          handler={() => handleEmailSignup()}
+        />
+        <Button
+          text="Login"
+          btnWidth="90%"
+          color="#fff"
+          textColor="#377BF5"
+          bordercolor="#377BF5"
+          border={2}
+          handler={() => handleClick()}
+        />
       </View>
     </View>
   );
@@ -98,43 +93,7 @@ const styles = StyleSheet.create({
     padding: 30,
     marginTop: 30,
   },
-  button: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 6,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    backgroundColor: 'black',
-    width: '90%',
-    marginBottom: 10,
-  },
-  button2: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 6,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    backgroundColor: '#EA4335',
-    width: '90%',
-    marginBottom: 10,
-  },
-  button3: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 6,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    width: '90%',
-    marginBottom: 10,
-    borderWidth: 2,
-    borderColor: '#377BF5',
-  },
+
   signupEmailbutton: {
     display: 'flex',
     flexDirection: 'row',

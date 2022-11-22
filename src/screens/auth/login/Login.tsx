@@ -3,18 +3,36 @@ import {
   View,
   Text,
   StyleSheet,
-  Pressable,
   TextInput,
   TouchableOpacity,
   Alert,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import Back from '../../../../assets/svgs/Backicon.svg';
+import Button from '../../../components/common/Button';
 
 type LoginScreenProps = {
-  navigation: any;
-  authenticated: any;
-  setAuthenticated: any;
+  navigation: {
+    addListener: Function;
+    canGoBack: Function;
+    dispatch: Function;
+    getId: Function;
+    getParent: Function;
+    getState: Function;
+    goBack: Function;
+    isFocused: Function;
+    navigate: Function;
+    pop: Function;
+    popToTop: Function;
+    push: Function;
+    removeListener: Function;
+    replace: Function;
+    reset: Function;
+    setOptions: Function;
+    setParams: Function;
+  };
+  authenticated: Boolean;
+  setAuthenticated: (val: Boolean) => void;
 };
 
 const Login = ({
@@ -64,7 +82,7 @@ const Login = ({
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.icon}>
-          <TouchableOpacity onPress={() => handleBack()}>
+          <TouchableOpacity onPress={handleBack}>
             <Back height={25} width={25} />
           </TouchableOpacity>
         </View>
@@ -74,24 +92,28 @@ const Login = ({
 
         <View style={{width: '100%', alignItems: 'center'}}>
           <TextInput
+            textContentType="emailAddress"
             placeholder="Email"
             style={styles.fieldContainer}
-            onChangeText={e => setEmail(e)}></TextInput>
+            onChangeText={setEmail}></TextInput>
           <TextInput
+            textContentType="password"
             placeholder="Password"
             secureTextEntry={true}
             style={styles.fieldContainer}
-            onChangeText={password => setPassword(password)}></TextInput>
-          <TouchableOpacity onPress={() => handleForgot()}>
+            onChangeText={setPassword}></TextInput>
+          <TouchableOpacity onPress={handleForgot}>
             <Text style={styles.forgotPassword}>Forgot your password?</Text>
           </TouchableOpacity>
-          <Pressable
-            style={styles.button3}
-            onPress={() => {
-              handleLogin();
-            }}>
-            <Text style={styles.text}>Log in </Text>
-          </Pressable>
+          <Button
+            text="Login"
+            btnWidth="90%"
+            color="#377BF5"
+            textColor="#fff"
+            bordercolor="#377BF5"
+            border={0}
+            handler={handleLogin}
+          />
         </View>
       </View>
     </View>

@@ -1,26 +1,28 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Dimensions,
-  ImageBackground,
-} from 'react-native';
+import {View, Text, StyleSheet, Dimensions} from 'react-native';
 
 export const SLIDER_WIDTH = Dimensions.get('window').width + 80;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.5);
 
 type CarouselCardItemProps = {
-  item: any;
-  index: any;
+  item: {
+    body: string;
+    ImgUrl: any;
+    title: string;
+  };
+  index: number;
 };
 
 const CarouselCardItem = ({item, index}: CarouselCardItemProps) => {
+  const {ImgUrl, body, title} = item;
+
   return (
-    <ImageBackground
-      resizeMode="cover"
-      source={item.imgUrl}
-      style={{borderRadius: 8}}>
+    <>
+      <View
+        style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0}}>
+        <item.ImgUrl />
+      </View>
+
       <View style={styles.container} key={index}>
         <Text style={{fontWeight: '800', fontSize: 20, color: '#fff'}}>
           {item.title}
@@ -33,10 +35,12 @@ const CarouselCardItem = ({item, index}: CarouselCardItemProps) => {
             color: '#fff',
             marginBottom: 10,
           }}>
-          Homeskool{' '}
+          Homeskool
         </Text>
       </View>
-    </ImageBackground>
+      {/* </View> */}
+    </>
+    // </ImageBackground>
   );
 };
 
