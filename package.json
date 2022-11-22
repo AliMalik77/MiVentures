@@ -25,6 +25,7 @@
     "react-native": "^0.68.5",
     "react-native-animated-pagination-dot": "^0.4.0",
     "react-native-camera": "^4.2.1",
+    "react-native-dotenv": "^3.4.2",
     "react-native-gesture-handler": "^2.8.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-modal": "^13.0.1",

@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {ProgressBar} from 'react-native-paper';
 import Shoes from '../../../assets/svgs/Shoes.svg';
-import Svg from 'react-native-svg';
+
 type CardProps = {
   data: {
     fundingGoal: string;
@@ -25,10 +25,11 @@ const Card = ({data}: CardProps) => {
           width: '100%',
           marginBottom: 20,
         }}>
-        <View style={{}}>
-          <Svg width="100%">
-            <Shoes style={{borderRadius: 12}} fill="none" />
-          </Svg>
+        <View>
+          <Shoes
+            style={{borderRadius: 12, borderTopRightRadius: 12}}
+            preserveAspectRatio="none"
+          />
         </View>
 
         <View

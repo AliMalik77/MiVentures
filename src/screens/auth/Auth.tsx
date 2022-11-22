@@ -73,7 +73,6 @@ const Auth = ({navigation}: NavigationProps) => {
           <Circle style={{zIndex: -1}} />
         </View>
       </View>
-      {/* </ImageBackground> */}
     </View>
   );
 };

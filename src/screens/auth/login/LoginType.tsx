@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
+
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import Close from '../../../../assets/svgs/Exiticon.svg';
 import Apple from '../../../../assets/svgs/Apple.svg';
@@ -21,8 +22,7 @@ const LoginType = ({navigation}: NavigationProps) => {
 
   useEffect(() => {
     GoogleSignin.configure({
-      webClientId:
-        '180123884938-0iv7p5s8me7e1l6gthmmosd40m4i8o2a.apps.googleusercontent.com',
+      webClientId: process.env.CLIENTID,
     });
 
     auth().onAuthStateChanged(user => {
