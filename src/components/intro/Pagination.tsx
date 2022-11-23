@@ -18,6 +18,8 @@ const Tutorial = ({
   description,
   btntxt,
 }: TutorialProps) => {
+  console.log(':pagination result', ImageUri);
+
   return (
     <View style={styles.middle}>
       <View>
@@ -46,7 +48,7 @@ const Tutorial = ({
         </Text>
       </View>
       <TouchableOpacity
-        style={styles.button3}
+        style={styles.button}
         onPress={() => {
           setCurrentPage(currentPage + 1);
         }}>
@@ -66,15 +68,13 @@ const styles = StyleSheet.create({
     letterSpacing: 0.25,
     color: '#fff',
   },
-  highlights: {
-    color: '#377BF5',
-  },
+
   middle: {
     flex: 2,
     alignItems: 'center',
     marginTop: 50,
   },
-  button3: {
+  button: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

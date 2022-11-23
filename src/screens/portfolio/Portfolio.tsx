@@ -57,8 +57,10 @@ const PortfolioScreen = ({route}: PortfolioScreenProps) => {
                     display: 'flex',
                     flexDirection: 'row',
                     alignItems: 'center',
+                    justifyContent: 'space-around',
+                    marginTop: 10,
                   }}>
-                  <Verify width={50} height={15} fill="black" />
+                  <Verify width={50} height={15} fill="#377BF5" />
                   <Text style={{color: '#909090', fontWeight: '400'}}>
                     Verified Investor
                   </Text>

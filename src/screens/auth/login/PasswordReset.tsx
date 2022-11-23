@@ -54,7 +54,7 @@ const PasswordReset = ({navigation}: NavigationProps) => {
               </Text>
             </View>
           )}
-          <Pressable style={styles.button3}>
+          <Pressable style={styles.button}>
             <Text style={styles.text}>Submit </Text>
           </Pressable>
         </View>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     textAlign: 'center',
   },
-  button3: {
+  button: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -127,15 +127,8 @@ const styles = StyleSheet.create({
     marginLeft: '25%',
     width: '50%',
   },
-  image: {
-    width: 125,
-    height: 125,
-  },
   container: {
     flex: 1,
-  },
-  logo: {
-    width: 40,
   },
   header: {
     flex: 1,
@@ -146,16 +139,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  name: {
-    fontWeight: '800',
-    color: 'white',
-    fontSize: 60,
-  },
+
   description: {
     color: '#000000',
     fontSize: 24,
     fontWeight: '800',
     textAlign: 'center',
   },
-  footerDesc: {color: 'white', fontSize: 30, fontWeight: '700'},
 });

@@ -78,7 +78,7 @@ const PortfolioCard = ({data}: ProtfolioCardProps) => {
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            <Text>Invested</Text>
+            <Text style={{marginRight: 10}}>Invested</Text>
             <Infoicon />
           </View>
           <Text>${data.invested}</Text>
@@ -90,7 +90,7 @@ const PortfolioCard = ({data}: ProtfolioCardProps) => {
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            <Text>Valuation Cap</Text>
+            <Text style={{marginRight: 10}}>Valuation Cap</Text>
             <Infoicon />
           </View>
           <Text> ${data.valuationCap}</Text>
@@ -102,7 +102,7 @@ const PortfolioCard = ({data}: ProtfolioCardProps) => {
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            <Text>Discount</Text>
+            <Text style={{marginRight: 10}}>Discount</Text>
             <Infoicon />
           </View>
           <Text>{data.discount}%</Text>

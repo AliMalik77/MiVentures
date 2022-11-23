@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import Auth from '../../screens/auth/Auth';
 import Splash from '../../screens/splash/Splash';

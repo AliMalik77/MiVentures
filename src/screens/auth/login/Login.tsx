@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
   forgotPassword: {
     color: '#377BF5',
     marginTop: 24,
+    marginBottom: 15,
   },
   fieldContainer: {
     height: 50,
@@ -137,18 +138,6 @@ const styles = StyleSheet.create({
     borderColor: '#EAEAEA',
     marginTop: 20,
     textAlign: 'center',
-  },
-  button3: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 6,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    backgroundColor: '#377BF5',
-    width: '90%',
-    marginTop: 24,
   },
   text: {
     fontSize: 20,
@@ -166,30 +155,13 @@ const styles = StyleSheet.create({
     marginLeft: '25%',
     width: '50%',
   },
-  image: {
-    width: 125,
-    height: 125,
-  },
   container: {
     flex: 1,
     backgroundColor: 'white',
   },
-  logo: {
-    width: 40,
-  },
   header: {
     flex: 1,
     margin: 10,
-  },
-  footer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  name: {
-    fontWeight: '800',
-    color: 'white',
-    fontSize: 60,
   },
   description: {
     color: '#000000',
@@ -197,5 +169,4 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     textAlign: 'center',
   },
-  footerDesc: {color: 'white', fontSize: 30, fontWeight: '700'},
 });

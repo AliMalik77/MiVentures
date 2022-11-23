@@ -108,43 +108,6 @@ const styles = StyleSheet.create({
   highlights: {
     color: '#377BF5',
   },
-
-  button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    backgroundColor: '#377BF5',
-    width: '95%',
-    marginBottom: 10,
-  },
-  button2: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    backgroundColor: '#fff',
-    width: '95%',
-    marginBottom: 10,
-    borderWidth: 2,
-    borderColor: '#377BF5',
-  },
-  text: {
-    fontSize: 20,
-    lineHeight: 21,
-    fontWeight: '700',
-    letterSpacing: 0.25,
-    color: 'white',
-  },
-  text2: {
-    fontSize: 20,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: '#377BF5',
-  },
   image: {
     width: 250,
     height: 300,

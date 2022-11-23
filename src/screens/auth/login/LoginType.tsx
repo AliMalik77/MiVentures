@@ -75,9 +75,18 @@ const LoginType = ({navigation}: NavigationProps) => {
       </View>
       <View style={styles.footer}>
         <Pressable style={styles.button}>
-          <Apple height={25} width={25} />
-          <Text style={styles.text}>Log in with Apple</Text>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              width: '80%',
+              justifyContent: 'space-evenly',
+            }}>
+            <Apple height={25} width={25} />
+            <Text style={styles.text}>Log in with Apple</Text>
+          </View>
         </Pressable>
+
         <Pressable
           style={styles.button2}
           onPress={() => {
@@ -87,12 +96,28 @@ const LoginType = ({navigation}: NavigationProps) => {
               })
               .catch(err => console.log(err));
           }}>
-          <Google height={25} width={25} />
-          <Text style={styles.text}>Log in with Google</Text>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              width: '80%',
+              justifyContent: 'space-evenly',
+            }}>
+            <Google height={25} width={25} />
+            <Text style={styles.text}>Log in with Google</Text>
+          </View>
         </Pressable>
         <Pressable style={styles.button3} onPress={handleEmailLogin}>
-          <Mailbox height={25} width={25} />
-          <Text style={styles.text}>Log in with Email</Text>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              width: '80%',
+              justifyContent: 'space-evenly',
+            }}>
+            <Mailbox height={25} width={25} />
+            <Text style={styles.text}>Log in with Email</Text>
+          </View>
         </Pressable>
       </View>
     </View>
@@ -123,7 +148,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     paddingVertical: 6,
     paddingHorizontal: 32,
     borderRadius: 30,

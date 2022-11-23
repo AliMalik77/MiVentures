@@ -18,14 +18,16 @@ import {carouselData, startups, testData} from '../../utils/home/Home';
 const HomeScreen = ({navigation}: NavigationProps) => {
   const isCarousel = React.useRef(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState([
+    {id: '', fundingGoal: '', title: '', topic: ''},
+  ]);
   useEffect(() => {
     const filtered = startups.filter(startup => {
       return startup.title === searchQuery;
     });
 
     if (filtered.length > 0) {
-      console.log('filtering again =====', filtered);
+      setSearch([filtered[0]]);
     }
   }, [searchQuery]);
 
@@ -88,6 +90,7 @@ const HomeScreen = ({navigation}: NavigationProps) => {
                   flexDirection: 'row',
                   marginTop: 10,
                   alignItems: 'center',
+                  marginBottom: 10,
                 }}>
                 <Text style={{fontSize: 17, fontWeight: '700'}}>
                   Founder Stories

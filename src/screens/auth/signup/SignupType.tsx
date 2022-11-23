@@ -72,11 +72,6 @@ const SignupType = ({navigation}: NavigationProps) => {
 export default SignupType;
 
 const styles = StyleSheet.create({
-  textLogin: {
-    fontSize: 20,
-    color: '#377BF5',
-  },
-  signupButtontext: {fontSize: 20, color: '#fff'},
   descHeader: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -92,23 +87,6 @@ const styles = StyleSheet.create({
   icon: {
     padding: 30,
     marginTop: 30,
-  },
-
-  signupEmailbutton: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 6,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    backgroundColor: '#377BF5',
-    width: '90%',
-    marginBottom: 10,
-  },
-  text: {
-    fontSize: 20,
-    color: 'white',
   },
   container: {
     flex: 1,
