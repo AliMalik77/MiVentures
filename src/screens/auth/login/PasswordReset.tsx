@@ -30,7 +30,7 @@ const PasswordReset = ({navigation}: NavigationProps) => {
         </View>
 
         <View style={{width: '100%', alignItems: 'center'}}>
-          <View style={styles.submitDescription}>
+          <View style={styles.w80}>
             <Text style={styles.submitText}>
               Submit your user email and we’ll send you password reset
               instructions.
@@ -47,7 +47,7 @@ const PasswordReset = ({navigation}: NavigationProps) => {
               </Text>
             </View>
           ) : (
-            <View style={styles.mt24}>
+            <View style={[styles.mt24, styles.w80]}>
               <Text style={styles.error}>
                 This account was recently deleted. Login with your previous user
                 email to reactivate.
@@ -68,16 +68,15 @@ export default PasswordReset;
 const styles = StyleSheet.create({
   error: {textAlign: 'center', color: '#EA4335'},
   successText: {textAlign: 'center', color: '#57A773'},
+  w80: {
+    width: '80%',
+  },
   success: {
     marginTop: 24,
     width: '50%',
   },
   mt24: {
     marginTop: 24,
-    width: '80%',
-  },
-  submitDescription: {
-    width: '80%',
   },
   submitText: {
     fontSize: 18,
