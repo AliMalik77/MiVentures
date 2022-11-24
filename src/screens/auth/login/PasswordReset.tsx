@@ -30,7 +30,7 @@ const PasswordReset = ({navigation}: NavigationProps) => {
         </View>
 
         <View style={{width: '100%', alignItems: 'center'}}>
-          <View style={styles.submitDescription}>
+          <View style={styles.w80}>
             <Text style={styles.submitText}>
               Submit your user email and we’ll send you password reset
               instructions.
@@ -47,14 +47,14 @@ const PasswordReset = ({navigation}: NavigationProps) => {
               </Text>
             </View>
           ) : (
-            <View style={styles.mt24}>
+            <View style={[styles.mt24, styles.w80]}>
               <Text style={styles.error}>
                 This account was recently deleted. Login with your previous user
                 email to reactivate.
               </Text>
             </View>
           )}
-          <Pressable style={styles.button3}>
+          <Pressable style={styles.button}>
             <Text style={styles.text}>Submit </Text>
           </Pressable>
         </View>
@@ -68,16 +68,15 @@ export default PasswordReset;
 const styles = StyleSheet.create({
   error: {textAlign: 'center', color: '#EA4335'},
   successText: {textAlign: 'center', color: '#57A773'},
+  w80: {
+    width: '80%',
+  },
   success: {
     marginTop: 24,
     width: '50%',
   },
   mt24: {
     marginTop: 24,
-    width: '80%',
-  },
-  submitDescription: {
-    width: '80%',
   },
   submitText: {
     fontSize: 18,
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     textAlign: 'center',
   },
-  button3: {
+  button: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -127,15 +126,8 @@ const styles = StyleSheet.create({
     marginLeft: '25%',
     width: '50%',
   },
-  image: {
-    width: 125,
-    height: 125,
-  },
   container: {
     flex: 1,
-  },
-  logo: {
-    width: 40,
   },
   header: {
     flex: 1,
@@ -146,16 +138,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  name: {
-    fontWeight: '800',
-    color: 'white',
-    fontSize: 60,
-  },
+
   description: {
     color: '#000000',
     fontSize: 24,
     fontWeight: '800',
     textAlign: 'center',
   },
-  footerDesc: {color: 'white', fontSize: 30, fontWeight: '700'},
 });

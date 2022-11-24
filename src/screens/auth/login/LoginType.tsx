@@ -74,12 +74,21 @@ const LoginType = ({navigation}: NavigationProps) => {
         />
       </View>
       <View style={styles.footer}>
-        <Pressable style={styles.button}>
-          <Apple height={25} width={25} />
-          <Text style={styles.text}>Log in with Apple</Text>
+        <Pressable style={[styles.button, {backgroundColor: 'black'}]}>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              width: '80%',
+              justifyContent: 'space-evenly',
+            }}>
+            <Apple height={25} width={25} />
+            <Text style={styles.text}>Log in with Apple</Text>
+          </View>
         </Pressable>
+
         <Pressable
-          style={styles.button2}
+          style={[styles.button, {backgroundColor: '#EA4335'}]}
           onPress={() => {
             googleSignin()
               .then(res => {
@@ -87,12 +96,30 @@ const LoginType = ({navigation}: NavigationProps) => {
               })
               .catch(err => console.log(err));
           }}>
-          <Google height={25} width={25} />
-          <Text style={styles.text}>Log in with Google</Text>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              width: '80%',
+              justifyContent: 'space-evenly',
+            }}>
+            <Google height={25} width={25} />
+            <Text style={styles.text}>Log in with Google</Text>
+          </View>
         </Pressable>
-        <Pressable style={styles.button3} onPress={handleEmailLogin}>
-          <Mailbox height={25} width={25} />
-          <Text style={styles.text}>Log in with Email</Text>
+        <Pressable
+          style={[styles.button, {backgroundColor: '#377BF5'}]}
+          onPress={handleEmailLogin}>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              width: '80%',
+              justifyContent: 'space-evenly',
+            }}>
+            <Mailbox height={25} width={25} />
+            <Text style={styles.text}>Log in with Email</Text>
+          </View>
         </Pressable>
       </View>
     </View>
@@ -102,6 +129,9 @@ const LoginType = ({navigation}: NavigationProps) => {
 export default LoginType;
 
 const styles = StyleSheet.create({
+  w90: {
+    width: '90%',
+  },
   descHeader: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -123,35 +153,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     paddingVertical: 6,
     paddingHorizontal: 32,
     borderRadius: 30,
-    backgroundColor: 'black',
-    width: '90%',
-    marginBottom: 10,
-  },
-  button2: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 6,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    backgroundColor: '#EA4335',
-    width: '90%',
-    marginBottom: 10,
-  },
-  button3: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 6,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    backgroundColor: '#377BF5',
     width: '90%',
     marginBottom: 10,
   },

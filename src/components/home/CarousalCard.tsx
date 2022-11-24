@@ -14,8 +14,6 @@ type CarouselCardItemProps = {
 };
 
 const CarouselCardItem = ({item, index}: CarouselCardItemProps) => {
-  const {ImgUrl, body, title} = item;
-
   return (
     <>
       <View
@@ -38,9 +36,7 @@ const CarouselCardItem = ({item, index}: CarouselCardItemProps) => {
           Homeskool
         </Text>
       </View>
-      {/* </View> */}
     </>
-    // </ImageBackground>
   );
 };
 

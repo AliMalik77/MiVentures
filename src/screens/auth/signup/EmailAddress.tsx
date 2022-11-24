@@ -88,10 +88,6 @@ const EmailAddress = ({
 export default EmailAddress;
 
 const styles = StyleSheet.create({
-  forgotPassword: {
-    color: '#377BF5',
-    marginTop: 24,
-  },
   fieldContainer: {
     height: 50,
     width: '90%',
@@ -102,23 +98,6 @@ const styles = StyleSheet.create({
     borderColor: '#EAEAEA',
     marginTop: 20,
     textAlign: 'center',
-  },
-  button3: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 6,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    backgroundColor: '#377BF5',
-    width: '90%',
-    marginTop: 60,
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: '500',
-    color: 'white',
   },
   icon: {
     padding: 20,
@@ -132,16 +111,9 @@ const styles = StyleSheet.create({
     width: '50%',
     marginBottom: 30,
   },
-  image: {
-    width: 125,
-    height: 125,
-  },
   container: {
     flex: 1,
     backgroundColor: 'white',
-  },
-  logo: {
-    width: 40,
   },
   header: {
     flex: 1,
@@ -152,16 +124,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  name: {
-    fontWeight: '800',
-    color: 'white',
-    fontSize: 60,
-  },
   description: {
     color: '#000000',
     fontSize: 26,
     fontWeight: '800',
     textAlign: 'center',
   },
-  footerDesc: {color: 'white', fontSize: 30, fontWeight: '700'},
 });
