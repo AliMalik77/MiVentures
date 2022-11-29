@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
@@ -13,8 +12,8 @@ import {useForm, Controller} from 'react-hook-form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import Back from '../../../assets/svgs/Backicon.svg';
 import {NavigationProp} from '@react-navigation/native';
+import Header from '../../components/investorInfo/Header';
 
 const schema = yup
   .object({
@@ -49,25 +48,14 @@ const InvestorInfo = ({
   };
 
   const handleBack = () => {
-    navigation.navigate('Login');
+    navigation.goBack();
   };
 
   return (
     <View style={{backgroundColor: '#fff'}}>
       <KeyboardAwareScrollView>
         <View style={styles.container}>
-          <View>
-            <TouchableOpacity style={{marginTop: 50}} onPress={handleBack}>
-              <Back height={25} width={25} />
-            </TouchableOpacity>
-
-            <Text style={styles.title}>Investor Information</Text>
-            <Text style={styles.infoDesc}>
-              This info is required by U.S. Banking laws to verify your identity
-              and is protected using{' '}
-              <Text style={{color: '#377BF5'}}>bank-level security.</Text>
-            </Text>
-          </View>
+          <Header onPress={handleBack} />
 
           <View>
             <View style={styles.nameFields}>
@@ -347,16 +335,10 @@ const styles = StyleSheet.create({
     color: 'red',
   },
   nameFields: {display: 'flex', flexDirection: 'row', marginTop: 50},
-  title: {
-    marginTop: 30,
-    fontSize: 24,
-    fontWeight: '800',
-    color: 'black',
-  },
+
   w50: {width: '50%'},
   container: {flex: 1, width: '90%', alignSelf: 'center'},
   fieldsDisplay: {display: 'flex', flexDirection: 'row', marginTop: 15},
-  infoDesc: {fontSize: 16, fontWeight: '500', color: 'black'},
   button: {
     marginTop: 40,
     alignItems: 'center',

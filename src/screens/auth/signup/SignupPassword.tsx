@@ -12,6 +12,7 @@ import auth from '@react-native-firebase/auth';
 import Back from '../../../../assets/svgs/Backicon.svg';
 import Button from '../../../components/common/Button';
 import {NavigationProp} from '@react-navigation/native';
+import {ScaledSheet} from 'react-native-size-matters';
 
 type PasswordScreenProps = {
   userData: {
@@ -19,23 +20,21 @@ type PasswordScreenProps = {
     password: string;
   };
   setUserData: (val: {email: string; password: string}) => void;
+  navigation: NavigationProp<{
+    Email: undefined;
+  }>;
 };
 
-const SignupPassword = (
-  {userData, setUserData}: PasswordScreenProps,
-  {
-    navigation,
-  }: {
-    navigation: NavigationProp<{
-      Email: undefined;
-    }>;
-  },
-) => {
+const SignupPassword = ({
+  userData,
+  setUserData,
+  navigation,
+}: PasswordScreenProps) => {
   const [error] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
 
   const handleBack = () => {
-    navigation.navigate('Email');
+    navigation.goBack();
   };
 
   useEffect(() => {
@@ -108,7 +107,7 @@ const SignupPassword = (
 
 export default SignupPassword;
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   fieldsWrapper: {width: '100%', alignItems: 'center'},
   errorContainer: {width: '90%', marginTop: 50, marginBottom: 10},
   errorText: {
@@ -117,7 +116,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   fieldContainer: {
-    height: 50,
+    height: '50@vs',
     width: '90%',
     alignItems: 'center',
     justifyContent: 'center',

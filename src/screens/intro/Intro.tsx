@@ -1,33 +1,19 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-
-import PaginationDot from 'react-native-animated-pagination-dot';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import Pagination from '../../components/intro/Pagination';
 import Rocket from '../../../assets/svgs/Rocket.svg';
 import Clock from '../../../assets/svgs/Clock.svg';
 import Cat from '../../../assets/svgs/Cat.svg';
+import Footer from '../../components/intro/Footer';
+import Header from '../../components/intro/Header';
 
 const Intro = () => {
   const [currentPage, setCurrentPage] = useState(0);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.icon}>
-          <TouchableOpacity></TouchableOpacity>
-        </View>
-        <View style={styles.descHeader}>
-          <Text style={styles.description}>How it works</Text>
-        </View>
-
-        <View style={{alignItems: 'center'}}>
-          <PaginationDot
-            activeDotColor={'#377BF5'}
-            curPage={currentPage}
-            maxPage={3}
-          />
-        </View>
+        <Header currentPage={currentPage} />
       </View>
-
       {currentPage === 0 ? (
         <Pagination
           currentPage={currentPage}
@@ -56,15 +42,7 @@ const Intro = () => {
           btntxt={'You Made it!'}
         />
       )}
-
-      <View style={styles.footer}>
-        <Text style={styles.text}>
-          Disclaimer: All investment opportunities on Miventure are offered
-          under <Text style={styles.highlights}>Regulation Crowdfunding</Text>{' '}
-          through Miventure Inc., a Funding Portal registered with the SEC and a
-          member of FINRA.
-        </Text>
-      </View>
+      <Footer />
     </View>
   );
 };
@@ -72,15 +50,6 @@ const Intro = () => {
 export default Intro;
 
 const styles = StyleSheet.create({
-  text: {
-    color: '#909090',
-    fontWeight: '500',
-    fontSize: 11,
-    textAlign: 'center',
-  },
-  highlights: {
-    color: '#377BF5',
-  },
   button3: {
     display: 'flex',
     flexDirection: 'row',
@@ -99,33 +68,20 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 30,
   },
-  descHeader: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: '25%',
-    width: '50%',
-    marginBottom: 30,
-  },
+
   container: {
     flex: 1,
     backgroundColor: 'white',
   },
   header: {
-    flex: 1,
-    margin: 10,
+    marginTop: 100,
   },
   middle: {
     flex: 2,
     alignItems: 'center',
     marginTop: 50,
   },
-  footer: {
-    flex: 1,
-    width: '90%',
-    alignSelf: 'center',
-    justifyContent: 'flex-end',
-    marginBottom: 20,
-  },
+
   description: {
     color: '#000000',
     fontSize: 26,

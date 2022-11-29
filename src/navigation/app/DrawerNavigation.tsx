@@ -11,11 +11,7 @@ const DrawerNavigation = () => {
     <Drawer.Navigator
       initialRouteName="Home"
       screenOptions={{
-        drawerPosition: 'right',
         swipeEnabled: true,
-        headerRight: () => (
-          <MaterialCommunityIcons name="menu" size={30} color="black" />
-        ),
       }}>
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="Notifications" component={Notifications} />

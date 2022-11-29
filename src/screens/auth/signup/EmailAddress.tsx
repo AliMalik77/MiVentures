@@ -14,21 +14,19 @@ import {NavigationProp} from '@react-navigation/native';
 type EmailScreenProps = {
   userData: {email: string; password: string};
   setUserData: (val: {email: string; password: string}) => void;
+  navigation: NavigationProp<{
+    SignupType: undefined;
+    SignupPassword: undefined;
+  }>;
 };
 
-const EmailAddress = (
-  {userData, setUserData}: EmailScreenProps,
-  {
-    navigation,
-  }: {
-    navigation: NavigationProp<{
-      SignupType: undefined;
-      SignupPassword: undefined;
-    }>;
-  },
-) => {
+const EmailAddress = ({
+  navigation,
+  userData,
+  setUserData,
+}: EmailScreenProps) => {
   const handleBack = () => {
-    navigation.navigate('SignupType');
+    navigation.goBack();
   };
 
   const handleNext = () => {

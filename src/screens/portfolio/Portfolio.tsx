@@ -1,17 +1,9 @@
 import React from 'react';
-import {
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import Verify from '../../../assets/svgs/Verify.svg';
-
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import PortfolioCard from '../../components/portfolio/PortfolioCard';
+import UserData from '../../components/portfolio/UserData';
 import {portfolioData} from '../../utils/portfolio/Portfolio';
-
+import {ScaledSheet} from 'react-native-size-matters';
 type PortfolioScreenProps = {
   route: {
     key: string;
@@ -29,20 +21,7 @@ const PortfolioScreen = ({route}: PortfolioScreenProps) => {
         ListHeaderComponent={() => {
           return (
             <>
-              <View style={styles.userInfo}>
-                <Image
-                  style={styles.tinyLogo}
-                  source={{
-                    uri: 'https://reactnative.dev/img/tiny_logo.png',
-                  }}
-                />
-
-                <Text style={styles.userName}>Jason Summers</Text>
-                <View style={styles.verificationWrapper}>
-                  <Verify width={50} height={15} fill="#377BF5" />
-                  <Text style={styles.verifiedText}>Verified Investor</Text>
-                </View>
-              </View>
+              <UserData />
               <View style={styles.investments}>
                 <View style={styles.divider} />
                 <TouchableOpacity>
@@ -61,46 +40,22 @@ const PortfolioScreen = ({route}: PortfolioScreenProps) => {
 
 export default PortfolioScreen;
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   container: {flex: 1, backgroundColor: '#fff'},
-  userName: {
-    fontWeight: '800',
-    fontSize: 24,
-    color: 'black',
-    marginTop: 30,
-  },
-  userInfo: {
-    marginTop: 60,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 30,
-  },
-  verificationWrapper: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    marginTop: 10,
-  },
+
   investorHeading: {
     fontWeight: '700',
-    fontSize: 14,
+    fontSize: '14@s',
     color: 'black',
     marginTop: 15,
     marginBottom: 20,
   },
   investments: {width: '90%', alignSelf: 'center'},
-  verifiedText: {color: '#909090', fontWeight: '400'},
   divider: {
     marginTop: 30,
     borderWidth: 1,
     borderColor: '#EAEAEA',
     width: '100%',
     alignSelf: 'center',
-  },
-  tinyLogo: {
-    width: 90,
-    height: 90,
-    borderRadius: 50,
   },
 });

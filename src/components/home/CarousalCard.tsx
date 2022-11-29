@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {ScaledSheet} from 'react-native-size-matters';
 
 export const SLIDER_WIDTH = Dimensions.get('window').width + 80;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.5);
@@ -31,13 +32,13 @@ const CarouselCardItem = ({item, index}: CarouselCardItemProps) => {
   );
 };
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   container: {
     borderRadius: 8,
     marginLeft: 20,
     justifyContent: 'flex-end',
     width: '80%',
-    height: 200,
+    height: '160@vs',
   },
   text: {fontWeight: '800', fontSize: 20, color: '#fff'},
   ImageContainer: {position: 'absolute', top: 0, left: 0, right: 0, bottom: 0},

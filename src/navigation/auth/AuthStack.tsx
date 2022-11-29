@@ -36,7 +36,15 @@ const AuthStack = ({
       }}>
       <Stack.Screen name="Auth" component={Auth}></Stack.Screen>
       <Stack.Screen name="Splash" component={Splash}></Stack.Screen>
-      <Stack.Screen name="LoginType" component={LoginType}></Stack.Screen>
+      <Stack.Screen name="LoginType">
+        {props => (
+          <LoginType
+            {...props}
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
+        )}
+      </Stack.Screen>
       <Stack.Screen name="Login">
         {props => (
           <Login

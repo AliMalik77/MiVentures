@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import RootNavigation from './src/navigation/RootNavigation';
-
+import BottomNavigator from './src/navigation/app/BottomNavigator';
+import Intro from './src/screens/intro/Intro';
 const App = () => {
   const [userData, setUserData] = useState({
     email: '',
@@ -19,6 +20,7 @@ const App = () => {
           setAuthenticated={setAuthenticated}
         />
         {/* <BottomNavigator /> */}
+        {/* <Intro /> */}
         {/* <InvestorInfo /> */}
       </NavigationContainer>
     </>

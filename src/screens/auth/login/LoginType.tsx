@@ -1,36 +1,31 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Pressable,
-  TouchableOpacity,
-  Alert,
-} from 'react-native';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
 
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import Close from '../../../../assets/svgs/Exiticon.svg';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 import Apple from '../../../../assets/svgs/Apple.svg';
-import Background2 from '../../../../assets/svgs/Background2.svg';
 import Mailbox from '../../../../assets/svgs/Mailbox.svg';
 import Google from '../../../../assets/svgs/Google.svg';
 import auth from '@react-native-firebase/auth';
 import Config from 'react-native-config';
 import {NavigationProp} from '@react-navigation/native';
-const LoginType = ({
-  navigation,
-}: {
+import Background from '../../../components/auth/login/loginType/Background';
+
+type LogintypeProps = {
+  authenticated: Boolean;
+  setAuthenticated: (val: Boolean) => void;
   navigation: NavigationProp<{Auth: undefined; Login: undefined}>;
-}) => {
-  const [authenticated, setAuthenticated] = useState(false);
+};
 
-  console.log('env data', Config.CLIENTID);
+const LoginType = ({
+  authenticated,
+  setAuthenticated,
+  navigation,
+}: LogintypeProps) => {
   useEffect(() => {
-    GoogleSignin.configure({
-      scopes: ['https://www.googleapis.com/auth/drive.readonly'],
-      webClientId: Config.CLIENTID,
-    });
-
+    GoogleSignin.configure();
     auth().onAuthStateChanged(user => {
       if (user) {
         setAuthenticated(true);
@@ -39,27 +34,27 @@ const LoginType = ({
   }, []);
 
   const googleSignin = async () => {
-    // await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
-    console.log('hi');
-
-    const {idToken} = await GoogleSignin.signIn();
-    console.log('id token', idToken);
-
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-    return auth().signInWithCredential(googleCredential);
-  };
-
-  const createUser = (email: string, password: string) => {
     try {
-      auth().createUserWithEmailAndPassword(email, password);
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      if (userInfo.user) {
+        setAuthenticated(true);
+      }
     } catch (error: any) {
-      Alert.alert(error);
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
     }
   };
 
   const handleBack = () => {
-    navigation.navigate('Auth');
+    navigation.goBack();
   };
 
   const handleEmailLogin = () => {
@@ -68,19 +63,7 @@ const LoginType = ({
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.icon}>
-          <TouchableOpacity onPress={handleBack}>
-            <Close height={25} width={25} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.descHeader}>
-          <Text style={styles.description}>How do you want to log in?</Text>
-        </View>
-      </View>
-      <View style={styles.center}>
-        <Background2 style={styles.background2} />
-      </View>
+      <Background onPress={handleBack} />
       <View style={styles.footer}>
         <Pressable style={[styles.button, {backgroundColor: 'black'}]}>
           <View style={styles.buttonContent}>
@@ -92,11 +75,7 @@ const LoginType = ({
         <Pressable
           style={[styles.button, {backgroundColor: '#EA4335'}]}
           onPress={() => {
-            googleSignin()
-              .then(res => {
-                console.log('google response is successful', res);
-              })
-              .catch(err => console.log('error getting is =======', err));
+            googleSignin();
           }}>
           <View style={styles.buttonContent}>
             <Google height={25} width={25} />
@@ -125,27 +104,10 @@ const styles = StyleSheet.create({
     width: '80%',
     justifyContent: 'space-evenly',
   },
-  background2: {alignItems: 'center', width: '100%', height: '100%'},
   w90: {
     width: '90%',
   },
-  descHeader: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: '25%',
-    width: '50%',
-  },
-  description: {
-    color: 'black',
-    fontSize: 24,
-    fontWeight: '800',
-    textAlign: 'center',
-  },
 
-  icon: {
-    padding: 30,
-    marginTop: 30,
-  },
   button: {
     display: 'flex',
     flexDirection: 'row',
@@ -164,14 +126,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  header: {
-    flex: 1,
-  },
-  center: {
-    flex: 2,
-    marginRight: 30,
-    marginLeft: 30,
-  },
+
   footer: {
     flex: 1,
     alignItems: 'center',
