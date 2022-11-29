@@ -8,9 +8,6 @@ const App = () => {
     password: '',
   });
   const [authenticated, setAuthenticated] = useState<boolean>(false);
-  // if (authData.uid) {
-  // let signout = auth().signOut();
-  // let authData = auth().currentUser;
 
   return (
     <>
@@ -21,6 +18,8 @@ const App = () => {
           authenticated={authenticated}
           setAuthenticated={setAuthenticated}
         />
+        {/* <BottomNavigator /> */}
+        {/* <InvestorInfo /> */}
       </NavigationContainer>
     </>
   );

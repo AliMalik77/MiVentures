@@ -1,9 +1,13 @@
 import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
-import {NavigationProps} from '../../types/navigation';
 import SplashLogo from '../../../assets/svgs/Splash.svg';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 
-const Splash = ({navigation}: NavigationProps) => {
+const Splash = ({
+  navigation,
+}: {
+  navigation: NavigationProp<{Auth: undefined}>;
+}) => {
   useEffect(() => {
     setTimeout(() => {
       navigation.navigate('Auth');

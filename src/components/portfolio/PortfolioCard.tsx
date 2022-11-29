@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import Option from '../../../assets/svgs/Option.svg';
 import Infoicon from '../../../assets/svgs/Infoicon.svg';
 
@@ -16,51 +16,20 @@ type ProtfolioCardProps = {
 };
 
 const PortfolioCard = ({data}: ProtfolioCardProps) => {
+  const {desc, discount, invested, remainingTime, topic, valuationCap} = data;
   return (
-    <View
-      style={{
-        alignSelf: 'center',
-        borderWidth: 2,
-        borderRadius: 12,
-        borderColor: '#EAEAEA',
-        backgroundColor: '#fff',
-        width: '100%',
-        marginBottom: 20,
-      }}>
-      <View
-        style={{
-          marginTop: 10,
-          marginRight: 20,
-          alignItems: 'flex-end',
-        }}>
+    <View style={styles.container}>
+      <View style={styles.option}>
         <Option width={20} />
       </View>
 
-      <View
-        style={{
-          width: '90%',
-          alignSelf: 'center',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}>
-        <Text style={{fontWeight: '800', fontSize: 19, color: 'black'}}>
-          {data.topic}
-        </Text>
-        <Text style={{fontWeight: '800', fontSize: 19, color: '#FFB400'}}>
-          Fundraising
-        </Text>
+      <View style={styles.topicWrapper}>
+        <Text style={[styles.text, {color: 'black'}]}>{topic}</Text>
+        <Text style={[styles.text, {color: '#FFB400'}]}>Fundraising</Text>
       </View>
-      <View
-        style={{
-          width: '90%',
-          alignSelf: 'center',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}>
-        <Text>{data.desc} </Text>
-        <Text>{data.remainingTime} days left</Text>
+      <View style={styles.desc}>
+        <Text>{desc} </Text>
+        <Text>{remainingTime} days left</Text>
       </View>
 
       <View
@@ -72,40 +41,25 @@ const PortfolioCard = ({data}: ProtfolioCardProps) => {
           justifyContent: 'space-evenly',
         }}>
         <View>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}>
-            <Text style={{marginRight: 10}}>Invested</Text>
+          <View style={styles.infoIcon}>
+            <Text style={styles.mr10}>Invested</Text>
             <Infoicon />
           </View>
-          <Text>${data.invested}</Text>
+          <Text>${invested}</Text>
         </View>
         <View>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}>
+          <View style={styles.infoIcon}>
             <Text style={{marginRight: 10}}>Valuation Cap</Text>
             <Infoicon />
           </View>
-          <Text> ${data.valuationCap}</Text>
+          <Text> ${valuationCap}</Text>
         </View>
         <View>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}>
-            <Text style={{marginRight: 10}}>Discount</Text>
+          <View style={styles.infoIcon}>
+            <Text style={styles.mr10}>Discount</Text>
             <Infoicon />
           </View>
-          <Text>{data.discount}%</Text>
+          <Text>{discount}%</Text>
         </View>
       </View>
     </View>
@@ -113,3 +67,45 @@ const PortfolioCard = ({data}: ProtfolioCardProps) => {
 };
 
 export default PortfolioCard;
+
+const styles = StyleSheet.create({
+  container: {
+    alignSelf: 'center',
+    borderWidth: 2,
+    borderRadius: 12,
+    borderColor: '#EAEAEA',
+    backgroundColor: '#fff',
+    width: '100%',
+    marginBottom: 20,
+  },
+  mr10: {marginRight: 10},
+  option: {
+    marginTop: 10,
+    marginRight: 20,
+    alignItems: 'flex-end',
+  },
+
+  infoIcon: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  text: {
+    fontWeight: '800',
+    fontSize: 19,
+  },
+  topicWrapper: {
+    width: '90%',
+    alignSelf: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  desc: {
+    width: '90%',
+    alignSelf: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+});

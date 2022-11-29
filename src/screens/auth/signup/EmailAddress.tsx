@@ -9,36 +9,24 @@ import {
 
 import Back from '../../../../assets/svgs/Backicon.svg';
 import Button from '../../../components/common/Button';
+import {NavigationProp} from '@react-navigation/native';
 
 type EmailScreenProps = {
-  navigation: {
-    addListener: Function;
-    canGoBack: Function;
-    dispatch: Function;
-    getId: Function;
-    getParent: Function;
-    getState: Function;
-    goBack: Function;
-    isFocused: Function;
-    navigate: Function;
-    pop: Function;
-    popToTop: Function;
-    push: Function;
-    removeListener: Function;
-    replace: Function;
-    reset: Function;
-    setOptions: Function;
-    setParams: Function;
-  };
   userData: {email: string; password: string};
   setUserData: (val: {email: string; password: string}) => void;
 };
 
-const EmailAddress = ({
-  navigation,
-  userData,
-  setUserData,
-}: EmailScreenProps) => {
+const EmailAddress = (
+  {userData, setUserData}: EmailScreenProps,
+  {
+    navigation,
+  }: {
+    navigation: NavigationProp<{
+      SignupType: undefined;
+      SignupPassword: undefined;
+    }>;
+  },
+) => {
   const handleBack = () => {
     navigation.navigate('SignupType');
   };
@@ -59,7 +47,7 @@ const EmailAddress = ({
           <Text style={styles.description}>What’s your email address?</Text>
         </View>
 
-        <View style={{width: '100%', alignItems: 'center'}}>
+        <View style={styles.fieldWrapper}>
           <TextInput
             textContentType="emailAddress"
             placeholder="Email Address"
@@ -68,15 +56,14 @@ const EmailAddress = ({
               setUserData({...userData, email: email})
             }></TextInput>
 
-          <View style={{marginTop: 20, width: '100%', alignItems: 'center'}}>
+          <View style={styles.buttonWrapper}>
             <Button
               text="Next"
-              btnWidth="90%"
               color="#377BF5"
               textColor="white"
               bordercolor="#377BF5"
               border={0}
-              handler={() => handleNext()}
+              onPress={() => handleNext()}
             />
           </View>
         </View>
@@ -88,6 +75,8 @@ const EmailAddress = ({
 export default EmailAddress;
 
 const styles = StyleSheet.create({
+  buttonWrapper: {marginTop: 20, width: '90%', alignItems: 'center'},
+  fieldWrapper: {width: '100%', alignItems: 'center'},
   fieldContainer: {
     height: 50,
     width: '90%',

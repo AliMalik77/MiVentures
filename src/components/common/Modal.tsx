@@ -30,7 +30,7 @@ const ModalComponent = ({
   footerPara,
 }: ModalProps) => {
   return (
-    <View style={{marginTop: 20}}>
+    <View style={styles.mt20}>
       <Modal
         animationType={'fade'}
         transparent={true}
@@ -39,7 +39,7 @@ const ModalComponent = ({
           width: Dimensions.get('window').width * 0.5,
           height: Dimensions.get('window').height * 0.5,
         }}>
-        <View style={{flex: 1, justifyContent: 'center'}}>
+        <View style={styles.modalContainer}>
           <View style={styles.modal}>
             <View style={styles.icon}>
               <TouchableOpacity
@@ -51,14 +51,14 @@ const ModalComponent = ({
             </View>
 
             <View style={{alignItems: 'center'}}>
-              <View style={{width: '80%', alignItems: 'center'}}>
+              <View style={styles.title}>
                 <Text style={styles.text}>{title}</Text>
               </View>
               <View style={{width: '90%', alignItems: 'center'}}>
-                <View style={{marginTop: 20}}>
+                <View style={styles.mt20}>
                   <Text style={styles.textDescription}>{headerPara}</Text>
                 </View>
-                <View style={{marginTop: 20}}>
+                <View style={styles.mt20}>
                   <Text style={styles.textDescription}>
                     You can track how much you invest and your investment limits
                     all on the Miventure App.
@@ -90,12 +90,14 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     marginLeft: 40,
   },
+  modalContainer: {flex: 1, justifyContent: 'center'},
   text: {
     fontSize: 24,
     fontWeight: '800',
     color: '#000000',
     textAlign: 'center',
   },
+  mt20: {marginTop: 20},
   textDescription: {
     textAlign: 'center',
     fontSize: 17,
@@ -108,4 +110,5 @@ const styles = StyleSheet.create({
     padding: 20,
     marginTop: 10,
   },
+  title: {width: '80%', alignItems: 'center'},
 });

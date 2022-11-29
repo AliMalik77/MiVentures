@@ -58,13 +58,7 @@ const Intro = () => {
       )}
 
       <View style={styles.footer}>
-        <Text
-          style={{
-            color: '#909090',
-            fontWeight: '500',
-            fontSize: 11,
-            textAlign: 'center',
-          }}>
+        <Text style={styles.text}>
           Disclaimer: All investment opportunities on Miventure are offered
           under <Text style={styles.highlights}>Regulation Crowdfunding</Text>{' '}
           through Miventure Inc., a Funding Portal registered with the SEC and a
@@ -78,12 +72,11 @@ const Intro = () => {
 export default Intro;
 
 const styles = StyleSheet.create({
-  text2: {
-    fontSize: 20,
-    lineHeight: 21,
+  text: {
+    color: '#909090',
     fontWeight: '500',
-    letterSpacing: 0.25,
-    color: '#fff',
+    fontSize: 11,
+    textAlign: 'center',
   },
   highlights: {
     color: '#377BF5',

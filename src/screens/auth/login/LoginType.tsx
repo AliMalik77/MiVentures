@@ -15,14 +15,20 @@ import Background2 from '../../../../assets/svgs/Background2.svg';
 import Mailbox from '../../../../assets/svgs/Mailbox.svg';
 import Google from '../../../../assets/svgs/Google.svg';
 import auth from '@react-native-firebase/auth';
-import {NavigationProps} from '../../../types/navigation';
-
-const LoginType = ({navigation}: NavigationProps) => {
+import Config from 'react-native-config';
+import {NavigationProp} from '@react-navigation/native';
+const LoginType = ({
+  navigation,
+}: {
+  navigation: NavigationProp<{Auth: undefined; Login: undefined}>;
+}) => {
   const [authenticated, setAuthenticated] = useState(false);
 
+  console.log('env data', Config.CLIENTID);
   useEffect(() => {
     GoogleSignin.configure({
-      webClientId: process.env.CLIENTID,
+      scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+      webClientId: Config.CLIENTID,
     });
 
     auth().onAuthStateChanged(user => {
@@ -33,7 +39,11 @@ const LoginType = ({navigation}: NavigationProps) => {
   }, []);
 
   const googleSignin = async () => {
+    // await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
+    console.log('hi');
+
     const {idToken} = await GoogleSignin.signIn();
+    console.log('id token', idToken);
 
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
@@ -69,19 +79,11 @@ const LoginType = ({navigation}: NavigationProps) => {
         </View>
       </View>
       <View style={styles.center}>
-        <Background2
-          style={{alignItems: 'center', width: '100%', height: '100%'}}
-        />
+        <Background2 style={styles.background2} />
       </View>
       <View style={styles.footer}>
         <Pressable style={[styles.button, {backgroundColor: 'black'}]}>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              width: '80%',
-              justifyContent: 'space-evenly',
-            }}>
+          <View style={styles.buttonContent}>
             <Apple height={25} width={25} />
             <Text style={styles.text}>Log in with Apple</Text>
           </View>
@@ -94,15 +96,9 @@ const LoginType = ({navigation}: NavigationProps) => {
               .then(res => {
                 console.log('google response is successful', res);
               })
-              .catch(err => console.log(err));
+              .catch(err => console.log('error getting is =======', err));
           }}>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              width: '80%',
-              justifyContent: 'space-evenly',
-            }}>
+          <View style={styles.buttonContent}>
             <Google height={25} width={25} />
             <Text style={styles.text}>Log in with Google</Text>
           </View>
@@ -110,13 +106,7 @@ const LoginType = ({navigation}: NavigationProps) => {
         <Pressable
           style={[styles.button, {backgroundColor: '#377BF5'}]}
           onPress={handleEmailLogin}>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              width: '80%',
-              justifyContent: 'space-evenly',
-            }}>
+          <View style={styles.buttonContent}>
             <Mailbox height={25} width={25} />
             <Text style={styles.text}>Log in with Email</Text>
           </View>
@@ -129,6 +119,13 @@ const LoginType = ({navigation}: NavigationProps) => {
 export default LoginType;
 
 const styles = StyleSheet.create({
+  buttonContent: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '80%',
+    justifyContent: 'space-evenly',
+  },
+  background2: {alignItems: 'center', width: '100%', height: '100%'},
   w90: {
     width: '90%',
   },

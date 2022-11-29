@@ -1,3 +1,4 @@
+import {NavigationProp} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {
   View,
@@ -8,10 +9,15 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Back from '../../../../assets/svgs/Backicon.svg';
-import {NavigationProps} from '../../../types/navigation';
 
-const PasswordReset = ({navigation}: NavigationProps) => {
-  const [error, setError] = useState();
+const PasswordReset = ({
+  navigation,
+}: {
+  navigation: NavigationProp<{
+    Login: undefined;
+  }>;
+}) => {
+  const [error] = useState();
 
   const handleBack = () => {
     navigation.navigate('Login');
@@ -29,7 +35,7 @@ const PasswordReset = ({navigation}: NavigationProps) => {
           <Text style={styles.description}>Password Reset</Text>
         </View>
 
-        <View style={{width: '100%', alignItems: 'center'}}>
+        <View style={styles.fieldWrapper}>
           <View style={styles.w80}>
             <Text style={styles.submitText}>
               Submit your user email and we’ll send you password reset
@@ -66,6 +72,7 @@ const PasswordReset = ({navigation}: NavigationProps) => {
 export default PasswordReset;
 
 const styles = StyleSheet.create({
+  fieldWrapper: {width: '100%', alignItems: 'center'},
   error: {textAlign: 'center', color: '#EA4335'},
   successText: {textAlign: 'center', color: '#57A773'},
   w80: {

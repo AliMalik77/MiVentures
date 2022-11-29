@@ -2,9 +2,18 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Close from '../../../../assets/svgs/Exiticon.svg';
 import Button from '../../../components/common/Button';
-import {NavigationProps} from '../../../types/navigation';
 import Background2 from '../../../../assets/svgs/Background2.svg';
-const SignupType = ({navigation}: NavigationProps) => {
+import {NavigationProp} from '@react-navigation/native';
+
+const SignupType = ({
+  navigation,
+}: {
+  navigation: NavigationProp<{
+    Login: undefined;
+    Auth: undefined;
+    Email: undefined;
+  }>;
+}) => {
   const handleClick = () => {
     navigation.navigate('Login');
   };
@@ -32,14 +41,11 @@ const SignupType = ({navigation}: NavigationProps) => {
         </View>
       </View>
       <View style={styles.center}>
-        <Background2
-          style={{alignItems: 'center', width: '100%', height: '100%'}}
-        />
+        <Background2 style={styles.background2} />
       </View>
       <View style={styles.footer}>
         <Button
           text="Sign up with Google"
-          btnWidth="90%"
           color="#EA4335"
           textColor="white"
           bordercolor="#377BF5"
@@ -48,21 +54,19 @@ const SignupType = ({navigation}: NavigationProps) => {
 
         <Button
           text="Signup with email"
-          btnWidth="90%"
           color="#377BF5"
           textColor="white"
           bordercolor="#377BF5"
           border={0}
-          handler={() => handleEmailSignup()}
+          onPress={() => handleEmailSignup()}
         />
         <Button
           text="Login"
-          btnWidth="90%"
           color="#fff"
           textColor="#377BF5"
           bordercolor="#377BF5"
           border={2}
-          handler={() => handleClick()}
+          onPress={() => handleClick()}
         />
       </View>
     </View>
@@ -72,6 +76,7 @@ const SignupType = ({navigation}: NavigationProps) => {
 export default SignupType;
 
 const styles = StyleSheet.create({
+  background2: {alignItems: 'center', width: '100%', height: '100%'},
   descHeader: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -101,7 +106,8 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 1,
-    alignItems: 'center',
+    alignSelf: 'center',
     justifyContent: 'center',
+    width: '90%',
   },
 });

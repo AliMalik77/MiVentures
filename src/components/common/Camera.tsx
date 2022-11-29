@@ -1,5 +1,5 @@
-import React, {Component, useRef, useState} from 'react';
-import {StyleSheet, TouchableOpacity, Text} from 'react-native';
+import React, {useState} from 'react';
+import {TouchableOpacity, Text} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 
 const Camera = () => {

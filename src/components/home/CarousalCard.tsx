@@ -14,27 +14,18 @@ type CarouselCardItemProps = {
 };
 
 const CarouselCardItem = ({item, index}: CarouselCardItemProps) => {
+  const {ImgUrl, title} = item;
+
   return (
     <>
-      <View
-        style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0}}>
-        <item.ImgUrl />
+      <View style={styles.ImageContainer}>
+        <ImgUrl />
       </View>
 
       <View style={styles.container} key={index}>
-        <Text style={{fontWeight: '800', fontSize: 20, color: '#fff'}}>
-          {item.title}
-        </Text>
+        <Text style={styles.text}>{title}</Text>
 
-        <Text
-          style={{
-            fontWeight: '500',
-            fontSize: 13,
-            color: '#fff',
-            marginBottom: 10,
-          }}>
-          Homeskool
-        </Text>
+        <Text style={styles.desc}>Homeskool</Text>
       </View>
     </>
   );
@@ -48,6 +39,8 @@ const styles = StyleSheet.create({
     width: '80%',
     height: 200,
   },
+  text: {fontWeight: '800', fontSize: 20, color: '#fff'},
+  ImageContainer: {position: 'absolute', top: 0, left: 0, right: 0, bottom: 0},
   image: {
     width: ITEM_WIDTH,
   },
@@ -58,11 +51,16 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingTop: 20,
   },
+  desc: {
+    fontWeight: '500',
+    fontSize: 13,
+    color: '#fff',
+    marginBottom: 10,
+  },
   body: {
     color: '#222',
     fontSize: 18,
     paddingLeft: 20,
-
     paddingRight: 20,
   },
 });

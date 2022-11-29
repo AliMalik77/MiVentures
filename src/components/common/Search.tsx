@@ -1,4 +1,5 @@
 import React from 'react';
+import {StyleSheet} from 'react-native';
 import {Searchbar} from 'react-native-paper';
 
 type SearchProps = {
@@ -17,9 +18,13 @@ const Search = ({searchQuery, setSearchQuery}: SearchProps) => {
       onChangeText={handleChange}
       value={searchQuery}
       iconColor={'#377BF5'}
-      style={{borderRadius: 9}}
+      style={styles.search}
     />
   );
 };
 
 export default Search;
+
+const styles = StyleSheet.create({
+  search: {borderRadius: 9},
+});

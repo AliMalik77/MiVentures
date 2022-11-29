@@ -45,7 +45,7 @@ const BottomNavigator = () => {
         name="postal"
         component={PortfolioScreen}
         options={{
-          tabBarLabel: 'postal',
+          tabBarLabel: 'Postal',
           tabBarIcon: ({focused}) => {
             return focused ? (
               <PortfolioComponent color="#377BF5" />

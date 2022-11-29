@@ -11,27 +11,9 @@ import {
 import auth from '@react-native-firebase/auth';
 import Back from '../../../../assets/svgs/Backicon.svg';
 import Button from '../../../components/common/Button';
+import {NavigationProp} from '@react-navigation/native';
 
 type PasswordScreenProps = {
-  navigation: {
-    addListener: Function;
-    canGoBack: Function;
-    dispatch: Function;
-    getId: Function;
-    getParent: Function;
-    getState: Function;
-    goBack: Function;
-    isFocused: Function;
-    navigate: Function;
-    pop: Function;
-    popToTop: Function;
-    push: Function;
-    removeListener: Function;
-    replace: Function;
-    reset: Function;
-    setOptions: Function;
-    setParams: Function;
-  };
   userData: {
     email: string;
     password: string;
@@ -39,12 +21,17 @@ type PasswordScreenProps = {
   setUserData: (val: {email: string; password: string}) => void;
 };
 
-const SignupPassword = ({
-  navigation,
-  userData,
-  setUserData,
-}: PasswordScreenProps) => {
-  const [error, setError] = useState(false);
+const SignupPassword = (
+  {userData, setUserData}: PasswordScreenProps,
+  {
+    navigation,
+  }: {
+    navigation: NavigationProp<{
+      Email: undefined;
+    }>;
+  },
+) => {
+  const [error] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
 
   const handleBack = () => {
@@ -85,7 +72,7 @@ const SignupPassword = ({
           <Text style={styles.description}>Create your password</Text>
         </View>
 
-        <View style={{width: '100%', alignItems: 'center'}}>
+        <View style={styles.fieldsWrapper}>
           <TextInput
             textContentType="password"
             secureTextEntry={true}
@@ -107,12 +94,11 @@ const SignupPassword = ({
           )}
           <Button
             text="Next"
-            btnWidth="90%"
             color="#377BF5"
             textColor="white"
             bordercolor="#377BF5"
             border={0}
-            handler={() => createUser()}
+            onPress={() => createUser()}
           />
         </View>
       </View>
@@ -123,6 +109,7 @@ const SignupPassword = ({
 export default SignupPassword;
 
 const styles = StyleSheet.create({
+  fieldsWrapper: {width: '100%', alignItems: 'center'},
   errorContainer: {width: '90%', marginTop: 50, marginBottom: 10},
   errorText: {
     color: '#EA4335',

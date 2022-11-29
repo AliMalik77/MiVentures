@@ -15,16 +15,12 @@
       },
       "oauth_client": [
         {
-          "client_id": "180123884938-qr6td0b3rs45ike9o0hqqe4uhb0cqp2p.apps.googleusercontent.com",
+          "client_id": "180123884938-squ9758l079fpbjtumfj7oo6rncrkol2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.Miventures",
-            "certificate_hash": "4e5f2f83364dc128b9388ffb63ffb13e6e48813a"
+            "certificate_hash": "06eaf6790eda496428925cc78cbe718ade823746"
           }
-        },
-        {
-          "client_id": "180123884938-0iv7p5s8me7e1l6gthmmosd40m4i8o2a.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
@@ -58,10 +54,6 @@
             "package_name": "com.miventures",
             "certificate_hash": "4e5f2f83364dc128b9388ffb63ffb13e6e48813a"
           }
-        },
-        {
-          "client_id": "180123884938-0iv7p5s8me7e1l6gthmmosd40m4i8o2a.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
@@ -87,12 +79,7 @@
           "package_name": "com.myproject"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "180123884938-0iv7p5s8me7e1l6gthmmosd40m4i8o2a.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
           "current_key": "AIzaSyAuUv4aisE0QzSSRt6G8K4HUJXmBGVIhOc"
@@ -124,10 +111,6 @@
             "package_name": "com.myproject.test",
             "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
           }
-        },
-        {
-          "client_id": "180123884938-0iv7p5s8me7e1l6gthmmosd40m4i8o2a.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [

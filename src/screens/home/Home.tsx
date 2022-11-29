@@ -7,16 +7,28 @@ import CarouselCardItem, {
   ITEM_WIDTH,
   SLIDER_WIDTH,
 } from '../../components/home/CarousalCard';
+import {
+  scale,
+  verticalScale,
+  moderateScale,
+  ScaledSheet,
+} from 'react-native-size-matters';
 
 import Card from '../../components/home/Card';
 import Gift from '../../../assets/svgs/Gift.svg';
 import Arrowright from '../../../assets/svgs/Arrowright.svg';
 import Dropdown from '../../../assets/svgs/Dropdown.svg';
-import {NavigationProps} from '../../types/navigation';
 import {carouselData, startups, testData} from '../../utils/home/Home';
+import {NavigationProp} from '@react-navigation/native';
 
-const HomeScreen = ({navigation}: NavigationProps) => {
-  const isCarousel = React.useRef(null);
+const HomeScreen = ({
+  navigation,
+}: {
+  navigation: NavigationProp<{
+    postal: {};
+  }>;
+}) => {
+  const carousalReference = React.useRef(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [search, setSearch] = useState([
     {id: '', fundingGoal: '', title: '', topic: ''},
@@ -32,39 +44,23 @@ const HomeScreen = ({navigation}: NavigationProps) => {
   }, [searchQuery]);
 
   return (
-    <View
-      style={{
-        flex: 1,
-        width: '90%',
-        alignSelf: 'center',
-        marginTop: 50,
-      }}>
+    <View style={styles.container}>
       <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <FlatList
         data={searchQuery ? search : startups}
         keyExtractor={item => item.id}
+        ItemSeparatorComponent={() => {
+          return <></>;
+        }}
         ListHeaderComponent={() => {
           return (
             <>
-              <View
-                style={{
-                  marginTop: 30,
-                  display: 'flex',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}>
+              <View style={styles.headerContainer}>
                 <View style={{width: '60%'}}>
                   <Title title={'Invest in a Startup'} />
                 </View>
                 <View style={styles.cardShadow}>
-                  <View
-                    style={{
-                      borderRadius: 50,
-                      borderColor: '#E5E5E5',
-                      borderWidth: 2,
-                      padding: 7,
-                    }}>
+                  <View style={styles.giftWrapper}>
                     <TouchableOpacity
                       onPress={() => {
                         navigation.navigate('postal', {
@@ -76,25 +72,9 @@ const HomeScreen = ({navigation}: NavigationProps) => {
                   </View>
                 </View>
               </View>
-              <View
-                style={{
-                  borderWidth: 1,
-                  borderColor: '#EAEAEA',
-                  width: '70%',
-                  marginTop: 20,
-                }}
-              />
-              <View
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  marginTop: 10,
-                  alignItems: 'center',
-                  marginBottom: 10,
-                }}>
-                <Text style={{fontSize: 17, fontWeight: '700'}}>
-                  Founder Stories
-                </Text>
+              <View style={styles.divider} />
+              <View style={styles.founder}>
+                <Text style={styles.text}>Founder Stories</Text>
                 <View>
                   <Arrowright width={25} />
                 </View>
@@ -102,8 +82,8 @@ const HomeScreen = ({navigation}: NavigationProps) => {
               <View>
                 <Carousel
                   layout="default"
-                  slideStyle={{borderRadius: 20, overflow: 'hidden'}}
-                  ref={isCarousel}
+                  slideStyle={styles.carousal}
+                  ref={carousalReference}
                   data={carouselData}
                   renderItem={CarouselCardItem}
                   sliderWidth={SLIDER_WIDTH}
@@ -114,26 +94,21 @@ const HomeScreen = ({navigation}: NavigationProps) => {
                   inactiveSlideOpacity={1}
                 />
               </View>
-              <View
-                style={{
-                  marginTop: 20,
-                  display: 'flex',
-                  flexDirection: 'row',
-                  marginBottom: 10,
-                  alignItems: 'center',
-                }}>
-                <Text style={{fontSize: 17, fontWeight: '700'}}>
-                  All Startups
-                </Text>
+              <View style={styles.startup}>
+                <Text style={styles.text}>All Startups</Text>
 
                 <Dropdown width={25} />
               </View>
             </>
           );
         }}
+        extraData={() => {
+          return <></>;
+        }}
         renderItem={({item}) => {
           return <Card data={item} />;
         }}
+        // stickyHeaderIndices={[0]}
         showsVerticalScrollIndicator={false}
       />
     </View>
@@ -141,7 +116,48 @@ const HomeScreen = ({navigation}: NavigationProps) => {
 };
 export default HomeScreen;
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
+  divider: {
+    borderWidth: 1,
+    borderColor: '#EAEAEA',
+    width: '70%',
+    marginTop: 20,
+  },
+  carousal: {borderRadius: 20, overflow: 'hidden'},
+  text: {fontSize: '14@s', fontWeight: '700'},
+  startup: {
+    marginTop: 20,
+    display: 'flex',
+    flexDirection: 'row',
+    marginBottom: 10,
+    alignItems: 'center',
+  },
+  founder: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: 10,
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  giftWrapper: {
+    borderRadius: 50,
+    borderColor: '#E5E5E5',
+    borderWidth: 2,
+    padding: 7,
+  },
+  headerContainer: {
+    marginTop: 30,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  container: {
+    flex: 1,
+    width: '90%',
+    alignSelf: 'center',
+    marginTop: 50,
+  },
   cardShadow: {
     borderRadius: 50,
     backgroundColor: '#fff',
