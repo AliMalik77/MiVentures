@@ -1,12 +1,21 @@
 import React from 'react';
-import {Button, View} from 'react-native';
-import {NavigationProps} from '../../types/navigation';
-
-const Notifications = ({navigation}: NavigationProps) => {
+import {Button, StyleSheet, View} from 'react-native';
+import {NavigationProp} from '@react-navigation/native';
+const Notifications = ({
+  navigation,
+}: {
+  navigation: NavigationProp<{
+    Notifications: undefined;
+  }>;
+}) => {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    <View style={styles.container}>
       <Button onPress={() => navigation.goBack()} title="Go back home" />
     </View>
   );
 };
 export default Notifications;
+
+const styles = StyleSheet.create({
+  container: {flex: 1, alignItems: 'center', justifyContent: 'center'},
+});

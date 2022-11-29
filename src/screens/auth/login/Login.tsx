@@ -10,35 +10,22 @@ import {
 import auth from '@react-native-firebase/auth';
 import Back from '../../../../assets/svgs/Backicon.svg';
 import Button from '../../../components/common/Button';
-
+import {NavigationProp} from '@react-navigation/native';
+import LoginHeader from '../../../components/auth/login/login/Header';
+import {ScaledSheet} from 'react-native-size-matters';
 type LoginScreenProps = {
-  navigation: {
-    addListener: Function;
-    canGoBack: Function;
-    dispatch: Function;
-    getId: Function;
-    getParent: Function;
-    getState: Function;
-    goBack: Function;
-    isFocused: Function;
-    navigate: Function;
-    pop: Function;
-    popToTop: Function;
-    push: Function;
-    removeListener: Function;
-    replace: Function;
-    reset: Function;
-    setOptions: Function;
-    setParams: Function;
-  };
   authenticated: Boolean;
   setAuthenticated: (val: Boolean) => void;
+  navigation: NavigationProp<{
+    ForgotPassword: undefined;
+    LoginType: undefined;
+  }>;
 };
 
 const Login = ({
-  navigation,
   authenticated,
   setAuthenticated,
+  navigation,
 }: LoginScreenProps) => {
   const [email, setEmail] = useState<any | null>(null);
   const [password, setPassword] = useState<any | null>(null);
@@ -59,12 +46,21 @@ const Login = ({
   }, []);
 
   const handleBack = () => {
-    navigation.navigate('LoginType');
+    navigation.goBack();
   };
 
   const handleLogin = () => {
     try {
-      if (email && password) {
+      if (!email && !password) {
+        Alert.alert('Enter email & password to login');
+      }
+      if (!email && password) {
+        Alert.alert('Enter email to login');
+      }
+      if (!password && email) {
+        Alert.alert('Enter  password to login');
+      }
+      if (email.length && password.length) {
         auth()
           .signInWithEmailAndPassword(email, password)
           .then(res => {
@@ -81,16 +77,9 @@ const Login = ({
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.icon}>
-          <TouchableOpacity onPress={handleBack}>
-            <Back height={25} width={25} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.descHeader}>
-          <Text style={styles.description}>Hey there! Welcome back.</Text>
-        </View>
+        <LoginHeader onPress={handleBack} />
 
-        <View style={{width: '100%', alignItems: 'center'}}>
+        <View style={styles.fieldWrapper}>
           <TextInput
             textContentType="emailAddress"
             placeholder="Email"
@@ -105,15 +94,16 @@ const Login = ({
           <TouchableOpacity onPress={handleForgot}>
             <Text style={styles.forgotPassword}>Forgot your password?</Text>
           </TouchableOpacity>
-          <Button
-            text="Login"
-            btnWidth="90%"
-            color="#377BF5"
-            textColor="#fff"
-            bordercolor="#377BF5"
-            border={0}
-            handler={handleLogin}
-          />
+          <View style={styles.w90}>
+            <Button
+              text="Login"
+              color="#377BF5"
+              textColor="#fff"
+              bordercolor="#377BF5"
+              border={0}
+              onPress={handleLogin}
+            />
+          </View>
         </View>
       </View>
     </View>
@@ -122,14 +112,18 @@ const Login = ({
 
 export default Login;
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
+  fieldWrapper: {width: '100%', alignItems: 'center'},
+  w90: {
+    width: '90%',
+  },
   forgotPassword: {
     color: '#377BF5',
     marginTop: 24,
     marginBottom: 15,
   },
   fieldContainer: {
-    height: 50,
+    height: '40@vs',
     width: '90%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -144,17 +138,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: 'white',
   },
-  icon: {
-    padding: 20,
-    marginTop: 20,
-    marginBottom: 30,
-  },
-  descHeader: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: '25%',
-    width: '50%',
-  },
   container: {
     flex: 1,
     backgroundColor: 'white',
@@ -162,11 +145,5 @@ const styles = StyleSheet.create({
   header: {
     flex: 1,
     margin: 10,
-  },
-  description: {
-    color: '#000000',
-    fontSize: 24,
-    fontWeight: '800',
-    textAlign: 'center',
   },
 });

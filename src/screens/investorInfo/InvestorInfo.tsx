@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
@@ -13,8 +12,9 @@ import {useForm, Controller} from 'react-hook-form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import Back from '../../../assets/svgs/Backicon.svg';
-import {NavigationProps} from '../../types/navigation';
+import {NavigationProp} from '@react-navigation/native';
+import Header from '../../components/investorInfo/Header';
+
 const schema = yup
   .object({
     firstName: yup.string().required(),
@@ -29,7 +29,13 @@ const schema = yup
   })
   .required();
 
-const InvestorInfo = ({navigation}: NavigationProps) => {
+const InvestorInfo = ({
+  navigation,
+}: {
+  navigation: NavigationProp<{
+    Login: undefined;
+  }>;
+}) => {
   const {
     control,
     handleSubmit,
@@ -42,38 +48,18 @@ const InvestorInfo = ({navigation}: NavigationProps) => {
   };
 
   const handleBack = () => {
-    navigation.navigate('Login');
+    navigation.goBack();
   };
 
   return (
     <View style={{backgroundColor: '#fff'}}>
       <KeyboardAwareScrollView>
-        <View style={{flex: 1, width: '90%', alignSelf: 'center'}}>
-          <View>
-            <TouchableOpacity style={{marginTop: 50}} onPress={handleBack}>
-              <Back height={25} width={25} />
-            </TouchableOpacity>
-
-            <Text
-              style={{
-                marginTop: 30,
-                fontSize: 24,
-                fontWeight: '800',
-                color: 'black',
-              }}>
-              Investor Information
-            </Text>
-            <Text style={{fontSize: 16, fontWeight: '500', color: 'black'}}>
-              This info is required by U.S. Banking laws to verify your identity
-              and is protected using{' '}
-              <Text style={{color: '#377BF5'}}>bank-level security.</Text>
-            </Text>
-          </View>
+        <View style={styles.container}>
+          <Header onPress={handleBack} />
 
           <View>
-            <View
-              style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
-              <View style={{width: '50%'}}>
+            <View style={styles.nameFields}>
+              <View style={styles.w50}>
                 <Controller
                   control={control}
                   rules={{
@@ -94,18 +80,12 @@ const InvestorInfo = ({navigation}: NavigationProps) => {
                   name="firstName"
                 />
 
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#EAEAEA',
-                    width: '90%',
-                  }}
-                />
+                <View style={styles.divider} />
                 {errors.firstName && (
-                  <Text style={{color: 'red'}}>This is required.</Text>
+                  <Text style={styles.colorRed}>This is required.</Text>
                 )}
               </View>
-              <View style={{width: '50%'}}>
+              <View style={styles.w50}>
                 <Controller
                   control={control}
                   rules={{
@@ -126,15 +106,9 @@ const InvestorInfo = ({navigation}: NavigationProps) => {
                   name="lastName"
                 />
 
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#EAEAEA',
-                    width: '90%',
-                  }}
-                />
+                <View style={styles.divider} />
                 {errors.lastName && (
-                  <Text style={{color: 'red'}}>This is required.</Text>
+                  <Text style={styles.colorRed}>This is required.</Text>
                 )}
               </View>
             </View>
@@ -159,19 +133,13 @@ const InvestorInfo = ({navigation}: NavigationProps) => {
                 name="streetAddress"
               />
 
-              <View
-                style={{
-                  borderWidth: 1,
-                  borderColor: '#EAEAEA',
-                  width: '95%',
-                }}
-              />
+              <View style={styles.divider} />
               {errors.streetAddress && (
-                <Text style={{color: 'red'}}>This is required.</Text>
+                <Text style={styles.colorRed}>This is required.</Text>
               )}
             </View>
             <View style={styles.fieldsDisplay}>
-              <View style={{width: '50%'}}>
+              <View style={styles.w50}>
                 <Controller
                   control={control}
                   rules={{
@@ -192,18 +160,12 @@ const InvestorInfo = ({navigation}: NavigationProps) => {
                   name="apt"
                 />
 
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#EAEAEA',
-                    width: '90%',
-                  }}
-                />
+                <View style={styles.divider} />
                 {errors.apt && (
-                  <Text style={{color: 'red'}}>This is required.</Text>
+                  <Text style={styles.colorRed}>This is required.</Text>
                 )}
               </View>
-              <View style={{width: '50%'}}>
+              <View style={styles.w50}>
                 <Controller
                   control={control}
                   rules={{
@@ -224,21 +186,15 @@ const InvestorInfo = ({navigation}: NavigationProps) => {
                   name="city"
                 />
 
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#EAEAEA',
-                    width: '90%',
-                  }}
-                />
+                <View style={styles.divider} />
                 {errors.city && (
-                  <Text style={{color: 'red'}}>This is required.</Text>
+                  <Text style={styles.colorRed}>This is required.</Text>
                 )}
               </View>
             </View>
 
             <View style={styles.fieldsDisplay}>
-              <View style={{width: '50%'}}>
+              <View style={styles.w50}>
                 <Controller
                   control={control}
                   rules={{
@@ -259,18 +215,12 @@ const InvestorInfo = ({navigation}: NavigationProps) => {
                   name="state"
                 />
 
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#EAEAEA',
-                    width: '90%',
-                  }}
-                />
+                <View style={styles.divider} />
                 {errors.state && (
-                  <Text style={{color: 'red'}}>This is required.</Text>
+                  <Text style={styles.colorRed}>This is required.</Text>
                 )}
               </View>
-              <View style={{width: '50%'}}>
+              <View style={styles.w50}>
                 <Controller
                   control={control}
                   rules={{
@@ -291,21 +241,15 @@ const InvestorInfo = ({navigation}: NavigationProps) => {
                   name="zipCode"
                 />
 
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#EAEAEA',
-                    width: '90%',
-                  }}
-                />
+                <View style={styles.divider} />
                 {errors.zipCode && (
-                  <Text style={{color: 'red'}}>This is required.</Text>
+                  <Text style={styles.colorRed}>This is required.</Text>
                 )}
               </View>
             </View>
 
             <View style={styles.fieldsDisplay}>
-              <View style={{width: '50%'}}>
+              <View style={styles.w50}>
                 <Controller
                   control={control}
                   rules={{
@@ -325,18 +269,12 @@ const InvestorInfo = ({navigation}: NavigationProps) => {
                   name="dob"
                 />
 
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#EAEAEA',
-                    width: '90%',
-                  }}
-                />
+                <View style={styles.divider} />
                 {errors.dob && (
-                  <Text style={{color: 'red'}}>This is required.</Text>
+                  <Text style={styles.colorRed}>This is required.</Text>
                 )}
               </View>
-              <View style={{width: '50%'}}>
+              <View style={styles.w50}>
                 <Controller
                   control={control}
                   rules={{
@@ -356,33 +294,20 @@ const InvestorInfo = ({navigation}: NavigationProps) => {
                   name="ssn"
                 />
                 {errors.ssn && (
-                  <Text style={{color: 'red'}}>This is required.</Text>
+                  <Text style={styles.colorRed}>This is required.</Text>
                 )}
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#EAEAEA',
-                    width: '90%',
-                  }}
-                />
+                <View style={styles.divider} />
               </View>
             </View>
 
-            <Text
-              style={{
-                color: '#EA4335',
-                textAlign: 'center',
-                fontWeight: '400',
-                fontSize: 14,
-                marginTop: 24,
-              }}>
+            <Text style={styles.alert}>
               Do not use a P.O. box as an address. Please use the address found
               on your state-issued ID.
             </Text>
           </View>
         </View>
       </KeyboardAwareScrollView>
-      <View style={{width: '90%', alignSelf: 'center', bottom: 30}}>
+      <View style={styles.btnWrapper}>
         <Pressable style={styles.button} onPress={handleSubmit(onSubmit)}>
           <Text style={styles.text}>Confirm Investor Info</Text>
         </Pressable>
@@ -393,8 +318,27 @@ const InvestorInfo = ({navigation}: NavigationProps) => {
 export default InvestorInfo;
 
 const styles = StyleSheet.create({
-  fieldsDisplay: {display: 'flex', flexDirection: 'row', marginTop: 15},
+  btnWrapper: {width: '90%', alignSelf: 'center', bottom: 30},
+  divider: {
+    borderWidth: 1,
+    borderColor: '#EAEAEA',
+    width: '90%',
+  },
+  alert: {
+    color: '#EA4335',
+    textAlign: 'center',
+    fontWeight: '400',
+    fontSize: 14,
+    marginTop: 24,
+  },
+  colorRed: {
+    color: 'red',
+  },
+  nameFields: {display: 'flex', flexDirection: 'row', marginTop: 50},
 
+  w50: {width: '50%'},
+  container: {flex: 1, width: '90%', alignSelf: 'center'},
+  fieldsDisplay: {display: 'flex', flexDirection: 'row', marginTop: 15},
   button: {
     marginTop: 40,
     alignItems: 'center',

@@ -1,35 +1,27 @@
+import {NavigationProp} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Pressable,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
-import Back from '../../../../assets/svgs/Backicon.svg';
-import {NavigationProps} from '../../../types/navigation';
+import {View, Text, StyleSheet, Pressable, TextInput} from 'react-native';
+import {ScaledSheet} from 'react-native-size-matters';
+import Header from '../../../components/auth/login/passwordReset/Header';
 
-const PasswordReset = ({navigation}: NavigationProps) => {
-  const [error, setError] = useState();
+const PasswordReset = ({
+  navigation,
+}: {
+  navigation: NavigationProp<{
+    Login: undefined;
+  }>;
+}) => {
+  const [error] = useState();
 
   const handleBack = () => {
-    navigation.navigate('Login');
+    navigation.goBack();
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.icon}>
-          <TouchableOpacity onPress={handleBack}>
-            <Back height={25} width={25} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.descHeader}>
-          <Text style={styles.description}>Password Reset</Text>
-        </View>
-
-        <View style={{width: '100%', alignItems: 'center'}}>
+        <Header onPress={handleBack} />
+        <View style={styles.fieldWrapper}>
           <View style={styles.w80}>
             <Text style={styles.submitText}>
               Submit your user email and we’ll send you password reset
@@ -65,7 +57,8 @@ const PasswordReset = ({navigation}: NavigationProps) => {
 
 export default PasswordReset;
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
+  fieldWrapper: {width: '100%', alignItems: 'center'},
   error: {textAlign: 'center', color: '#EA4335'},
   successText: {textAlign: 'center', color: '#57A773'},
   w80: {
@@ -88,7 +81,7 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
   fieldContainer: {
-    height: 50,
+    height: '40@vs',
     width: '90%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -115,19 +108,10 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: 'white',
   },
-  icon: {
-    padding: 20,
-    marginTop: 20,
-    marginBottom: 30,
-  },
-  descHeader: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: '25%',
-    width: '50%',
-  },
+
   container: {
     flex: 1,
+    backgroundColor: '#fff',
   },
   header: {
     flex: 1,
@@ -137,12 +121,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-
-  description: {
-    color: '#000000',
-    fontSize: 24,
-    fontWeight: '800',
-    textAlign: 'center',
   },
 });

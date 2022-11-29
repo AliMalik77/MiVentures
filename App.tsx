@@ -1,16 +1,14 @@
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import RootNavigation from './src/navigation/RootNavigation';
-
+import BottomNavigator from './src/navigation/app/BottomNavigator';
+import Intro from './src/screens/intro/Intro';
 const App = () => {
   const [userData, setUserData] = useState({
     email: '',
     password: '',
   });
   const [authenticated, setAuthenticated] = useState<boolean>(false);
-  // if (authData.uid) {
-  // let signout = auth().signOut();
-  // let authData = auth().currentUser;
 
   return (
     <>
@@ -21,6 +19,9 @@ const App = () => {
           authenticated={authenticated}
           setAuthenticated={setAuthenticated}
         />
+        {/* <BottomNavigator /> */}
+        {/* <Intro /> */}
+        {/* <InvestorInfo /> */}
       </NavigationContainer>
     </>
   );

@@ -1,30 +1,31 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Pressable,
-  TouchableOpacity,
-  Alert,
-} from 'react-native';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
 
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import Close from '../../../../assets/svgs/Exiticon.svg';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 import Apple from '../../../../assets/svgs/Apple.svg';
-import Background2 from '../../../../assets/svgs/Background2.svg';
 import Mailbox from '../../../../assets/svgs/Mailbox.svg';
 import Google from '../../../../assets/svgs/Google.svg';
 import auth from '@react-native-firebase/auth';
-import {NavigationProps} from '../../../types/navigation';
+import Config from 'react-native-config';
+import {NavigationProp} from '@react-navigation/native';
+import Background from '../../../components/auth/login/loginType/Background';
 
-const LoginType = ({navigation}: NavigationProps) => {
-  const [authenticated, setAuthenticated] = useState(false);
+type LogintypeProps = {
+  authenticated: Boolean;
+  setAuthenticated: (val: Boolean) => void;
+  navigation: NavigationProp<{Auth: undefined; Login: undefined}>;
+};
 
+const LoginType = ({
+  authenticated,
+  setAuthenticated,
+  navigation,
+}: LogintypeProps) => {
   useEffect(() => {
-    GoogleSignin.configure({
-      webClientId: process.env.CLIENTID,
-    });
-
+    GoogleSignin.configure();
     auth().onAuthStateChanged(user => {
       if (user) {
         setAuthenticated(true);
@@ -33,23 +34,27 @@ const LoginType = ({navigation}: NavigationProps) => {
   }, []);
 
   const googleSignin = async () => {
-    const {idToken} = await GoogleSignin.signIn();
-
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-    return auth().signInWithCredential(googleCredential);
-  };
-
-  const createUser = (email: string, password: string) => {
     try {
-      auth().createUserWithEmailAndPassword(email, password);
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      if (userInfo.user) {
+        setAuthenticated(true);
+      }
     } catch (error: any) {
-      Alert.alert(error);
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
     }
   };
 
   const handleBack = () => {
-    navigation.navigate('Auth');
+    navigation.goBack();
   };
 
   const handleEmailLogin = () => {
@@ -58,30 +63,10 @@ const LoginType = ({navigation}: NavigationProps) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.icon}>
-          <TouchableOpacity onPress={handleBack}>
-            <Close height={25} width={25} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.descHeader}>
-          <Text style={styles.description}>How do you want to log in?</Text>
-        </View>
-      </View>
-      <View style={styles.center}>
-        <Background2
-          style={{alignItems: 'center', width: '100%', height: '100%'}}
-        />
-      </View>
+      <Background onPress={handleBack} />
       <View style={styles.footer}>
         <Pressable style={[styles.button, {backgroundColor: 'black'}]}>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              width: '80%',
-              justifyContent: 'space-evenly',
-            }}>
+          <View style={styles.buttonContent}>
             <Apple height={25} width={25} />
             <Text style={styles.text}>Log in with Apple</Text>
           </View>
@@ -90,19 +75,9 @@ const LoginType = ({navigation}: NavigationProps) => {
         <Pressable
           style={[styles.button, {backgroundColor: '#EA4335'}]}
           onPress={() => {
-            googleSignin()
-              .then(res => {
-                console.log('google response is successful', res);
-              })
-              .catch(err => console.log(err));
+            googleSignin();
           }}>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              width: '80%',
-              justifyContent: 'space-evenly',
-            }}>
+          <View style={styles.buttonContent}>
             <Google height={25} width={25} />
             <Text style={styles.text}>Log in with Google</Text>
           </View>
@@ -110,13 +85,7 @@ const LoginType = ({navigation}: NavigationProps) => {
         <Pressable
           style={[styles.button, {backgroundColor: '#377BF5'}]}
           onPress={handleEmailLogin}>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              width: '80%',
-              justifyContent: 'space-evenly',
-            }}>
+          <View style={styles.buttonContent}>
             <Mailbox height={25} width={25} />
             <Text style={styles.text}>Log in with Email</Text>
           </View>
@@ -129,26 +98,16 @@ const LoginType = ({navigation}: NavigationProps) => {
 export default LoginType;
 
 const styles = StyleSheet.create({
+  buttonContent: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '80%',
+    justifyContent: 'space-evenly',
+  },
   w90: {
     width: '90%',
   },
-  descHeader: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: '25%',
-    width: '50%',
-  },
-  description: {
-    color: 'black',
-    fontSize: 24,
-    fontWeight: '800',
-    textAlign: 'center',
-  },
 
-  icon: {
-    padding: 30,
-    marginTop: 30,
-  },
   button: {
     display: 'flex',
     flexDirection: 'row',
@@ -167,14 +126,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  header: {
-    flex: 1,
-  },
-  center: {
-    flex: 2,
-    marginRight: 30,
-    marginLeft: 30,
-  },
+
   footer: {
     flex: 1,
     alignItems: 'center',

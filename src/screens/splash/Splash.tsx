@@ -1,9 +1,14 @@
 import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
-import {NavigationProps} from '../../types/navigation';
 import SplashLogo from '../../../assets/svgs/Splash.svg';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+import {ScaledSheet} from 'react-native-size-matters';
 
-const Splash = ({navigation}: NavigationProps) => {
+const Splash = ({
+  navigation,
+}: {
+  navigation: NavigationProp<{Auth: undefined}>;
+}) => {
   useEffect(() => {
     setTimeout(() => {
       navigation.navigate('Auth');
@@ -23,17 +28,17 @@ const Splash = ({navigation}: NavigationProps) => {
 
 export default Splash;
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   image: {
-    width: 125,
-    height: 125,
+    width: '125@s',
+    height: '125@vs',
   },
   container: {
     flex: 1,
     backgroundColor: '#377BF5',
   },
   logo: {
-    width: 40,
+    width: '40@s',
   },
   header: {
     flex: 3,
